@@ -56,6 +56,7 @@ public class MainGui extends JFrame {
 		panel.setBounds(0, 0, 684, 442);
 		contentPane.add(panel);
 		panel.setLayout(null);
+		System.out.println("null");
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
