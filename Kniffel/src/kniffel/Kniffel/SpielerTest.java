@@ -6,7 +6,7 @@ public class SpielerTest {
 		// TODO Auto-generated method stub
 	
 		
-		Spieler spieler1=new Spieler("test",001,0);
+		Spieler spieler1=new Spieler(Start.textField.getText(),001,0);
 		
 
 	}
