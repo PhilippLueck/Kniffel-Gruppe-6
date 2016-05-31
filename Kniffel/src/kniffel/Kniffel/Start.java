@@ -219,6 +219,10 @@ public class Start extends JFrame {
 		btn_start.setForeground(new Color(0, 128, 0));
 		btn_start.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				MainGui wnd = new MainGui();
+				wnd.setVisible(true);
+				dispose();
+	
 				
 			}
 		});

@@ -8,10 +8,12 @@ public class Spieler {
 	private int punkte;
 	private int spielgewonnen;
 	
-	public Spieler( String Name, int spielerID, int punkte){
-		setName(name);
-		setSpielerID(spielerID);
-		setPunkte(punkte);
+	public Spieler(String name, int spielerID, int punkte){
+		this.name = name;
+		this.spielerID = spielerID;
+		this.punkte = punkte;
+//		setSpielerID(spielerID);
+//		setPunkte(punkte);
 	}
 
 	public int getPunkte() {

@@ -107,7 +107,7 @@ public class MainGui extends JFrame {
 		
 		//Action Listener
 		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {System.exit( 0 );
 			}
 		});
 		
