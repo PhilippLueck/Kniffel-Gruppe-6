@@ -19,10 +19,10 @@ public class Spieler {
 	}
 
 	public void setPunkte(int punkte) {
-		if(punkte!<0){
+		if(!(punkte<0)){
 			this.punkte = punkte;	
 		}else{
-			JOptionPane.showMessageDialog(null, "Minuspunkte unmöglich","Fehler",JOptionPane.ERROR MESSAGE);
+			JOptionPane.showMessageDialog(null, "Minuspunkte unmöglich");
 		}
 	
 		
@@ -37,7 +37,7 @@ public class Spieler {
 		this.name = name;
 		}
 		else{
-			JOptionPane.showMessageDialog(null, "Bitte Namen eingeben","Fehler",JOptionPane.ERROR MESSAGE);
+			JOptionPane.showMessageDialog(null, "Bitte Namen eingeben");
 		}
 	}
 
@@ -46,10 +46,11 @@ public class Spieler {
 	}
 
 	public void setSpielerID(int spielerID) {
-		if(spielerID!<0){
+		if(!(spielerID<0)){
 		this.spielerID = spielerID;
-	}else{
-		JOptionPane.showMessageDialog(null, "Ungültige Eingabe","Fehler",JOptionPane.ERROR MESSAGE);
+		}else{
+			JOptionPane.showMessageDialog(null, "Ungültige Eingabe");
+		}
 	}
 	
 	public int getSpielgewonnen() {
@@ -57,10 +58,10 @@ public class Spieler {
 	}
 
 	public void setSpielgewonnen(int spielgewonnen) {
-		if (spielgewonnen!<0){
+		if (!(spielgewonnen<0)){
 			this.spielgewonnen = spielgewonnen;	
 		}else{
-			JOptionPane.showMessageDialog(null, "Ungültige Eingabe","Fehler",JOptionPane.ERROR MESSAGE);
+			JOptionPane.showMessageDialog(null, "Ungültige Eingabe");
 		}
 	}
 	
