@@ -44,6 +44,8 @@ public class MainGui extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	
+	// Main frame
 	public MainGui() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 480);
@@ -52,12 +54,15 @@ public class MainGui extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		//JPane1 placed on Contentpane
+		
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 684, 442);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		System.out.println("null");
 		
+		//Panel 1 placed on "main Panel"
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_1.setBackground(new Color(255, 250, 205));
@@ -71,11 +76,14 @@ public class MainGui extends JFrame {
 		panel_1.add(panel_4);
 		panel_4.setLayout(null);
 		
+		//Ergebnis Label
+		
 		JLabel lblErgebnis = new JLabel("Ergebnis");
 		lblErgebnis.setBounds(71, 0, 189, 61);
 		lblErgebnis.setFont(new Font("Tahoma", Font.PLAIN, 35));
 		panel_4.add(lblErgebnis);
 		
+		//Ergebnis Panel
 		JPanel ERGBENIS = new JPanel();
 		ERGBENIS.setBounds(10, 68, 263, 363);
 		panel_1.add(ERGBENIS);
@@ -86,8 +94,7 @@ public class MainGui extends JFrame {
 		ERGBENIS.add(lblNewLabel);
 		lblNewLabel.setIcon(new ImageIcon("Kniffel/Bilder/xls-kniffel.jpg"));repaint();
 		
-		
-		
+		//Panel 2 
 		panel_2 = new JPanel();
 		panel_2.setBackground(UIManager.getColor("Button.background"));
 		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -95,22 +102,28 @@ public class MainGui extends JFrame {
 		panel.add(panel_2);
 		panel_2.setLayout(null);
 		
+		//Button placed on panel 2 + Actionlistener
 		btnNewButton = new JButton("Beenden");
+		
+		//Action Listener
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
+		
 		btnNewButton.setBounds(303, 11, 89, 23);
 		panel_2.add(btnNewButton);
 		
+		//Hilfebutton placed on panel2
 		btnHilfe = new JButton("Hilfe");
 		btnHilfe.setBounds(20, 11, 89, 23);
 		panel_2.add(btnHilfe);
-		
+		//Würfelbutton placed on panel 2
 		JButton btnWrfeln = new JButton("W\u00FCrfeln");
 		btnWrfeln.setBounds(161, 11, 89, 23);
 		panel_2.add(btnWrfeln);
 		
+		//Panel 3 placed on panel1
 		panel_3 = new JPanel();
 		panel_3.setBackground(new Color(255, 255, 240));
 		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -118,17 +131,20 @@ public class MainGui extends JFrame {
 		panel.add(panel_3);
 		panel_3.setLayout(null);
 		
+		//Panel 5 placed on Panel 3
 		JPanel panel_5 = new JPanel();
 		panel_5.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel_5.setBounds(0, 0, 402, 57);
 		panel_3.add(panel_5);
 		panel_5.setLayout(null);
 		
+		//Kniffel Label placed on Panel 5
 		JLabel lblKniffel = new JLabel("Kniffel");
 		lblKniffel.setBounds(0, 0, 137, 61);
 		lblKniffel.setFont(new Font("Tahoma", Font.PLAIN, 50));
 		panel_5.add(lblKniffel);
 		
+		//Copyright :D
 		JLabel lblByGruppe = new JLabel("by Gruppe 6");
 		lblByGruppe.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lblByGruppe.setBounds(143, 14, 162, 53);

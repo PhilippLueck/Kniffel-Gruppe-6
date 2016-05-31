@@ -27,25 +27,25 @@ import javax.swing.JProgressBar;
 
 public class Start extends JFrame {
 
-	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JLabel label;
-	private JLabel label_1;
-	private JLabel label_2;
-	private JLabel label_3;
-	private JLabel label_4;
-	private JLabel label_5;
-	private JLabel label_6;
-	private JLabel label_7;
-	private JLabel lblSpieler;
-	private JPanel panel_3;
+	private JPanel startMainPane;
+	private JTextField txt_player1;
+	private JTextField txt_player2;
+	private JTextField txt_player3;
+	private JTextField txt_player4;
+	private JTextField txt_player5;
+	private JTextField txt_player6;
+	private JTextField txt_player7;
+	private JTextField txt_player8;
+	private JLabel lbl_player1;
+	private JLabel lbl_player2;
+	private JLabel lbl_player3;
+	private JLabel lbl_player4;
+	private JLabel lbl_player5;
+	private JLabel lbl_player6;
+	private JLabel lbl_lbl_player7;
+	private JLabel lbl_player8;
+	private JLabel lbl_playerHead;
+	private JPanel pnl_playerList;
 
 	/**
 	 * Launch the application.
@@ -66,139 +66,142 @@ public class Start extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	
+	
+	
 	public Start() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 536, 406);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		startMainPane = new JPanel();
+		startMainPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(startMainPane);
+		startMainPane.setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.LIGHT_GRAY);
-		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel.setBounds(0, 75, 308, 292);
-		contentPane.add(panel);
-		panel.setLayout(null);
+		JPanel pnl_player = new JPanel();
+		pnl_player.setBackground(Color.LIGHT_GRAY);
+		pnl_player.setBorder(new LineBorder(new Color(0, 0, 0)));
+		pnl_player.setBounds(0, 75, 308, 292);
+		startMainPane.add(pnl_player);
+		pnl_player.setLayout(null);
 		
 		 String comboBoxListe[] = {"Bitte Wählen","1","2","3","4","5","6","7","8"};
 		
-		textField = new JTextField();
-		textField.setBounds(147, 48, 86, 20);
-		panel.add(textField);
-		textField.setColumns(10);
-		textField.setVisible(false);
-		String Spieler1 = textField.getText(); 
+		txt_player1 = new JTextField();
+		txt_player1.setBounds(147, 48, 86, 20);
+		pnl_player.add(txt_player1);
+		txt_player1.setColumns(10);
+		txt_player1.setVisible(false);
+		String Spieler1 = txt_player1.getText(); 
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(147, 75, 86, 20);
-		panel.add(textField_1);
-		textField_1.setVisible(false);
+		txt_player2 = new JTextField();
+		txt_player2.setColumns(10);
+		txt_player2.setBounds(147, 75, 86, 20);
+		pnl_player.add(txt_player2);
+		txt_player2.setVisible(false);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(147, 106, 86, 20);
-		panel.add(textField_2);
-		textField_2.setVisible(false);
+		txt_player3 = new JTextField();
+		txt_player3.setColumns(10);
+		txt_player3.setBounds(147, 106, 86, 20);
+		pnl_player.add(txt_player3);
+		txt_player3.setVisible(false);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(147, 137, 86, 20);
-		panel.add(textField_3);
-		textField_3.setVisible(false);
+		txt_player4 = new JTextField();
+		txt_player4.setColumns(10);
+		txt_player4.setBounds(147, 137, 86, 20);
+		pnl_player.add(txt_player4);
+		txt_player4.setVisible(false);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(147, 168, 86, 20);
-		panel.add(textField_4);
-		textField_4.setVisible(false);
+		txt_player5 = new JTextField();
+		txt_player5.setColumns(10);
+		txt_player5.setBounds(147, 168, 86, 20);
+		pnl_player.add(txt_player5);
+		txt_player5.setVisible(false);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(147, 199, 86, 20);
-		panel.add(textField_5);
-		textField_5.setVisible(false);
+		txt_player6 = new JTextField();
+		txt_player6.setColumns(10);
+		txt_player6.setBounds(147, 199, 86, 20);
+		pnl_player.add(txt_player6);
+		txt_player6.setVisible(false);
 		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(147, 230, 86, 20);
-		panel.add(textField_6);
-		textField_6.setVisible(false);
+		txt_player7 = new JTextField();
+		txt_player7.setColumns(10);
+		txt_player7.setBounds(147, 230, 86, 20);
+		pnl_player.add(txt_player7);
+		txt_player7.setVisible(false);
 		
-		textField_7 = new JTextField();
-		textField_7.setColumns(10);
-		textField_7.setBounds(147, 261, 86, 20);
-		panel.add(textField_7);
-		textField_7.setVisible(false);
+		txt_player8 = new JTextField();
+		txt_player8.setColumns(10);
+		txt_player8.setBounds(147, 261, 86, 20);
+		pnl_player.add(txt_player8);
+		txt_player8.setVisible(false);
 		
-		label = new JLabel("Spieler 1:");
-		label.setBounds(64, 51, 73, 14);
-		panel.add(label);
-		label.setVisible(false);
+		lbl_player1 = new JLabel("Spieler 1:");
+		lbl_player1.setBounds(64, 51, 73, 14);
+		pnl_player.add(lbl_player1);
+		lbl_player1.setVisible(false);
 		
-		label_1 = new JLabel("Spieler 2:");
-		label_1.setBounds(64, 78, 73, 14);
-		panel.add(label_1);
-		label_1.setVisible(false);
+		lbl_player2 = new JLabel("Spieler 2:");
+		lbl_player2.setBounds(64, 78, 73, 14);
+		pnl_player.add(lbl_player2);
+		lbl_player2.setVisible(false);
 		
-		label_2 = new JLabel("Spieler 3:");
-		label_2.setBounds(64, 109, 73, 14);
-		panel.add(label_2);
-		label_2.setVisible(false);
+		lbl_player3 = new JLabel("Spieler 3:");
+		lbl_player3.setBounds(64, 109, 73, 14);
+		pnl_player.add(lbl_player3);
+		lbl_player3.setVisible(false);
 		
 		
-		label_3 = new JLabel("Spieler 4:");
-		label_3.setBounds(64, 140, 73, 14);
-		panel.add(label_3);
-		label_3.setVisible(false);
+		lbl_player4 = new JLabel("Spieler 4:");
+		lbl_player4.setBounds(64, 140, 73, 14);
+		pnl_player.add(lbl_player4);
+		lbl_player4.setVisible(false);
 		
-		label_4 = new JLabel("Spieler 5:");
-		label_4.setBounds(64, 171, 73, 14);
-		panel.add(label_4);
-		label_4.setVisible(false);
+		lbl_player5 = new JLabel("Spieler 5:");
+		lbl_player5.setBounds(64, 171, 73, 14);
+		pnl_player.add(lbl_player5);
+		lbl_player5.setVisible(false);
 		
-		label_5 = new JLabel("Spieler 6");
-		label_5.setBounds(64, 202, 73, 14);
-		panel.add(label_5);
-		label_5.setVisible(false);
+		lbl_player6 = new JLabel("Spieler 6");
+		lbl_player6.setBounds(64, 202, 73, 14);
+		pnl_player.add(lbl_player6);
+		lbl_player6.setVisible(false);
 		
-		label_6 = new JLabel("Spieler 7:");
-		label_6.setBounds(64, 233, 73, 14);
-		panel.add(label_6);
-		label_6.setVisible(false);
+		lbl_lbl_player7 = new JLabel("Spieler 7:");
+		lbl_lbl_player7.setBounds(64, 233, 73, 14);
+		pnl_player.add(lbl_lbl_player7);
+		lbl_lbl_player7.setVisible(false);
 		
-		label_7 = new JLabel("Spieler 8:");
-		label_7.setBounds(64, 264, 73, 14);
-		panel.add(label_7);
+		lbl_player8 = new JLabel("Spieler 8:");
+		lbl_player8.setBounds(64, 264, 73, 14);
+		pnl_player.add(lbl_player8);
 		
-		lblSpieler = new JLabel("Spieler:");
-		lblSpieler.setFont(new Font("Arial", Font.BOLD, 20));
-		lblSpieler.setBounds(113, 8, 106, 29);
-		panel.add(lblSpieler);
+		lbl_playerHead = new JLabel("Spieler:");
+		lbl_playerHead.setFont(new Font("Arial", Font.BOLD, 20));
+		lbl_playerHead.setBounds(113, 8, 106, 29);
+		pnl_player.add(lbl_playerHead);
 		
-		panel_3 = new JPanel();
-		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_3.setBounds(50, 40, 215, 252);
-		panel.add(panel_3);
+		pnl_playerList = new JPanel();
+		pnl_playerList.setBorder(new LineBorder(new Color(0, 0, 0)));
+		pnl_playerList.setBounds(50, 40, 215, 252);
+		pnl_player.add(pnl_playerList);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(308, 75, 211, 292);
-		contentPane.add(panel_1);
-		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_1.setBackground(Color.WHITE);
-		panel_1.setLayout(null);
+		JPanel pnl_options = new JPanel();
+		pnl_options.setBounds(308, 75, 211, 292);
+		startMainPane.add(pnl_options);
+		pnl_options.setBorder(new LineBorder(new Color(0, 0, 0)));
+		pnl_options.setBackground(Color.WHITE);
+		pnl_options.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Start");
-		btnNewButton.setForeground(new Color(0, 128, 0));
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btn_start = new JButton("Start");
+		btn_start.setForeground(new Color(0, 128, 0));
+		btn_start.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		btnNewButton.setBounds(10, 228, 89, 23);
-		panel_1.add(btnNewButton);
-		btnNewButton.setEnabled(false);
+		btn_start.setBounds(10, 228, 89, 23);
+		pnl_options.add(btn_start);
+		btn_start.setEnabled(false); 
 		
 		
 		//if(wert=="1"){
@@ -206,242 +209,245 @@ public class Start extends JFrame {
 	//	}
 		
 		
-		JButton button = new JButton("Beenden");
-		button.setForeground(Color.RED);
-		button.addActionListener(new ActionListener() {
+		JButton btn_close = new JButton("Beenden");
+		btn_close.setForeground(Color.RED);
+		btn_close.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit( 0 );
 				
 			}
 		});
-		button.setBounds(112, 228, 89, 23);
-		panel_1.add(button);
+		btn_close.setBounds(112, 228, 89, 23);
+		pnl_options.add(btn_close);
 		
-		JComboBox comboBox = new JComboBox(comboBoxListe);
-		comboBox.addActionListener(new ActionListener() {
+		JComboBox cb_playernumber = new JComboBox(comboBoxListe);
+		cb_playernumber.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				
-				 String spieleranzahl = (String)comboBox.getSelectedItem();
+				 String spieleranzahl = (String)cb_playernumber.getSelectedItem();
 				 if(spieleranzahl == "1"){
-					 label.setVisible(true);
-					 textField.setVisible(true);
-					 label_1.setVisible(false);
-					 textField_1.setVisible(false);
-					 label_2.setVisible(false);
-					 textField_2.setVisible(false);
-					 label_3.setVisible(false);
-					 textField_3.setVisible(false);
-					 label_4.setVisible(false);
-					 textField_4.setVisible(false);
-					 label_5.setVisible(false);
-					 textField_5.setVisible(false);
-					 label_6.setVisible(false);
-					 textField_6.setVisible(false);
-					 label_7.setVisible(false);
-					 textField_7.setVisible(false);
+					 lbl_player1.setVisible(true);
+					 txt_player1.setVisible(true);
+					 lbl_player2.setVisible(false);
+					 txt_player2.setVisible(false);
+					 lbl_player3.setVisible(false);
+					 txt_player3.setVisible(false);
+					 lbl_player4.setVisible(false);
+					 txt_player4.setVisible(false);
+					 lbl_player5.setVisible(false);
+					 txt_player5.setVisible(false);
+					 lbl_player6.setVisible(false);
+					 txt_player6.setVisible(false);
+					 lbl_lbl_player7.setVisible(false);
+					 txt_player7.setVisible(false);
+					 lbl_player8.setVisible(false);
+					 txt_player8.setVisible(false);
 				 }
 				 
 				 
 				 if(spieleranzahl == "2"){
-					 label.setVisible(true);
-					 textField.setVisible(true);
-					 label_1.setVisible(true);
-					 textField_1.setVisible(true);
-					 label_2.setVisible(false);
-					 textField_2.setVisible(false);
-					 label_3.setVisible(false);
-					 textField_3.setVisible(false);
-					 label_4.setVisible(false);
-					 textField_4.setVisible(false);
-					 label_5.setVisible(false);
-					 textField_5.setVisible(false);
-					 label_6.setVisible(false);
-					 textField_6.setVisible(false);
-					 label_7.setVisible(false);
-					 textField_7.setVisible(false);
+					 lbl_player1.setVisible(true);
+					 txt_player1.setVisible(true);
+					 lbl_player2.setVisible(true);
+					 txt_player2.setVisible(true);
+					 lbl_player3.setVisible(false);
+					 txt_player3.setVisible(false);
+					 lbl_player4.setVisible(false);
+					 txt_player4.setVisible(false);
+					 lbl_player5.setVisible(false);
+					 txt_player5.setVisible(false);
+					 lbl_player6.setVisible(false);
+					 txt_player6.setVisible(false);
+					 lbl_lbl_player7.setVisible(false);
+					 txt_player7.setVisible(false);
+					 lbl_player8.setVisible(false);
+					 txt_player8.setVisible(false);
 				 }
 				 if(spieleranzahl == "3"){
-					 label.setVisible(true);
-					 textField.setVisible(true);
-					 label_1.setVisible(true);
-					 textField_1.setVisible(true);
-					 label_2.setVisible(true);
-					 textField_2.setVisible(true);
-					 label_3.setVisible(false);
-					 textField_3.setVisible(false);
-					 label_4.setVisible(false);
-					 textField_4.setVisible(false);
-					 label_5.setVisible(false);
-					 textField_5.setVisible(false);
-					 label_6.setVisible(false);
-					 textField_6.setVisible(false);
-					 label_7.setVisible(false);
-					 textField_7.setVisible(false);
+					 lbl_player1.setVisible(true);
+					 txt_player1.setVisible(true);
+					 lbl_player2.setVisible(true);
+					 txt_player2.setVisible(true);
+					 lbl_player3.setVisible(true);
+					 txt_player3.setVisible(true);
+					 lbl_player4.setVisible(false);
+					 txt_player4.setVisible(false);
+					 lbl_player5.setVisible(false);
+					 txt_player5.setVisible(false);
+					 lbl_player6.setVisible(false);
+					 txt_player6.setVisible(false);
+					 lbl_lbl_player7.setVisible(false);
+					 txt_player7.setVisible(false);
+					 lbl_player8.setVisible(false);
+					 txt_player8.setVisible(false);
 				 }
 				 if(spieleranzahl == "4"){
-					 label.setVisible(true);
-					 textField.setVisible(true);
-					 label_1.setVisible(true);
-					 textField_1.setVisible(true);
-					 label_2.setVisible(true);
-					 textField_2.setVisible(true);
-					 label_3.setVisible(true);
-					 textField_3.setVisible(true);
-					 label_4.setVisible(false);
-					 textField_4.setVisible(false);
-					 label_5.setVisible(false);
-					 textField_5.setVisible(false);
-					 label_6.setVisible(false);
-					 textField_6.setVisible(false);
-					 label_7.setVisible(false);
-					 textField_7.setVisible(false);
+					 lbl_player1.setVisible(true);
+					 txt_player1.setVisible(true);
+					 lbl_player2.setVisible(true);
+					 txt_player2.setVisible(true);
+					 lbl_player3.setVisible(true);
+					 txt_player3.setVisible(true);
+					 lbl_player4.setVisible(true);
+					 txt_player4.setVisible(true);
+					 lbl_player5.setVisible(false);
+					 txt_player5.setVisible(false);
+					 lbl_player6.setVisible(false);
+					 txt_player6.setVisible(false);
+					 lbl_lbl_player7.setVisible(false);
+					 txt_player7.setVisible(false);
+					 lbl_player8.setVisible(false);
+					 txt_player8.setVisible(false);
 				 }
 				 if(spieleranzahl == "5"){
-					 label.setVisible(true);
-					 textField.setVisible(true);
-					 label_1.setVisible(true);
-					 textField_1.setVisible(true);
-					 label_2.setVisible(true);
-					 textField_2.setVisible(true);
-					 label_3.setVisible(true);
-					 textField_3.setVisible(true);
-					 label_4.setVisible(true);
-					 textField_4.setVisible(true);
-					 label_5.setVisible(false);
-					 textField_5.setVisible(false);
-					 label_6.setVisible(false);
-					 textField_6.setVisible(false);
-					 label_7.setVisible(false);
-					 textField_7.setVisible(false);
+					 lbl_player1.setVisible(true);
+					 txt_player1.setVisible(true);
+					 lbl_player2.setVisible(true);
+					 txt_player2.setVisible(true);
+					 lbl_player3.setVisible(true);
+					 txt_player3.setVisible(true);
+					 lbl_player4.setVisible(true);
+					 txt_player4.setVisible(true);
+					 lbl_player5.setVisible(true);
+					 txt_player5.setVisible(true);
+					 lbl_player6.setVisible(false);
+					 txt_player6.setVisible(false);
+					 lbl_lbl_player7.setVisible(false);
+					 txt_player7.setVisible(false);
+					 lbl_player8.setVisible(false);
+					 txt_player8.setVisible(false);
 				 }
 				 if(spieleranzahl == "6"){
-					 label.setVisible(true);
-					 textField.setVisible(true);
-					 label_1.setVisible(true);
-					 textField_1.setVisible(true);
-					 label_2.setVisible(true);
-					 textField_2.setVisible(true);
-					 label_3.setVisible(true);
-					 textField_3.setVisible(true);
-					 label_4.setVisible(true);
-					 textField_4.setVisible(true);
-					 label_5.setVisible(true);
-					 textField_5.setVisible(true);
-					 label_6.setVisible(false);
-					 textField_6.setVisible(false);
-					 label_7.setVisible(false);
-					 textField_7.setVisible(false);
+					 lbl_player1.setVisible(true);
+					 txt_player1.setVisible(true);
+					 lbl_player2.setVisible(true);
+					 txt_player2.setVisible(true);
+					 lbl_player3.setVisible(true);
+					 txt_player3.setVisible(true);
+					 lbl_player4.setVisible(true);
+					 txt_player4.setVisible(true);
+					 lbl_player5.setVisible(true);
+					 txt_player5.setVisible(true);
+					 lbl_player6.setVisible(true);
+					 txt_player6.setVisible(true);
+					 lbl_lbl_player7.setVisible(false);
+					 txt_player7.setVisible(false);
+					 lbl_player8.setVisible(false);
+					 txt_player8.setVisible(false);
 				 }
 				 if(spieleranzahl == "7"){
-					 label.setVisible(true);
-					 textField.setVisible(true);
-					 label_1.setVisible(true);
-					 textField_1.setVisible(true);
-					 label_2.setVisible(true);
-					 textField_2.setVisible(true);
-					 label_3.setVisible(true);
-					 textField_3.setVisible(true);
-					 label_4.setVisible(true);
-					 textField_4.setVisible(true);
-					 label_5.setVisible(true);
-					 textField_5.setVisible(true);
-					 label_6.setVisible(true);
-					 textField_6.setVisible(true);
-					 label_7.setVisible(false);
-					 textField_7.setVisible(false);
+					 lbl_player1.setVisible(true);
+					 txt_player1.setVisible(true);
+					 lbl_player2.setVisible(true);
+					 txt_player2.setVisible(true);
+					 lbl_player3.setVisible(true);
+					 txt_player3.setVisible(true);
+					 lbl_player4.setVisible(true);
+					 txt_player4.setVisible(true);
+					 lbl_player5.setVisible(true);
+					 txt_player5.setVisible(true);
+					 lbl_player6.setVisible(true);
+					 txt_player6.setVisible(true);
+					 lbl_lbl_player7.setVisible(true);
+					 txt_player7.setVisible(true);
+					 lbl_player8.setVisible(false);
+					 txt_player8.setVisible(false);
 				 }
 				 if(spieleranzahl == "8"){
-					 label.setVisible(true);
-					 textField.setVisible(true);
-					 label_1.setVisible(true);
-					 textField_1.setVisible(true);
-					 label_2.setVisible(true);
-					 textField_2.setVisible(true);
-					 label_3.setVisible(true);
-					 textField_3.setVisible(true);
-					 label_4.setVisible(true);
-					 textField_4.setVisible(true);
-					 label_5.setVisible(true);
-					 textField_5.setVisible(true);
-					 label_6.setVisible(true);
-					 textField_6.setVisible(true);
-					 label_7.setVisible(true);
-					 textField_7.setVisible(true);
+					 lbl_player1.setVisible(true);
+					 txt_player1.setVisible(true);
+					 lbl_player2.setVisible(true);
+					 txt_player2.setVisible(true);
+					 lbl_player3.setVisible(true);
+					 txt_player3.setVisible(true);
+					 lbl_player4.setVisible(true);
+					 txt_player4.setVisible(true);
+					 lbl_player5.setVisible(true);
+					 txt_player5.setVisible(true);
+					 lbl_player6.setVisible(true);
+					 txt_player6.setVisible(true);
+					 lbl_lbl_player7.setVisible(true);
+					 txt_player7.setVisible(true);
+					 lbl_player8.setVisible(true);
+					 txt_player8.setVisible(true);
 				 }
 			
 			
 			}
 		});
-		comboBox.setBounds(112, 92, 64, 20);
-		panel_1.add(comboBox);
+		
+		
+		
+		cb_playernumber.setBounds(112, 92, 64, 20);
+		pnl_options.add(cb_playernumber);
 		//panel_1.add(panel);
-       panel_1.setVisible(true);
+       pnl_options.setVisible(true);
        
-       JLabel lblAnzahlSpieler = new JLabel("Anzahl Spieler:");
-       lblAnzahlSpieler.setBounds(21, 95, 92, 14);
-       panel_1.add(lblAnzahlSpieler);
+       JLabel lbl_playernumber = new JLabel("Anzahl Spieler:");
+       lbl_playernumber.setBounds(21, 95, 92, 14);
+       pnl_options.add(lbl_playernumber);
        
-       JLabel lblWillkommen = new JLabel("Willkommen bei Kniffel");
-       lblWillkommen.setBounds(41, 45, 135, 14);
-       panel_1.add(lblWillkommen);
+       JLabel lbl_welcome = new JLabel("Willkommen bei Kniffel");
+       lbl_welcome.setBounds(41, 45, 135, 14);
+       pnl_options.add(lbl_welcome);
        
-       JButton btnBereit = new JButton("Bereit");
-       btnBereit.addActionListener(new ActionListener() {
+       JButton btn_ready = new JButton("Bereit");
+       btn_ready.addActionListener(new ActionListener() {
        	public void actionPerformed(ActionEvent e) {
-       		btnNewButton.setEnabled(true);
-       		label.setEnabled(false);
-       		label_1.setEnabled(false);
-       		label_2.setEnabled(false);
-       		label_3.setEnabled(false);
-       		label_4.setEnabled(false);
-       		label_5.setEnabled(false);
-       		label_6.setEnabled(false);
-       		label_7.setEnabled(false);
-       		 textField.setEnabled(false);
-       		 textField_1.setEnabled(false);
-       		 textField_2.setEnabled(false);
-       		 textField_3.setEnabled(false);
-       		 textField_4.setEnabled(false);
-       		 textField_5.setEnabled(false);
-       		 textField_6.setEnabled(false);
-       		 textField_7.setEnabled(false);
+       		btn_start.setEnabled(true);
+       		lbl_player1.setEnabled(false);
+       		lbl_player2.setEnabled(false);
+       		lbl_player3.setEnabled(false);
+       		lbl_player4.setEnabled(false);
+       		lbl_player5.setEnabled(false);
+       		lbl_player6.setEnabled(false);
+       		lbl_lbl_player7.setEnabled(false);
+       		lbl_player8.setEnabled(false);
+       		 txt_player1.setEnabled(false);
+       		 txt_player2.setEnabled(false);
+       		 txt_player3.setEnabled(false);
+       		 txt_player4.setEnabled(false);
+       		 txt_player5.setEnabled(false);
+       		 txt_player6.setEnabled(false);
+       		 txt_player7.setEnabled(false);
+       		 txt_player8.setEnabled(false);
        		
        	}
        	
        });
-       btnBereit.setBounds(54, 147, 89, 23);
-       panel_1.add(btnBereit);
+       btn_ready.setBounds(54, 147, 89, 23);
+       pnl_options.add(btn_ready);
        
        JProgressBar progressBar = new JProgressBar();
        progressBar.setBounds(10, 203, 191, 14);
-       panel_1.add(progressBar);
+       pnl_options.add(progressBar);
        
-       JButton btnHilfe = new JButton("Hilfe");
-       btnHilfe.setBounds(54, 262, 89, 23);
-       panel_1.add(btnHilfe);
+       JButton btn_help = new JButton("Hilfe");
+       btn_help.setBounds(54, 262, 89, 23);
+       pnl_options.add(btn_help);
        
-       JPanel panel_2 = new JPanel();
-       panel_2.setBackground(Color.WHITE);
-       panel_2.setBounds(0, 0, 519, 75);
-       contentPane.add(panel_2);
-       panel_2.setLayout(null);
+       JPanel pnl_head = new JPanel();
+       pnl_head.setBackground(Color.WHITE);
+       pnl_head.setBounds(0, 0, 519, 75);
+       startMainPane.add(pnl_head);
+       pnl_head.setLayout(null);
        
-       JLabel lblKniffel = new JLabel("Kniffel");
-       lblKniffel.setFont(new Font("Arial", Font.PLAIN, 50));
-       lblKniffel.setBounds(0, 0, 347, 53);
-       panel_2.add(lblKniffel);
+       JLabel lbl_Head = new JLabel("Kniffel");
+       lbl_Head.setFont(new Font("Arial", Font.PLAIN, 50));
+       lbl_Head.setBounds(0, 0, 347, 53);
+       pnl_head.add(lbl_Head);
        
-       JLabel lblGruppe = new JLabel(" by Gruppe 6");
-       lblGruppe.setFont(new Font("Arial", Font.PLAIN, 20));
-       lblGruppe.setBounds(0, 43, 139, 32);
-       panel_2.add(lblGruppe);
+       JLabel lbl_group = new JLabel(" by Gruppe 6");
+       lbl_group.setFont(new Font("Arial", Font.PLAIN, 20));
+       lbl_group.setBounds(0, 43, 139, 32);
+       pnl_head.add(lbl_group);
        
-       JButton btnNewButton_1 = new JButton("Anleitung");
-       btnNewButton_1.addActionListener(new ActionListener() {
+       JButton btn_instruction = new JButton("Anleitung");
+       btn_instruction.addActionListener(new ActionListener() {
        	public void actionPerformed(ActionEvent e) {
        	}
        });
-       btnNewButton_1.setBounds(311, 17, 198, 46);
-       panel_2.add(btnNewButton_1);
-		label_7.setVisible(false);
+       btn_instruction.setBounds(311, 17, 198, 46);
+       pnl_head.add(btn_instruction);
+		lbl_player8.setVisible(false);
 	}
 }
