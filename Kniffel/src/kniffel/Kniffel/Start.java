@@ -64,7 +64,7 @@ public class Start extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Create the frame.yo.
 	 */
 	
 	
