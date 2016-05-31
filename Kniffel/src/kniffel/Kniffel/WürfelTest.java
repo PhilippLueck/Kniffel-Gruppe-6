@@ -42,7 +42,7 @@ public class WürfelTest {
 			
 			System.out.println(augenzahl1 + "\t" + augenzahl2 + "\t" + augenzahl3 + "\t" + augenzahl4 + "\t" + augenzahl5);
 			
-			for (int k = 0; k < 1; k++){
+			for (int o = 0; o < 1; o++){
 				
 				augenzahl1 = 1+ würfel1.nextInt(6);
 				augenzahl2 = 1+ würfel2.nextInt(6);

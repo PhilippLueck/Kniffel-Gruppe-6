@@ -56,6 +56,8 @@ public class Würfel {
 	public void setWürfel5(int würfel5) {
 		this.würfel5 = würfel5;
 	}
-	}
+	int i;
 
+	}
+	
 
