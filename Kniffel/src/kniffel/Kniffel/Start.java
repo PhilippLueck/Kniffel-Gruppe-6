@@ -28,24 +28,29 @@ import javax.swing.JProgressBar;
 public class Start extends JFrame {
 
 	private JPanel startMainPane;
-	private JTextField txt_player1;
-	private JTextField txt_player2;
-	private JTextField txt_player3;
-	private JTextField txt_player4;
-	private JTextField txt_player5;
-	private JTextField txt_player6;
-	private JTextField txt_player7;
-	private JTextField txt_player8;
-	private JLabel lbl_player1;
-	private JLabel lbl_player2;
-	private JLabel lbl_player3;
-	private JLabel lbl_player4;
-	private JLabel lbl_player5;
-	private JLabel lbl_player6;
-	private JLabel lbl_lbl_player7;
-	private JLabel lbl_player8;
+//	public static JTextField txt_player1;
+//	private JTextField txt_player2;
+//	private JTextField txt_player3;
+//	private JTextField txt_player4;
+//	private JTextField txt_player5;
+//	private JTextField txt_player6;
+//	private JTextField txt_player7;
+//	private JTextField txt_player8;
+//	private JLabel lbl_player1;
+//	private JLabel lbl_player2;
+//	private JLabel lbl_player3;
+//	private JLabel lbl_player4;
+//	private JLabel lbl_player5;
+//	private JLabel lbl_player6;
+//	private JLabel lbl_lbl_player7;
+//	private JLabel lbl_player8;
 	private JLabel lbl_playerHead;
 	private JPanel pnl_playerList;
+	
+	
+	private JTextField[] players;
+	private JLabel[] labels;
+	private String[] player_names;
 
 	/**
 	 * Launch the application.
@@ -86,94 +91,112 @@ public class Start extends JFrame {
 		
 		 String comboBoxListe[] = {"Bitte Wählen","1","2","3","4","5","6","7","8"};
 		
-		txt_player1 = new JTextField();
-		txt_player1.setBounds(147, 48, 86, 20);
-		pnl_player.add(txt_player1);
-		txt_player1.setColumns(10);
-		txt_player1.setVisible(false);
-		String Spieler1 = txt_player1.getText(); 
-		
-		txt_player2 = new JTextField();
-		txt_player2.setColumns(10);
-		txt_player2.setBounds(147, 75, 86, 20);
-		pnl_player.add(txt_player2);
-		txt_player2.setVisible(false);
-		
-		txt_player3 = new JTextField();
-		txt_player3.setColumns(10);
-		txt_player3.setBounds(147, 106, 86, 20);
-		pnl_player.add(txt_player3);
-		txt_player3.setVisible(false);
-		
-		txt_player4 = new JTextField();
-		txt_player4.setColumns(10);
-		txt_player4.setBounds(147, 137, 86, 20);
-		pnl_player.add(txt_player4);
-		txt_player4.setVisible(false);
-		
-		txt_player5 = new JTextField();
-		txt_player5.setColumns(10);
-		txt_player5.setBounds(147, 168, 86, 20);
-		pnl_player.add(txt_player5);
-		txt_player5.setVisible(false);
-		
-		txt_player6 = new JTextField();
-		txt_player6.setColumns(10);
-		txt_player6.setBounds(147, 199, 86, 20);
-		pnl_player.add(txt_player6);
-		txt_player6.setVisible(false);
-		
-		txt_player7 = new JTextField();
-		txt_player7.setColumns(10);
-		txt_player7.setBounds(147, 230, 86, 20);
-		pnl_player.add(txt_player7);
-		txt_player7.setVisible(false);
-		
-		txt_player8 = new JTextField();
-		txt_player8.setColumns(10);
-		txt_player8.setBounds(147, 261, 86, 20);
-		pnl_player.add(txt_player8);
-		txt_player8.setVisible(false);
-		
-		lbl_player1 = new JLabel("Spieler 1:");
-		lbl_player1.setBounds(64, 51, 73, 14);
-		pnl_player.add(lbl_player1);
-		lbl_player1.setVisible(false);
-		
-		lbl_player2 = new JLabel("Spieler 2:");
-		lbl_player2.setBounds(64, 78, 73, 14);
-		pnl_player.add(lbl_player2);
-		lbl_player2.setVisible(false);
-		
-		lbl_player3 = new JLabel("Spieler 3:");
-		lbl_player3.setBounds(64, 109, 73, 14);
-		pnl_player.add(lbl_player3);
-		lbl_player3.setVisible(false);
-		
-		
-		lbl_player4 = new JLabel("Spieler 4:");
-		lbl_player4.setBounds(64, 140, 73, 14);
-		pnl_player.add(lbl_player4);
-		lbl_player4.setVisible(false);
-		
-		lbl_player5 = new JLabel("Spieler 5:");
-		lbl_player5.setBounds(64, 171, 73, 14);
-		pnl_player.add(lbl_player5);
-		lbl_player5.setVisible(false);
-		
-		lbl_player6 = new JLabel("Spieler 6");
-		lbl_player6.setBounds(64, 202, 73, 14);
-		pnl_player.add(lbl_player6);
-		lbl_player6.setVisible(false);
-		
-		lbl_lbl_player7 = new JLabel("Spieler 7:");
-		lbl_lbl_player7.setBounds(64, 233, 73, 14);
-		pnl_player.add(lbl_lbl_player7);
-		lbl_lbl_player7.setVisible(false);
-		
-		lbl_player8 = new JLabel("Spieler 8:");
-		lbl_player8.setBounds(64, 264, 73, 14);
-		pnl_player.add(lbl_player8);
+		 this.players = new JTextField[8];
+		 this.labels = new JLabel[8];
+		 this.player_names = new String[8];
+		 
+		 for(int i = 0; i < players.length; i++){
+			 players[i] = new JTextField();
+			 players[i].setBounds(147, Parameters.YCOORDS_TEXTFIELD[i], 86, 20);
+			 pnl_player.add(players[i]);
+			 players[i].setColumns(10);
+			 players[i].setVisible(false);
+			 player_names[i] = players[i].getText();
+			 labels[i] = new JLabel("Spieler " + (i+1) + ": ");
+			 labels[i].setBounds(64, Parameters.YCOORDS_LABEL[i], 73, 14);
+			 pnl_player.add(labels[i]);
+			 labels[i].setVisible(false);
+		 }
+		 
+		 
+//		txt_player1 = new JTextField();
+//		txt_player1.setBounds(147, 48, 86, 20);
+//		pnl_player.add(txt_player1);
+//		txt_player1.setColumns(10);
+//		txt_player1.setVisible(false);
+//		String Spieler1 = txt_player1.getText(); 
+//		
+//		txt_player2 = new JTextField();
+//		txt_player2.setColumns(10);
+//		txt_player2.setBounds(147, 75, 86, 20);
+//		pnl_player.add(txt_player2);
+//		txt_player2.setVisible(false);
+//		
+//		txt_player3 = new JTextField();
+//		txt_player3.setColumns(10);
+//		txt_player3.setBounds(147, 106, 86, 20);
+//		pnl_player.add(txt_player3);
+//		txt_player3.setVisible(false);
+//		
+//		txt_player4 = new JTextField();
+//		txt_player4.setColumns(10);
+//		txt_player4.setBounds(147, 137, 86, 20);
+//		pnl_player.add(txt_player4);
+//		txt_player4.setVisible(false);
+//		
+//		txt_player5 = new JTextField();
+//		txt_player5.setColumns(10);
+//		txt_player5.setBounds(147, 168, 86, 20);
+//		pnl_player.add(txt_player5);
+//		txt_player5.setVisible(false);
+//		
+//		txt_player6 = new JTextField();
+//		txt_player6.setColumns(10);
+//		txt_player6.setBounds(147, 199, 86, 20);
+//		pnl_player.add(txt_player6);
+//		txt_player6.setVisible(false);
+//		
+//		txt_player7 = new JTextField();
+//		txt_player7.setColumns(10);
+//		txt_player7.setBounds(147, 230, 86, 20);
+//		pnl_player.add(txt_player7);
+//		txt_player7.setVisible(false);
+//		
+//		txt_player8 = new JTextField();
+//		txt_player8.setColumns(10);
+//		txt_player8.setBounds(147, 261, 86, 20);
+//		pnl_player.add(txt_player8);
+//		txt_player8.setVisible(false);
+//		
+//		lbl_player1 = new JLabel("Spieler 1:");
+//		lbl_player1.setBounds(64, 51, 73, 14);
+//		pnl_player.add(lbl_player1);
+//		lbl_player1.setVisible(false);
+//		
+//		lbl_player2 = new JLabel("Spieler 2:");
+//		lbl_player2.setBounds(64, 78, 73, 14);
+//		pnl_player.add(lbl_player2);
+//		lbl_player2.setVisible(false);
+//		
+//		lbl_player3 = new JLabel("Spieler 3:");
+//		lbl_player3.setBounds(64, 109, 73, 14);
+//		pnl_player.add(lbl_player3);
+//		lbl_player3.setVisible(false);
+//		
+//		
+//		lbl_player4 = new JLabel("Spieler 4:");
+//		lbl_player4.setBounds(64, 140, 73, 14);
+//		pnl_player.add(lbl_player4);
+//		lbl_player4.setVisible(false);
+//		
+//		lbl_player5 = new JLabel("Spieler 5:");
+//		lbl_player5.setBounds(64, 171, 73, 14);
+//		pnl_player.add(lbl_player5);
+//		lbl_player5.setVisible(false);
+//		
+//		lbl_player6 = new JLabel("Spieler 6");
+//		lbl_player6.setBounds(64, 202, 73, 14);
+//		pnl_player.add(lbl_player6);
+//		lbl_player6.setVisible(false);
+//		
+//		lbl_lbl_player7 = new JLabel("Spieler 7:");
+//		lbl_lbl_player7.setBounds(64, 233, 73, 14);
+//		pnl_player.add(lbl_lbl_player7);
+//		lbl_lbl_player7.setVisible(false);
+//		
+//		lbl_player8 = new JLabel("Spieler 8:");
+//		lbl_player8.setBounds(64, 264, 73, 14);
+//		pnl_player.add(lbl_player8);
 		
 		lbl_playerHead = new JLabel("Spieler:");
 		lbl_playerHead.setFont(new Font("Arial", Font.BOLD, 20));
@@ -223,153 +246,234 @@ public class Start extends JFrame {
 		JComboBox cb_playernumber = new JComboBox(comboBoxListe);
 		cb_playernumber.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				
-				 String spieleranzahl = (String)cb_playernumber.getSelectedItem();
-				 if(spieleranzahl == "1"){
-					 lbl_player1.setVisible(true);
-					 txt_player1.setVisible(true);
-					 lbl_player2.setVisible(false);
-					 txt_player2.setVisible(false);
-					 lbl_player3.setVisible(false);
-					 txt_player3.setVisible(false);
-					 lbl_player4.setVisible(false);
-					 txt_player4.setVisible(false);
-					 lbl_player5.setVisible(false);
-					 txt_player5.setVisible(false);
-					 lbl_player6.setVisible(false);
-					 txt_player6.setVisible(false);
-					 lbl_lbl_player7.setVisible(false);
-					 txt_player7.setVisible(false);
-					 lbl_player8.setVisible(false);
-					 txt_player8.setVisible(false);
-				 }
 				 
+				 int spieleranzahl = Integer.parseInt((String)cb_playernumber.getSelectedItem());
+				 System.out.println(spieleranzahl);
+				 for (int i = 0; i < 8; i++) {
+					 if(i <spieleranzahl){
+						 players[i].setVisible(true);
+						 labels[i].setVisible(true);
+					 }
+					 else{
+						 players[i].setVisible(false);
+						 labels[i].setVisible(false);
+					 }
+				}
+//				 switch(spieleranzahl){
+//				 case 1: {
+//					 for (int i = 0; i < 8; i++) {
+//						 if(i <spieleranzahl){
+//							 players[i].setVisible(true);
+//							 labels[i].setVisible(true);
+//						 }
+//						 else{
+//							 players[i].setVisible(false);
+//							 labels[i].setVisible(false);
+//						 }
+//					}
+//					 break;
+//				 }
+//				 case 2: {
+//					 for (int i = 0; i < spieleranzahl; i++) {
+//							players[i].setVisible(true);
+//							labels[i].setVisible(true);
+//						}	
+//					 break;
+//				 }
+//				 case 3: {
+//					 for (int i = 0; i < spieleranzahl; i++) {
+//						players[i].setVisible(true);
+//						labels[i].setVisible(true);
+//					}
+//					 break;
+//				 }
+//				 case 4: {
+//					 for (int i = 0; i < spieleranzahl; i++) {
+//						players[i].setVisible(true);
+//						labels[i].setVisible(true);
+//					}
+//					
+//					 break;
+//				 }
+//				 case 5: {
+//					 for (int i = 0; i < spieleranzahl; i++) {
+//							players[i].setVisible(true);
+//							labels[i].setVisible(true);
+//						}	
+//					 break;
+//				 }
+//				 case 6: {
+//					 for (int i = 0; i < spieleranzahl; i++) {
+//						players[i].setVisible(true);
+//						labels[i].setVisible(true);
+//					}
+//					
+//					 break;
+//				 }
+//				 case 7: {
+//					 for (int i = 0; i < spieleranzahl; i++) {
+//							players[i].setVisible(true);
+//							labels[i].setVisible(true);
+//						}	
+//					 break;
+//				 }
+//				 case 8: {
+//					 for (int i = 0; i < spieleranzahl; i++) {
+//						players[i].setVisible(true);
+//						labels[i].setVisible(true);
+//					}
+//					
+//					 break;
+//				 }
+//				 default: break;
+//				 }
 				 
-				 if(spieleranzahl == "2"){
-					 lbl_player1.setVisible(true);
-					 txt_player1.setVisible(true);
-					 lbl_player2.setVisible(true);
-					 txt_player2.setVisible(true);
-					 lbl_player3.setVisible(false);
-					 txt_player3.setVisible(false);
-					 lbl_player4.setVisible(false);
-					 txt_player4.setVisible(false);
-					 lbl_player5.setVisible(false);
-					 txt_player5.setVisible(false);
-					 lbl_player6.setVisible(false);
-					 txt_player6.setVisible(false);
-					 lbl_lbl_player7.setVisible(false);
-					 txt_player7.setVisible(false);
-					 lbl_player8.setVisible(false);
-					 txt_player8.setVisible(false);
-				 }
-				 if(spieleranzahl == "3"){
-					 lbl_player1.setVisible(true);
-					 txt_player1.setVisible(true);
-					 lbl_player2.setVisible(true);
-					 txt_player2.setVisible(true);
-					 lbl_player3.setVisible(true);
-					 txt_player3.setVisible(true);
-					 lbl_player4.setVisible(false);
-					 txt_player4.setVisible(false);
-					 lbl_player5.setVisible(false);
-					 txt_player5.setVisible(false);
-					 lbl_player6.setVisible(false);
-					 txt_player6.setVisible(false);
-					 lbl_lbl_player7.setVisible(false);
-					 txt_player7.setVisible(false);
-					 lbl_player8.setVisible(false);
-					 txt_player8.setVisible(false);
-				 }
-				 if(spieleranzahl == "4"){
-					 lbl_player1.setVisible(true);
-					 txt_player1.setVisible(true);
-					 lbl_player2.setVisible(true);
-					 txt_player2.setVisible(true);
-					 lbl_player3.setVisible(true);
-					 txt_player3.setVisible(true);
-					 lbl_player4.setVisible(true);
-					 txt_player4.setVisible(true);
-					 lbl_player5.setVisible(false);
-					 txt_player5.setVisible(false);
-					 lbl_player6.setVisible(false);
-					 txt_player6.setVisible(false);
-					 lbl_lbl_player7.setVisible(false);
-					 txt_player7.setVisible(false);
-					 lbl_player8.setVisible(false);
-					 txt_player8.setVisible(false);
-				 }
-				 if(spieleranzahl == "5"){
-					 lbl_player1.setVisible(true);
-					 txt_player1.setVisible(true);
-					 lbl_player2.setVisible(true);
-					 txt_player2.setVisible(true);
-					 lbl_player3.setVisible(true);
-					 txt_player3.setVisible(true);
-					 lbl_player4.setVisible(true);
-					 txt_player4.setVisible(true);
-					 lbl_player5.setVisible(true);
-					 txt_player5.setVisible(true);
-					 lbl_player6.setVisible(false);
-					 txt_player6.setVisible(false);
-					 lbl_lbl_player7.setVisible(false);
-					 txt_player7.setVisible(false);
-					 lbl_player8.setVisible(false);
-					 txt_player8.setVisible(false);
-				 }
-				 if(spieleranzahl == "6"){
-					 lbl_player1.setVisible(true);
-					 txt_player1.setVisible(true);
-					 lbl_player2.setVisible(true);
-					 txt_player2.setVisible(true);
-					 lbl_player3.setVisible(true);
-					 txt_player3.setVisible(true);
-					 lbl_player4.setVisible(true);
-					 txt_player4.setVisible(true);
-					 lbl_player5.setVisible(true);
-					 txt_player5.setVisible(true);
-					 lbl_player6.setVisible(true);
-					 txt_player6.setVisible(true);
-					 lbl_lbl_player7.setVisible(false);
-					 txt_player7.setVisible(false);
-					 lbl_player8.setVisible(false);
-					 txt_player8.setVisible(false);
-				 }
-				 if(spieleranzahl == "7"){
-					 lbl_player1.setVisible(true);
-					 txt_player1.setVisible(true);
-					 lbl_player2.setVisible(true);
-					 txt_player2.setVisible(true);
-					 lbl_player3.setVisible(true);
-					 txt_player3.setVisible(true);
-					 lbl_player4.setVisible(true);
-					 txt_player4.setVisible(true);
-					 lbl_player5.setVisible(true);
-					 txt_player5.setVisible(true);
-					 lbl_player6.setVisible(true);
-					 txt_player6.setVisible(true);
-					 lbl_lbl_player7.setVisible(true);
-					 txt_player7.setVisible(true);
-					 lbl_player8.setVisible(false);
-					 txt_player8.setVisible(false);
-				 }
-				 if(spieleranzahl == "8"){
-					 lbl_player1.setVisible(true);
-					 txt_player1.setVisible(true);
-					 lbl_player2.setVisible(true);
-					 txt_player2.setVisible(true);
-					 lbl_player3.setVisible(true);
-					 txt_player3.setVisible(true);
-					 lbl_player4.setVisible(true);
-					 txt_player4.setVisible(true);
-					 lbl_player5.setVisible(true);
-					 txt_player5.setVisible(true);
-					 lbl_player6.setVisible(true);
-					 txt_player6.setVisible(true);
-					 lbl_lbl_player7.setVisible(true);
-					 txt_player7.setVisible(true);
-					 lbl_player8.setVisible(true);
-					 txt_player8.setVisible(true);
-				 }
+					 
+//					 lbl_player1.setVisible(true);
+//					 txt_player1.setVisible(true);
+//					 lbl_player2.setVisible(false);
+//					 txt_player2.setVisible(false);
+//					 lbl_player3.setVisible(false);
+//					 txt_player3.setVisible(false);
+//					 lbl_player4.setVisible(false);
+//					 txt_player4.setVisible(false);
+//					 lbl_player5.setVisible(false);
+//					 txt_player5.setVisible(false);
+//					 lbl_player6.setVisible(false);
+//					 txt_player6.setVisible(false);
+//					 lbl_lbl_player7.setVisible(false);
+//					 txt_player7.setVisible(false);
+//					 lbl_player8.setVisible(false);
+//					 txt_player8.setVisible(false);
+//				 
+//				 
+//				 
+//				 if(spieleranzahl == "2"){
+//					 lbl_player1.setVisible(true);
+//					 txt_player1.setVisible(true);
+//					 lbl_player2.setVisible(true);
+//					 txt_player2.setVisible(true);
+//					 lbl_player3.setVisible(false);
+//					 txt_player3.setVisible(false);
+//					 lbl_player4.setVisible(false);
+//					 txt_player4.setVisible(false);
+//					 lbl_player5.setVisible(false);
+//					 txt_player5.setVisible(false);
+//					 lbl_player6.setVisible(false);
+//					 txt_player6.setVisible(false);
+//					 lbl_lbl_player7.setVisible(false);
+//					 txt_player7.setVisible(false);
+//					 lbl_player8.setVisible(false);
+//					 txt_player8.setVisible(false);
+//				 }
+//				 if(spieleranzahl == "3"){
+//					 lbl_player1.setVisible(true);
+//					 txt_player1.setVisible(true);
+//					 lbl_player2.setVisible(true);
+//					 txt_player2.setVisible(true);
+//					 lbl_player3.setVisible(true);
+//					 txt_player3.setVisible(true);
+//					 lbl_player4.setVisible(false);
+//					 txt_player4.setVisible(false);
+//					 lbl_player5.setVisible(false);
+//					 txt_player5.setVisible(false);
+//					 lbl_player6.setVisible(false);
+//					 txt_player6.setVisible(false);
+//					 lbl_lbl_player7.setVisible(false);
+//					 txt_player7.setVisible(false);
+//					 lbl_player8.setVisible(false);
+//					 txt_player8.setVisible(false);
+//				 }
+//				 if(spieleranzahl == "4"){
+//					 lbl_player1.setVisible(true);
+//					 txt_player1.setVisible(true);
+//					 lbl_player2.setVisible(true);
+//					 txt_player2.setVisible(true);
+//					 lbl_player3.setVisible(true);
+//					 txt_player3.setVisible(true);
+//					 lbl_player4.setVisible(true);
+//					 txt_player4.setVisible(true);
+//					 lbl_player5.setVisible(false);
+//					 txt_player5.setVisible(false);
+//					 lbl_player6.setVisible(false);
+//					 txt_player6.setVisible(false);
+//					 lbl_lbl_player7.setVisible(false);
+//					 txt_player7.setVisible(false);
+//					 lbl_player8.setVisible(false);
+//					 txt_player8.setVisible(false);
+//				 }
+//				 if(spieleranzahl == "5"){
+//					 lbl_player1.setVisible(true);
+//					 txt_player1.setVisible(true);
+//					 lbl_player2.setVisible(true);
+//					 txt_player2.setVisible(true);
+//					 lbl_player3.setVisible(true);
+//					 txt_player3.setVisible(true);
+//					 lbl_player4.setVisible(true);
+//					 txt_player4.setVisible(true);
+//					 lbl_player5.setVisible(true);
+//					 txt_player5.setVisible(true);
+//					 lbl_player6.setVisible(false);
+//					 txt_player6.setVisible(false);
+//					 lbl_lbl_player7.setVisible(false);
+//					 txt_player7.setVisible(false);
+//					 lbl_player8.setVisible(false);
+//					 txt_player8.setVisible(false);
+//				 }
+//				 if(spieleranzahl == "6"){
+//					 lbl_player1.setVisible(true);
+//					 txt_player1.setVisible(true);
+//					 lbl_player2.setVisible(true);
+//					 txt_player2.setVisible(true);
+//					 lbl_player3.setVisible(true);
+//					 txt_player3.setVisible(true);
+//					 lbl_player4.setVisible(true);
+//					 txt_player4.setVisible(true);
+//					 lbl_player5.setVisible(true);
+//					 txt_player5.setVisible(true);
+//					 lbl_player6.setVisible(true);
+//					 txt_player6.setVisible(true);
+//					 lbl_lbl_player7.setVisible(false);
+//					 txt_player7.setVisible(false);
+//					 lbl_player8.setVisible(false);
+//					 txt_player8.setVisible(false);
+//				 }
+//				 if(spieleranzahl == "7"){
+//					 lbl_player1.setVisible(true);
+//					 txt_player1.setVisible(true);
+//					 lbl_player2.setVisible(true);
+//					 txt_player2.setVisible(true);
+//					 lbl_player3.setVisible(true);
+//					 txt_player3.setVisible(true);
+//					 lbl_player4.setVisible(true);
+//					 txt_player4.setVisible(true);
+//					 lbl_player5.setVisible(true);
+//					 txt_player5.setVisible(true);
+//					 lbl_player6.setVisible(true);
+//					 txt_player6.setVisible(true);
+//					 lbl_lbl_player7.setVisible(true);
+//					 txt_player7.setVisible(true);
+//					 lbl_player8.setVisible(false);
+//					 txt_player8.setVisible(false);
+//				 }
+//				 if(spieleranzahl == "8"){
+//					 lbl_player1.setVisible(true);
+//					 txt_player1.setVisible(true);
+//					 lbl_player2.setVisible(true);
+//					 txt_player2.setVisible(true);
+//					 lbl_player3.setVisible(true);
+//					 txt_player3.setVisible(true);
+//					 lbl_player4.setVisible(true);
+//					 txt_player4.setVisible(true);
+//					 lbl_player5.setVisible(true);
+//					 txt_player5.setVisible(true);
+//					 lbl_player6.setVisible(true);
+//					 txt_player6.setVisible(true);
+//					 lbl_lbl_player7.setVisible(true);
+//					 txt_player7.setVisible(true);
+//					 lbl_player8.setVisible(true);
+//					 txt_player8.setVisible(true);
+//				 }
 			
 			
 			}
@@ -394,22 +498,10 @@ public class Start extends JFrame {
        btn_ready.addActionListener(new ActionListener() {
        	public void actionPerformed(ActionEvent e) {
        		btn_start.setEnabled(true);
-       		lbl_player1.setEnabled(false);
-       		lbl_player2.setEnabled(false);
-       		lbl_player3.setEnabled(false);
-       		lbl_player4.setEnabled(false);
-       		lbl_player5.setEnabled(false);
-       		lbl_player6.setEnabled(false);
-       		lbl_lbl_player7.setEnabled(false);
-       		lbl_player8.setEnabled(false);
-       		 txt_player1.setEnabled(false);
-       		 txt_player2.setEnabled(false);
-       		 txt_player3.setEnabled(false);
-       		 txt_player4.setEnabled(false);
-       		 txt_player5.setEnabled(false);
-       		 txt_player6.setEnabled(false);
-       		 txt_player7.setEnabled(false);
-       		 txt_player8.setEnabled(false);
+       		for (int i = 0; i < 8; i++) {
+				players[i].setEnabled(false);
+				labels[i].setEnabled(false);
+			}
        		
        	}
        	
@@ -448,6 +540,6 @@ public class Start extends JFrame {
        });
        btn_instruction.setBounds(311, 17, 198, 46);
        pnl_head.add(btn_instruction);
-		lbl_player8.setVisible(false);
+	//	lbl_player8.setVisible(false);
 	}
 }
