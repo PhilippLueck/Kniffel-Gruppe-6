@@ -73,7 +73,7 @@ public class Start extends JFrame {
 		startMainPane.add(pnl_player);
 		pnl_player.setLayout(null);
 		
-		 String comboBoxListe[] = {"Bitte Wählen","1","2","3","4","5","6","7","8"};
+		 String comboBoxListe[] = {"2","3","4","5","6","7","8"}; //"Bitte wählen" und "1" wurde entfernt (Max)
 		
 		 this.players = new JTextField[8];
 		 this.labels = new JLabel[8];
