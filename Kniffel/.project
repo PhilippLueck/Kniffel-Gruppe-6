@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>Bilder/Kniffel.PNG</name>
+			<type>1</type>
+			<location>C:/Users/IBM_ADMIN/Documents/IBM/1. PE Düsseldorf/Kniffel.PNG</location>
+		</link>
+	</linkedResources>
 </projectDescription>

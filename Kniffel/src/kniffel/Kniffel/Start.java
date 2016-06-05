@@ -11,6 +11,8 @@ import javax.swing.BoxLayout;
 import javax.swing.ComboBoxEditor;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.border.EtchedBorder;
@@ -23,6 +25,8 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.awt.HeadlessException;
+
 import javax.swing.JProgressBar;
 
 public class Start extends JFrame {
@@ -236,6 +240,14 @@ public class Start extends JFrame {
        JButton btn_instruction = new JButton("Anleitung");
        btn_instruction.addActionListener(new ActionListener() {
        	public void actionPerformed(ActionEvent e) {
+       		Anleitung anl;
+			try {
+				anl = new Anleitung();
+				anl.setVisible(false);
+			} catch (HeadlessException | IOException | URISyntaxException e1) {
+				e1.printStackTrace();
+			}
+			
        	}
        });
        btn_instruction.setBounds(311, 17, 198, 46);
