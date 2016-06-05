@@ -193,6 +193,7 @@ public class Start extends JFrame {
        //disabled die Namen der Spieler und enabled den Start button
        btn_ready.addActionListener(new ActionListener() {
        	public void actionPerformed(ActionEvent e) {
+       		System.out.println(player_names[2]);
        		btn_start.setEnabled(true);
        		for (int i = 0; i < 8; i++) {
 				players[i].setEnabled(false);
