@@ -100,6 +100,7 @@ public class Start extends JFrame {
 		lbl_playerHead.setBounds(113, 8, 106, 29);
 		pnl_player.add(lbl_playerHead);
 		
+		
 		pnl_playerList = new JPanel();
 		pnl_playerList.setBorder(new LineBorder(new Color(0, 0, 0)));
 		pnl_playerList.setBounds(50, 40, 215, 252);
