@@ -37,7 +37,7 @@ public static void main(String[] args) {
 		HashMap<String, Integer> wuerfe = new HashMap<>();
 
 		for (int i = 0; i < 1; i++){
-<<<<<<< HEAD
+
 			
 		// 5 Augenzahlen
 		augenzahl1 = 1+ würfel1.nextInt(6);
