@@ -110,11 +110,7 @@ public class Start extends JFrame {
 		lbl_playerHead.setBounds(113, 8, 106, 29);
 		pnl_player.add(lbl_playerHead);
 		
-<<<<<<< HEAD
-		
-=======
-		//Playerlist
->>>>>>> branch 'master' of https://github.com/PhilippLueck/Kniffel-Gruppe-6.git
+
 		pnl_playerList = new JPanel();
 		pnl_playerList.setBorder(new LineBorder(new Color(0, 0, 0)));
 		pnl_playerList.setBounds(50, 40, 215, 252);
@@ -242,7 +238,7 @@ public class Start extends JFrame {
        pnl_head.add(lbl_group);
        //Instructions Button (noch ausfüllen)
        JButton btn_instruction = new JButton("Anleitung");
-       btn_instruction.addActionListener(new ActionListener() {
+     /*  btn_instruction.addActionListener(new ActionListener() {
        	public void actionPerformed(ActionEvent e) {
        		Anleitung anl;
 			try {
@@ -253,9 +249,9 @@ public class Start extends JFrame {
 			}
 			
        	}
-       });
+       });*/
        btn_instruction.setBounds(311, 17, 198, 46);
        pnl_head.add(btn_instruction);
-	//	lbl_player8.setVisible(false);
+	
 	}
 }

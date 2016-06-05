@@ -6,6 +6,8 @@ public class WürfelTest {
 
 	public static void main(String[] args) {
 		
+		//Erstellen von 5 Würfeln
+		
 		Random würfel1 = new Random ();
 		int augenzahl1;
 		
@@ -23,7 +25,7 @@ public class WürfelTest {
 		
 		for (int i = 0; i < 1; i++){
 			
-		
+		// 5 Augenzahlen
 		augenzahl1 = 1+ würfel1.nextInt(6);
 		augenzahl2 = 1+ würfel2.nextInt(6);
 		augenzahl3 = 1+ würfel3.nextInt(6);
