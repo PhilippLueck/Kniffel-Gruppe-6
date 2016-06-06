@@ -38,16 +38,16 @@ public boolean spielerHinzufügen(String name, int spielerID, int punkte, int wur
 	}
 }
 
-public boolean würfelHinzufügen(int würfelnummer, int augenzahl, int wurf, boolean blocked){
+public Würfel würfelHinzufügen(int würfelnummer, int augenzahl, int wurf, boolean blocked){
 	try {
 		System.out.println("Würfel hinzugefügt");
-		return würfelListe.add(new Würfel(würfelnummer,augenzahl,wurf,blocked));
+		return new Würfel(würfelnummer,augenzahl,wurf,blocked);
 		
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 		JOptionPane.showMessageDialog(null, "Würfel konnte nicht hinzugefügt werden");
-		return false;
+		return null;
 	}
 	
 }
