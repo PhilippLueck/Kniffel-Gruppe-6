@@ -7,9 +7,7 @@ public class SpielerTest {
 	
 		
 		 Spieler Spielerarray[]=new Spieler [9];
-		 for (int i = 0; i<=8 ;i++ ){
-			 Spielerarray [i]= new Spieler(Start.txt_player[i].getText(),001,0);
-		}
+		 
 		
 
 	}

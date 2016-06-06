@@ -4,23 +4,14 @@ import java.util.Random;
 
 public class Würfel {
 	
-	private int würfelnummer;
-	private int augenzahl;
-	private int wurf;
-
-	
-	public int getWurf() {
-		return wurf;
-	}
-
-
-	public void setWurf(int wurf) {
-		this.wurf = wurf;
-	}
+	public int würfelnummer;
+	public int augenzahl;
+	public int wurf;
+	public boolean blocked = false;
 
 
 	//Würfel Konstruktor
-	public Würfel (int würfelnummer, int augenzahl, int wurf) {
+	public Würfel (int würfelnummer, int augenzahl, int wurf, boolean blocked) {
 		setWürfelnummer (würfelnummer);
 		setAugenzahl (augenzahl);
 		setWurf(wurf);
@@ -46,9 +37,29 @@ public class Würfel {
 	public void setAugenzahl(int augenzahl) {
 		this.augenzahl = augenzahl;
 	}
+	
+	public boolean isBlocked() {
+		return blocked;
+	}
+
+
+	public void setBlocked(boolean blocked) {
+		this.blocked = blocked;
+	}
+
+
+	public int getWurf() {
+		return wurf;
+	}
+
+
+	public void setWurf(int wurf) {
+		this.wurf = wurf;
+	}
+
 	// Würfel methode
-	public void würfeln () {
-		for (int i = 0; i < 1; i++){
+	public void würfeln (Würfel wuerfel) {
+	
 			
 			Random würfel = new Random ();
 			
@@ -56,7 +67,7 @@ public class Würfel {
 			System.out.println(this.augenzahl);
 			
 			
-		}
+		
 	
 }
 }

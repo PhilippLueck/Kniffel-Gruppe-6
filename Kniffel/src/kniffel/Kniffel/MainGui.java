@@ -22,7 +22,7 @@ public class MainGui extends JFrame {
 	private JPanel contentPane;
 	private JPanel panel_2;
 	private JPanel panel_3;
-	private JButton btnNewButton;
+	private JButton btnClose;
 	private JButton btnHilfe;
 
 	/**
@@ -103,16 +103,16 @@ public class MainGui extends JFrame {
 		panel_2.setLayout(null);
 		
 		//Button placed on panel 2 + Actionlistener
-		btnNewButton = new JButton("Beenden");
+		btnClose = new JButton("Beenden");
 		
 		//Action Listener
-		btnNewButton.addActionListener(new ActionListener() {
+		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {System.exit( 0 );
 			}
 		});
 		
-		btnNewButton.setBounds(303, 11, 89, 23);
-		panel_2.add(btnNewButton);
+		btnClose.setBounds(303, 11, 89, 23);
+		panel_2.add(btnClose);
 		
 		//Hilfebutton placed on panel2
 		btnHilfe = new JButton("Hilfe");
@@ -120,8 +120,29 @@ public class MainGui extends JFrame {
 		panel_2.add(btnHilfe);
 		//Würfelbutton placed on panel 2
 		JButton btnWrfeln = new JButton("W\u00FCrfeln");
+		
+		//würfelknopf (ruft würfelmethode aus würfelklasse auf)
+		btnWrfeln.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//checken, wie oft button geklickt
+				
+				Würfel wuerfel1 = new Würfel(1,0,0,false);
+				Würfel wuerfel2 = new Würfel(2,0,0,false);
+				Würfel wuerfel3 = new Würfel(3,0,0,false);
+				Würfel wuerfel4 = new Würfel(4,0,0,false);
+				Würfel wuerfel5 = new Würfel(5,0,0,false);
+				
+				
+				wuerfel1.würfeln(wuerfel1);
+				wuerfel2.würfeln(wuerfel2);
+				wuerfel3.würfeln(wuerfel3);
+				wuerfel4.würfeln(wuerfel4);
+				wuerfel5.würfeln(wuerfel5);
+			}
+		});
 		btnWrfeln.setBounds(161, 11, 89, 23);
 		panel_2.add(btnWrfeln);
+		
 		
 		//Panel 3 placed on panel1
 		panel_3 = new JPanel();
