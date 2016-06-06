@@ -7,19 +7,21 @@ public class Spieler {
 	private int spielerID;
 	private int punkte;
 	private int spielgewonnen;
+	public int wurfnummer;
 	
-	public Spieler(String name, int spielerID, int punkte){
-		this.name = name;
-		this.spielerID = spielerID;
-		this.punkte = punkte;
-//		setSpielerID(spielerID);
-//		setPunkte(punkte);
+	public Spieler(String name, int spielerID, int punkte, int wurfnummer){
+		setName(name);
+		setSpielerID(spielerID);
+		setPunkte(punkte);
+		setWurfnummer(wurfnummer);
+
 	}
 
 	public int getPunkte() {
 		return punkte;
+	
 	}
-
+	
 	public void setPunkte(int punkte) {
 		if(!(punkte<0)){
 			this.punkte = punkte;	
@@ -66,6 +68,16 @@ public class Spieler {
 			JOptionPane.showMessageDialog(null, "Ungültige Eingabe");
 		}
 	}
+
+	public int getWurfnummer() {
+		return wurfnummer;
+	}
+
+	public void setWurfnummer(int wurfnummer) {
+		this.wurfnummer = wurfnummer;
+	}
+	
+	
 	
 
 }
