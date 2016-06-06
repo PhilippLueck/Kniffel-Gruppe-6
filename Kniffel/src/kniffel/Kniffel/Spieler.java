@@ -73,8 +73,10 @@ public class Spieler {
 		return wurfnummer;
 	}
 
-	public void setWurfnummer(int wurfnummer) {
-		this.wurfnummer = wurfnummer;
+	public void setWurfnummer(int wurfnummer) { // nur ganze Zahlen aktzeptieren
+		if(wurfnummer < 0 || wurfnummer > 3){
+			JOptionPane.showMessageDialog(null, "Würfe im ungültigen Bereich");
+		}
 	}
 	
 	
