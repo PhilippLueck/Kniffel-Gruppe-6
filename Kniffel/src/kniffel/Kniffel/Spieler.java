@@ -1,6 +1,7 @@
 package kniffel.Kniffel;
 
 import javax.swing.JOptionPane;
+import java.util.TreeSet;
 
 public class Spieler {
 	private String name;
@@ -8,6 +9,7 @@ public class Spieler {
 	private int punkte;
 	private int spielgewonnen;
 	public int wurfnummer;
+	
 	
 	public Spieler(String name, int spielerID, int punkte, int wurfnummer){
 		setName(name);
@@ -78,8 +80,7 @@ public class Spieler {
 			JOptionPane.showMessageDialog(null, "Würfe im ungültigen Bereich");
 		}
 	}
-	
-	
+
 	
 
 }
