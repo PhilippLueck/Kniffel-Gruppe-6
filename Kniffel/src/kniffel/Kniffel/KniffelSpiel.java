@@ -10,11 +10,13 @@ private int anzahlSpiele;
 
 //treeset Spielerliste
 public static TreeSet<Spieler> spielerListe = new TreeSet<Spieler>() ;
+//treeset Würfelliste
+public static TreeSet<Würfel> würfelListe = new TreeSet<Würfel>() ;
 
 
-
-public void spielStart(int spielerzahl){
-	if(spielerzahl==0){
+//Spielstart bei Klick auf start
+public void spielStart(){
+	if(spielerListe==null||würfelListe == null){
 	JOptionPane.showMessageDialog(null,"Keine Spieler und Würfel vorhanden");
 	}else{
 	
@@ -23,10 +25,11 @@ public void spielStart(int spielerzahl){
 }
 
 //Spieler hinzufügenmethode, wird wahrscheinlich verlagert
-public boolean hinzufügen(String name, int spielerID, int punkte, int wurfnummer){
+public boolean spielerHinzufügen(String name, int spielerID, int punkte, int wurfnummer){
 	try {
 		System.out.println("Spieler hinzugefügt");
 		return spielerListe.add(new Spieler(name,spielerID,punkte,wurfnummer));
+		
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -35,4 +38,17 @@ public boolean hinzufügen(String name, int spielerID, int punkte, int wurfnummer
 	}
 }
 
+public boolean würfelHinzufügen(int würfelnummer, int augenzahl, int wurf, boolean blocked){
+	try {
+		System.out.println("Würfel hinzugefügt");
+		return würfelListe.add(new Würfel(würfelnummer,augenzahl,wurf,blocked));
+		
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		JOptionPane.showMessageDialog(null, "Würfel konnte nicht hinzugefügt werden");
+		return false;
+	}
+	
+}
 }
