@@ -2,7 +2,7 @@ package kniffel.Kniffel;
 
 import java.util.Random;
 
-public class Würfel implements Comparable<Würfel> {
+public class Würfel extends KniffelSpiel implements Comparable<Würfel> {
 	
 	public int würfelnummer;
 	public int augenzahl;
@@ -64,7 +64,7 @@ public class Würfel implements Comparable<Würfel> {
 			Random würfel = new Random ();		
 			this.augenzahl = 1 + würfel.nextInt(6);
 			System.out.println(this.augenzahl);
-			//würfelListe.add(würfel);
+			würfelListe.add(wuerfel);
 			};
 			
 			

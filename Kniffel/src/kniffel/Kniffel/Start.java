@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.Iterator;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.border.EtchedBorder;
@@ -202,11 +203,27 @@ public class Start extends JFrame {
        		for (int i = 0; i < 8; i++) {
 				players[i].setEnabled(false);
 				labels[i].setEnabled(false);
-			}
-       		
+       		}//Schleifenende
+				//Jetzt Spieler erstellen
+				//Spieler werden in Listen eingetragen und sotiert mit comparable in Spielerklasse
+				int spieleranzahl = Integer.parseInt((String)cb_playernumber.getSelectedItem());
+				for (int j = 1; j<=spieleranzahl; j++){
+				KniffelSpiel.spielerHinzufügen(players[j].getText(),j,0,0);
+				
+				
+				
+				}//Schleifenende
+			
+       		//Jetzt Spieler ausgeben
+       		Iterator<Spieler> spielerIterator = KniffelSpiel.spielerListe.iterator();//Iterator ´nach collections!!! Sonst putt.
+			
+			while(spielerIterator.hasNext()){
+			Spieler selectedSpieler = spielerIterator.next();
+			System.out.println(selectedSpieler.getName() + "," + selectedSpieler.getSpielerID()  );
        	}
        	
-       });
+       }
+     });
        
        //progress bar
        JProgressBar progressBar = new JProgressBar();

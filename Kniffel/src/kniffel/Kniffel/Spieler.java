@@ -3,7 +3,7 @@ package kniffel.Kniffel;
 import javax.swing.JOptionPane;
 import java.util.TreeSet;
 
-public class Spieler {
+public class Spieler extends KniffelSpiel implements Comparable<Spieler>{
 	private String name;
 	private int spielerID;
 	private int punkte;
@@ -13,7 +13,7 @@ public class Spieler {
 	
 	public Spieler(String name, int spielerID, int punkte, int wurfnummer){
 		setName(name);
-		setSpielerID(spielerID);
+		setSpielerID(spielerID); 
 		setPunkte(punkte);
 		setWurfnummer(wurfnummer);
 
@@ -79,6 +79,12 @@ public class Spieler {
 		if(wurfnummer < 0 || wurfnummer > 3){
 			JOptionPane.showMessageDialog(null, "Würfe im ungültigen Bereich");
 		}
+	}
+
+	@Override
+	public int compareTo(Spieler temp) {
+		// TODO Auto-generated method stub
+		return this.spielerID-temp.getSpielerID();
 	}
 
 	

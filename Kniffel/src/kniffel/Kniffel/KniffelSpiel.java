@@ -25,7 +25,7 @@ public void spielStart(){
 }
 
 //Spieler hinzufügenmethode, wird wahrscheinlich verlagert
-public boolean spielerHinzufügen(String name, int spielerID, int punkte, int wurfnummer){
+public static boolean spielerHinzufügen(String name, int spielerID, int punkte, int wurfnummer){
 	try {
 		System.out.println("Spieler hinzugefügt");
 		return spielerListe.add(new Spieler(name,spielerID,punkte,wurfnummer));
@@ -38,7 +38,7 @@ public boolean spielerHinzufügen(String name, int spielerID, int punkte, int wur
 	}
 }
 
-public Würfel würfelHinzufügen(int würfelnummer, int augenzahl, int wurf, boolean blocked){
+public static Würfel würfelHinzufügen(int würfelnummer, int augenzahl, int wurf, boolean blocked){
 	try {
 		System.out.println("Würfel hinzugefügt");
 		return new Würfel(würfelnummer,augenzahl,wurf,blocked);
