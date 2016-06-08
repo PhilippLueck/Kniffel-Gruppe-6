@@ -23,6 +23,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane.CloseAction;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import java.awt.Font;
@@ -96,7 +97,6 @@ public class Start extends JFrame {
 			 pnl_player.add(players[i]);
 			 players[i].setColumns(10);
 			 players[i].setVisible(false);
-			 player_names[i] = players[i].getText();//später?
 			 labels[i] = new JLabel("Spieler " + (i+1) + ": ");
 			 labels[i].setBounds(64, Parameters.YCOORDS_LABEL[i], 73, 14);
 			 pnl_player.add(labels[i]);
@@ -159,7 +159,7 @@ public class Start extends JFrame {
 			public void actionPerformed(ActionEvent e) {				
 				 
 				 int spieleranzahl = Integer.parseInt((String)cb_playernumber.getSelectedItem());
-				 System.out.println(spieleranzahl);
+				 System.out.println("Spieleranzahl: "+ spieleranzahl );
 				 for (int i = 0; i < 8; i++) {
 					 if(i <spieleranzahl){
 						 players[i].setVisible(true);
@@ -198,31 +198,28 @@ public class Start extends JFrame {
        //disabled die Namen der Spieler und enabled den Start button
        btn_ready.addActionListener(new ActionListener() {
        	public void actionPerformed(ActionEvent e) {
-       		System.out.println(player_names[2]);
-       		btn_start.setEnabled(true);
-       		for (int i = 0; i < 8; i++) {
-				players[i].setEnabled(false);
-				labels[i].setEnabled(false);
+       		for (int i = 0; i < 8; i++) {	
+       		players[i].setEnabled(false);
+       		labels[i].setEnabled(false);	
        		}//Schleifenende
-				//Jetzt Spieler erstellen
-				//Spieler werden in Listen eingetragen und sotiert mit comparable in Spielerklasse
-				int spieleranzahl = Integer.parseInt((String)cb_playernumber.getSelectedItem());
-				for (int j = 1; j<=spieleranzahl; j++){
-				KniffelSpiel.spielerHinzufügen(players[j].getText(),j,0,0);
-				
-				
-				
-				}//Schleifenende
+       		
+       		//Jetzt Spieler erstellen
+       		//Spieler werden in Listen eingetragen und sotiert mit comparable in Spielerklasse
+       		int spieleranzahl = Integer.parseInt((String)cb_playernumber.getSelectedItem());
+       		for (int j = 0; j<spieleranzahl; j++){
+       			KniffelSpiel.spielerHinzufügen(players[j].getText(),j+1,0,0);	
+       		}//Schleifenende
 			
        		//Jetzt Spieler ausgeben
        		Iterator<Spieler> spielerIterator = KniffelSpiel.spielerListe.iterator();//Iterator ´nach collections!!! Sonst putt.
-			
-			while(spielerIterator.hasNext()){
-			Spieler selectedSpieler = spielerIterator.next();
-			System.out.println(selectedSpieler.getName() + "," + selectedSpieler.getSpielerID()  );
-       	}
-       	
-       }
+		
+       		while(spielerIterator.hasNext()){
+       			Spieler selectedSpieler = spielerIterator.next();
+       			System.out.println(selectedSpieler.getName() + "," + selectedSpieler.getSpielerID()  );
+       		}//Ende While
+       		btn_start.setEnabled(true);	
+       }// Ende Action Listener
+       
      });
        
        //progress bar

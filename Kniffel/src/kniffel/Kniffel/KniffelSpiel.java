@@ -26,16 +26,23 @@ public void spielStart(){
 
 //Spieler hinzufügenmethode, wird wahrscheinlich verlagert
 public static boolean spielerHinzufügen(String name, int spielerID, int punkte, int wurfnummer){
-	try {
-		System.out.println("Spieler hinzugefügt");
-		return spielerListe.add(new Spieler(name,spielerID,punkte,wurfnummer));
-		
-	} catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-		JOptionPane.showMessageDialog(null, "Spieler konnte nicht hinzugefügt werden");
-		return false;
-	}
+		try {
+			if(name == "" || spielerID == 0){// HIER SPRINGT ER NIE REIN warum muss ich noch checken name ist eigentlich leer wenn man keinen Namen eintippt, aber irgendwie doch nicht (Alex)
+				JOptionPane.showMessageDialog(null,"Name oder ID fehlt!");
+				return false;
+			}else{
+				System.out.println("Spieler hinzugefügt");
+				return spielerListe.add(new Spieler(name,spielerID,punkte,wurfnummer));
+			}// if Anweisung Ende
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Spieler konnte nicht hinzugefügt werden");
+			return false;
+		}
+	
+	
 }
 
 public static Würfel würfelHinzufügen(int würfelnummer, int augenzahl, int wurf, boolean blocked){
