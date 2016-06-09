@@ -27,10 +27,12 @@ public void spielStart(){
 //Spieler hinzufügenmethode, wird wahrscheinlich verlagert
 public static boolean spielerHinzufügen(String name, int spielerID, int punkte, int wurfnummer){
 		try {
-			if(name == "" || spielerID == 0){// HIER SPRINGT ER NIE REIN warum muss ich noch checken name ist eigentlich leer wenn man keinen Namen eintippt, aber irgendwie doch nicht (Alex)
-				JOptionPane.showMessageDialog(null,"Name oder ID fehlt!");
+			//Checkt ob name leer, bzw ID nicht da
+			if(name.isEmpty() || spielerID == 0){
+				JOptionPane.showMessageDialog(null,"Mindestens ein Spielername fehlt!");
 				return false;
 			}else{
+				//Spieler in Liste hinzufügen
 				System.out.println("Spieler hinzugefügt");
 				return spielerListe.add(new Spieler(name,spielerID,punkte,wurfnummer));
 			}// if Anweisung Ende
