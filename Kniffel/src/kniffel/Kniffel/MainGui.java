@@ -17,6 +17,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JRadioButton;
+import javax.swing.border.TitledBorder;
+import javax.swing.border.EtchedBorder;
 
 public class MainGui extends JFrame {
 
@@ -72,7 +74,7 @@ public class MainGui extends JFrame {
 		panel_1.setLayout(null);
 		
 		JPanel panel_4 = new JPanel();
-		panel_4.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_4.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		panel_4.setBounds(0, 0, 574, 57);
 		panel_1.add(panel_4);
 		panel_4.setLayout(null);
@@ -101,7 +103,7 @@ public class MainGui extends JFrame {
 		
 		//Panel 5 placed on Panel 3
 		JPanel panel_5 = new JPanel();
-		panel_5.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_5.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		panel_5.setBounds(0, 0, 402, 57);
 		panel_3.add(panel_5);
 		panel_5.setLayout(null);
@@ -123,30 +125,47 @@ public class MainGui extends JFrame {
 		panel_3.add(rdbtnWrfelBehalten);
 		
 		JRadioButton radioButton_2 = new JRadioButton("");
-		radioButton_2.setBounds(146, 505, 21, 23);
+		radioButton_2.setBounds(138, 505, 21, 23);
 		panel_3.add(radioButton_2);
 		
 		JRadioButton radioButton_3 = new JRadioButton("");
-		radioButton_3.setBounds(194, 505, 21, 23);
+		radioButton_3.setBounds(183, 505, 21, 23);
 		panel_3.add(radioButton_3);
 		
 		JRadioButton radioButton_4 = new JRadioButton("");
-		radioButton_4.setBounds(244, 505, 21, 23);
+		radioButton_4.setBounds(235, 505, 21, 23);
 		panel_3.add(radioButton_4);
 		
 		JRadioButton radioButton = new JRadioButton("");
-		radioButton.setBounds(300, 505, 21, 23);
+		radioButton.setBounds(278, 505, 21, 23);
 		panel_3.add(radioButton);
 		
 		JLabel lblWelcheWrfelSollen = new JLabel("Welche W\u00FCrfel sollen neu Gew\u00FCrfelt werden:");
-		lblWelcheWrfelSollen.setBounds(101, 473, 220, 14);
+		lblWelcheWrfelSollen.setBounds(89, 473, 220, 14);
 		panel_3.add(lblWelcheWrfelSollen);
 		//Wurefel Bilder einfügen 
 		ImageIcon img =
 				new ImageIcon("Bilder/wuerfel 1.png");
-		JLabel BildWuerfel1 = new JLabel(img);
-		BildWuerfel1.setBounds(51, 429, 46, 14);
-		panel_3.add(BildWuerfel1);
+		
+		JLabel lblNewLabel = new JLabel("0");
+		lblNewLabel.setBounds(97, 454, 13, 14);
+		panel_3.add(lblNewLabel);
+		
+		JLabel label = new JLabel("0");
+		label.setBounds(146, 454, 13, 14);
+		panel_3.add(label);
+		
+		JLabel label_1 = new JLabel("0");
+		label_1.setBounds(191, 454, 13, 14);
+		panel_3.add(label_1);
+		
+		JLabel label_2 = new JLabel("0");
+		label_2.setBounds(243, 454, 13, 14);
+		panel_3.add(label_2);
+		
+		JLabel label_3 = new JLabel("0");
+		label_3.setBounds(286, 454, 13, 14);
+		panel_3.add(label_3);
 		
 		
 		//Panel 2 
