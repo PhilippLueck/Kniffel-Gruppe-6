@@ -32,7 +32,8 @@ import java.awt.HeadlessException;
 import javax.swing.JProgressBar;
 
 public class Start extends JFrame {
-
+	
+	//MASK FORMATTER FÜR TEXTFELDER
 	private JPanel startMainPane;
 	private JLabel lbl_playerHead;
 	private JPanel pnl_playerList;
@@ -41,6 +42,8 @@ public class Start extends JFrame {
 	private JTextField[] players;
 	private JLabel[] labels;
 	private String[] player_names;
+	
+	private boolean ready = false;
 
 	/**
 	 * Launch the application.
@@ -125,21 +128,6 @@ public class Start extends JFrame {
 		pnl_options.setBackground(Color.WHITE);
 		pnl_options.setLayout(null);
 		
-		//Startbutton
-		JButton btn_start = new JButton("Start");
-		btn_start.setForeground(new Color(0, 128, 0));
-		btn_start.setBounds(10, 228, 89, 23);
-		pnl_options.add(btn_start);
-		btn_start.setEnabled(false); 
-		
-		//Start button öffnet main Gui
-		btn_start.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				MainGui wnd = new MainGui();
-				wnd.setVisible(true);
-				dispose();
-			}
-		});
 		
 		//Closebutton schließt Programm
 		JButton btn_close = new JButton("Beenden");
@@ -190,37 +178,70 @@ public class Start extends JFrame {
        lbl_welcome.setBounds(41, 45, 135, 14);
        pnl_options.add(lbl_welcome);
        
+     //Startbutton
+     		JButton btn_start = new JButton("Start");
+     		btn_start.setForeground(new Color(0, 128, 0));
+     		btn_start.setBounds(10, 228, 89, 23);
+     		pnl_options.add(btn_start);
+     		btn_start.setEnabled(false); 
+     		
+     		//Start button öffnet main Gui
+     		//Erzeugt Würfel
+     		btn_start.addActionListener(new ActionListener() {
+     			public void actionPerformed(ActionEvent e) {
+     				
+     				//Würfel erzeugen
+     				for(int i = 1;i<=5;i++){
+     				KniffelSpiel.würfelHinzufügen(i, 0, 1, false);
+     				};
+     				//öffnen von main Gui
+     				MainGui wnd = new MainGui();
+     				wnd.setVisible(true);
+     				dispose();
+     			}
+     		});
+       
        //ready button
        JButton btn_ready = new JButton("Bereit");
        btn_ready.setBounds(54, 147, 89, 23);
        pnl_options.add(btn_ready);
        
+       // Jetzt Actionlistener Start Button
        //disabled die Namen der Spieler und enabled den Start button
        btn_ready.addActionListener(new ActionListener() {
        	public void actionPerformed(ActionEvent e) {
        		for (int i = 0; i < 8; i++) {	
        		players[i].setEnabled(false);
        		labels[i].setEnabled(false);	
-       		}//Schleifenende
-       		
-       		//Jetzt Spieler erstellen
-       		//Spieler werden in Listen eingetragen und sotiert mit comparable in Spielerklasse
-       		int spieleranzahl = Integer.parseInt((String)cb_playernumber.getSelectedItem());
-       		for (int j = 0; j<spieleranzahl; j++){
-       			KniffelSpiel.spielerHinzufügen(players[j].getText(),j+1,0,0);	
-       		}//Schleifenende
-			
-       		//Jetzt Spieler ausgeben
-       		Iterator<Spieler> spielerIterator = KniffelSpiel.spielerListe.iterator();//Iterator ´nach collections!!! Sonst putt.
-		
-       		while(spielerIterator.hasNext()){
-       			Spieler selectedSpieler = spielerIterator.next();
-       			System.out.println(selectedSpieler.getName() + "," + selectedSpieler.getSpielerID()  );
-       		}//Ende While
-       		btn_start.setEnabled(true);	
+	       		}//Schleifenende
+	       		
+	       		//Jetzt Spieler erstellen
+	       		//Spieler werden in Listen eingetragen und sotiert mit comparable in Spielerklasse
+	       		int spieleranzahl = Integer.parseInt((String)cb_playernumber.getSelectedItem());
+	       		for (int j = 0; j<spieleranzahl; j++){
+	       			if(players[j].getText().isEmpty()){
+	           			JOptionPane.showMessageDialog(null, "Name von Spieler "+( j+1) + " fehlt!");
+	           			players[j].setEnabled(true);
+	               		labels[j].setEnabled(true);
+	           		}else{
+	           			KniffelSpiel.spielerHinzufügen(players[j].getText(),j+1,0,0);	
+	           			ready = true;
+	           		}
+	       		}//Schleifenende
+
+	       		//Jetzt Spieler ausgeben
+	       		Iterator<Spieler> spielerIterator = KniffelSpiel.spielerListe.iterator();//Iterator ´nach collections!!! Sonst putt.			
+	       		while(spielerIterator.hasNext()){
+	       			Spieler selectedSpieler = spielerIterator.next();
+	       			System.out.println(selectedSpieler.getSpielerID()+","+ selectedSpieler.getName() );
+	       		}//Ende While
+	       		if(ready == true){
+	       			btn_start.setEnabled(true);	
+	       		}else{
+	       			System.out.println( "Starten nicht möglich.");
+	       		}//ende if
        }// Ende Action Listener
-       
-     });
+     });//ende Action Listener
        
        //progress bar
        JProgressBar progressBar = new JProgressBar();
@@ -250,8 +271,13 @@ public class Start extends JFrame {
        lbl_group.setFont(new Font("Arial", Font.PLAIN, 20));
        lbl_group.setBounds(0, 43, 139, 32);
        pnl_head.add(lbl_group);
+       
        //Instructions Button (noch ausfüllen)
        JButton btn_instruction = new JButton("Anleitung");
+       btn_instruction.setBounds(311, 17, 198, 46);
+       pnl_head.add(btn_instruction);
+       
+       //Öffnet Anleitung
      /*  btn_instruction.addActionListener(new ActionListener() {
        	public void actionPerformed(ActionEvent e) {
        		Anleitung anl;
@@ -264,8 +290,7 @@ public class Start extends JFrame {
 			
        	}
        });*/
-       btn_instruction.setBounds(311, 17, 198, 46);
-       pnl_head.add(btn_instruction);
+       
 	
 	}
 }

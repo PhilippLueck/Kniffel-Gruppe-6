@@ -48,7 +48,7 @@ public class MainGui extends JFrame {
 	// Main frame
 	public MainGui() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 700, 480);
+		setBounds(100, 100, 992, 633);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -57,7 +57,7 @@ public class MainGui extends JFrame {
 		//JPane1 placed on Contentpane
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 684, 442);
+		panel.setBounds(0, 0, 976, 595);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		System.out.println("null");
@@ -65,41 +65,64 @@ public class MainGui extends JFrame {
 		//Panel 1 placed on "main Panel"
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_1.setBackground(new Color(255, 250, 205));
-		panel_1.setBounds(0, 0, 283, 442);
+		panel_1.setBackground(new Color(176, 224, 230));
+		panel_1.setBounds(0, 0, 575, 595);
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_4.setBounds(0, 0, 283, 57);
+		panel_4.setBounds(0, 0, 574, 57);
 		panel_1.add(panel_4);
 		panel_4.setLayout(null);
 		
 		//Ergebnis Label
 		
-		JLabel lblErgebnis = new JLabel("Ergebnis");
-		lblErgebnis.setBounds(71, 0, 189, 61);
-		lblErgebnis.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		JLabel lblErgebnis = new JLabel("Kniffelblock");
+		lblErgebnis.setBounds(200, 0, 189, 61);
 		panel_4.add(lblErgebnis);
+		lblErgebnis.setFont(new Font("Tahoma", Font.PLAIN, 35));
 		
 		//Ergebnis Panel
 		JPanel ERGBENIS = new JPanel();
-		ERGBENIS.setBounds(10, 68, 263, 363);
+		ERGBENIS.setBounds(10, 68, 555, 516);
 		panel_1.add(ERGBENIS);
-		ERGBENIS.setLayout(null);
+		ERGBENIS.setLayout(null);repaint();
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(10, 11, 243, 352);
-		ERGBENIS.add(lblNewLabel);
-		lblNewLabel.setIcon(new ImageIcon("Kniffel/Bilder/xls-kniffel.jpg"));repaint();
+		
+		//Panel 3 placed on panel1
+		panel_3 = new JPanel();
+		panel_3.setBackground(new Color(255, 255, 240));
+		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_3.setBounds(574, 0, 402, 548);
+		panel.add(panel_3);
+		panel_3.setLayout(null);
+		
+		//Panel 5 placed on Panel 3
+		JPanel panel_5 = new JPanel();
+		panel_5.setBorder(new LineBorder(new Color(0, 0, 0)));
+		panel_5.setBounds(0, 0, 402, 57);
+		panel_3.add(panel_5);
+		panel_5.setLayout(null);
+		
+		//Kniffel Label placed on Panel 5
+		JLabel lblKniffel = new JLabel("Kniffel");
+		lblKniffel.setBounds(0, 0, 137, 61);
+		lblKniffel.setFont(new Font("Tahoma", Font.PLAIN, 50));
+		panel_5.add(lblKniffel);
+		
+		//Copyright :D
+		JLabel lblByGruppe = new JLabel("by Gruppe 6");
+		lblByGruppe.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblByGruppe.setBounds(143, 14, 162, 53);
+		panel_5.add(lblByGruppe);
 		
 		//Panel 2 
 		panel_2 = new JPanel();
+		panel_2.setBounds(574, 548, 402, 47);
+		panel.add(panel_2);
 		panel_2.setBackground(UIManager.getColor("Button.background"));
 		panel_2.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_2.setBounds(282, 395, 402, 47);
-		panel.add(panel_2);
 		panel_2.setLayout(null);
 		
 		//Button placed on panel 2 + Actionlistener
@@ -142,33 +165,5 @@ public class MainGui extends JFrame {
 		});
 		btnWrfeln.setBounds(161, 11, 89, 23);
 		panel_2.add(btnWrfeln);
-		
-		
-		//Panel 3 placed on panel1
-		panel_3 = new JPanel();
-		panel_3.setBackground(new Color(255, 255, 240));
-		panel_3.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_3.setBounds(282, 0, 402, 396);
-		panel.add(panel_3);
-		panel_3.setLayout(null);
-		
-		//Panel 5 placed on Panel 3
-		JPanel panel_5 = new JPanel();
-		panel_5.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_5.setBounds(0, 0, 402, 57);
-		panel_3.add(panel_5);
-		panel_5.setLayout(null);
-		
-		//Kniffel Label placed on Panel 5
-		JLabel lblKniffel = new JLabel("Kniffel");
-		lblKniffel.setBounds(0, 0, 137, 61);
-		lblKniffel.setFont(new Font("Tahoma", Font.PLAIN, 50));
-		panel_5.add(lblKniffel);
-		
-		//Copyright :D
-		JLabel lblByGruppe = new JLabel("by Gruppe 6");
-		lblByGruppe.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		lblByGruppe.setBounds(143, 14, 162, 53);
-		panel_5.add(lblByGruppe);
 	}
 }
