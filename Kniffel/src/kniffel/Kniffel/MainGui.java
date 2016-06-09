@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
+import javax.swing.JRadioButton;
 
 public class MainGui extends JFrame {
 
@@ -81,7 +82,7 @@ public class MainGui extends JFrame {
 		JLabel lblErgebnis = new JLabel("Kniffelblock");
 		lblErgebnis.setBounds(200, 0, 189, 61);
 		panel_4.add(lblErgebnis);
-		lblErgebnis.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		lblErgebnis.setFont(new Font("Script MT Bold", Font.PLAIN, 35));
 		
 		//Ergebnis Panel
 		JPanel ERGBENIS = new JPanel();
@@ -107,15 +108,46 @@ public class MainGui extends JFrame {
 		
 		//Kniffel Label placed on Panel 5
 		JLabel lblKniffel = new JLabel("Kniffel");
-		lblKniffel.setBounds(0, 0, 137, 61);
-		lblKniffel.setFont(new Font("Tahoma", Font.PLAIN, 50));
+		lblKniffel.setBounds(10, 2, 262, 61);
+		lblKniffel.setFont(new Font("Script MT Bold", Font.PLAIN, 50));
 		panel_5.add(lblKniffel);
 		
 		//Copyright :D
 		JLabel lblByGruppe = new JLabel("by Gruppe 6");
 		lblByGruppe.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		lblByGruppe.setBounds(143, 14, 162, 53);
+		lblByGruppe.setBounds(174, 14, 162, 53);
 		panel_5.add(lblByGruppe);
+		
+		JRadioButton rdbtnWrfelBehalten = new JRadioButton("");
+		rdbtnWrfelBehalten.setBounds(89, 505, 21, 23);
+		panel_3.add(rdbtnWrfelBehalten);
+		
+		JRadioButton radioButton_2 = new JRadioButton("");
+		radioButton_2.setBounds(146, 505, 21, 23);
+		panel_3.add(radioButton_2);
+		
+		JRadioButton radioButton_3 = new JRadioButton("");
+		radioButton_3.setBounds(194, 505, 21, 23);
+		panel_3.add(radioButton_3);
+		
+		JRadioButton radioButton_4 = new JRadioButton("");
+		radioButton_4.setBounds(244, 505, 21, 23);
+		panel_3.add(radioButton_4);
+		
+		JRadioButton radioButton = new JRadioButton("");
+		radioButton.setBounds(300, 505, 21, 23);
+		panel_3.add(radioButton);
+		
+		JLabel lblWelcheWrfelSollen = new JLabel("Welche W\u00FCrfel sollen neu Gew\u00FCrfelt werden:");
+		lblWelcheWrfelSollen.setBounds(101, 473, 220, 14);
+		panel_3.add(lblWelcheWrfelSollen);
+		//Wurefel Bilder einfügen 
+		ImageIcon img =
+				new ImageIcon("Bilder/wuerfel 1.png");
+		JLabel BildWuerfel1 = new JLabel(img);
+		BildWuerfel1.setBounds(51, 429, 46, 14);
+		panel_3.add(BildWuerfel1);
+		
 		
 		//Panel 2 
 		panel_2 = new JPanel();
