@@ -16,6 +16,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.Font;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.ListSelectionModel;
 
 public class MainGui extends JFrame {
 
@@ -24,6 +26,7 @@ public class MainGui extends JFrame {
 	private JPanel panel_3;
 	private JButton btnClose;
 	private JButton btnHilfe;
+	private JTable Kniffelblock;
 
 	/**
 	 * Launch the application.
@@ -82,12 +85,55 @@ public class MainGui extends JFrame {
 		lblErgebnis.setBounds(200, 0, 189, 61);
 		panel_4.add(lblErgebnis);
 		lblErgebnis.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		//JTable
+		Kniffelblock = new JTable();
+		//ZellenGröße
+		Kniffelblock.setRowHeight(26);
 		
-		//Ergebnis Panel
-		JPanel ERGBENIS = new JPanel();
-		ERGBENIS.setBounds(10, 68, 555, 516);
-		panel_1.add(ERGBENIS);
-		ERGBENIS.setLayout(null);repaint();
+		Kniffelblock.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		Kniffelblock.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, "1.Spiel", "2.Spiel", "3.Spiel", "4.Spiel", "5.Spiel", "6.Spiel"},
+				{"Einser", null, null, null, null, null, null},
+				{"Zweier", null, null, null, null, null, null},
+				{"Dreier", null, null, null, null, null, null},
+				{"Vierer", null, null, null, null, null, null},
+				{"F\u00FCnfer", null, null, null, null, null, null},
+				{"Sechser", null, null, null, null, null, null},
+				{"Summe", null, null, null, null, null, null},
+				{"Bonus", null, null, null, null, null, null},
+				{"Gesamt Oben", null, null, null, null, null, null},
+				{null, null, null, null, null, null, null},
+				{"Dreierpasch", null, null, null, null, null, null},
+				{"Viererpasch", null, null, null, null, null, null},
+				{"Full House", null, null, null, null, null, null},
+				{"kleine Stra\u00DFe", null, null, null, null, null, null},
+				{"gro\u00DFe Stra\u00DFe", null, null, null, null, null, null},
+				{"Kniffel", null, null, null, null, null, null},
+				{"Chance", null, null, null, null, null, null},
+				{"Summe", null, null, null, null, null, null},
+				{"Gesamt oben", null, null, null, null, null, null},
+			},
+			new String[] {
+				"New column", "New column", "New column", "New column", "New column", "New column", "New column"
+			}
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, false, false, false, false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		Kniffelblock.getColumnModel().getColumn(0).setResizable(false);
+		Kniffelblock.getColumnModel().getColumn(0).setPreferredWidth(87);
+		Kniffelblock.getColumnModel().getColumn(1).setResizable(false);
+		Kniffelblock.getColumnModel().getColumn(2).setResizable(false);
+		Kniffelblock.getColumnModel().getColumn(3).setResizable(false);
+		Kniffelblock.getColumnModel().getColumn(4).setResizable(false);
+		Kniffelblock.getColumnModel().getColumn(5).setResizable(false);
+		Kniffelblock.setBounds(10, 68, 555, 520);
+		panel_1.add(Kniffelblock);repaint();
 		
 		
 		//Panel 3 placed on panel1
