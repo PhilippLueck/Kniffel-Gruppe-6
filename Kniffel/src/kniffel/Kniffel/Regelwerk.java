@@ -10,7 +10,47 @@ private static int punkte;
 private static String zahlenStrahl;
 private static boolean exists;
 
+//Getter und Setters mit Logik befüllen (da sie statisch sind können sie überall geändert werden, also aufpassen)
 
+public static int getZahlenCount() {
+	return zahlenCount;
+}
+
+public static void setZahlenCount(int zahlenCount) {
+	Regelwerk.zahlenCount = zahlenCount;
+}
+
+public static int getPunkte() {
+	return punkte;
+}
+
+public static void setPunkte(int punkte) {
+	Regelwerk.punkte = punkte;
+}
+
+public static String getZahlenStrahl() {
+	return zahlenStrahl;
+}
+
+public static void setZahlenStrahl(String zahlenStrahl) {
+	Regelwerk.zahlenStrahl = zahlenStrahl;
+}
+
+public static boolean isExists() {
+	return exists;
+}
+
+public static void setExists(boolean exists) {
+	Regelwerk.exists = exists;
+}
+
+
+
+
+
+
+
+/*---------------------------------------------------------------------------------------------------------------------------------------*/
 //1er
 public static int einser(){
 	//Punkte zurücksetzen
@@ -225,6 +265,7 @@ public static int fullHouse(){
 			return (punkte=0);
 		}
 }
+
 
 //Kniffel
 public static int kniffel(){
