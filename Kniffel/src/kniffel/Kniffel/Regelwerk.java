@@ -10,7 +10,7 @@ private static int punkte;
 private static String zahlenStrahl;
 private static boolean exists;
 
-//Getter und Setters mit Logik befüllen (da sie statisch sind können sie überall geändert werden, also aufpassen)
+//Getter und Setters mit Logik befüllen (da sie statisch sind können sie überall geändert werden, also aufpassen) blub
 
 public static int getZahlenCount() {
 	return zahlenCount;
