@@ -30,6 +30,7 @@ import java.awt.Font;
 import java.awt.HeadlessException;
 
 import javax.swing.JProgressBar;
+import javax.swing.ImageIcon;
 
 public class Start extends JFrame {
 	
@@ -110,8 +111,9 @@ public class Start extends JFrame {
 
 		//playerhead, also playerlist Überschrift
 		lbl_playerHead = new JLabel("Spieler:");
+		lbl_playerHead.setForeground(new Color(255, 255, 255));
 		lbl_playerHead.setFont(new Font("Arial", Font.BOLD, 20));
-		lbl_playerHead.setBounds(113, 8, 106, 29);
+		lbl_playerHead.setBounds(113, 8, 81, 29);
 		pnl_player.add(lbl_playerHead);
 		
 
@@ -120,12 +122,17 @@ public class Start extends JFrame {
 		pnl_playerList.setBounds(50, 40, 215, 252);
 		pnl_player.add(pnl_playerList);
 		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(Start.class.getResource("/kniffel/Kniffel/Images/floor-1256804_640.jpg")));
+		lblNewLabel.setBounds(0, 0, 308, 292);
+		pnl_player.add(lblNewLabel);
+		
 		//Options Panel, Spieler wählen usw
 		JPanel pnl_options = new JPanel();
 		pnl_options.setBounds(308, 75, 211, 292);
 		startMainPane.add(pnl_options);
 		pnl_options.setBorder(new LineBorder(new Color(0, 0, 0)));
-		pnl_options.setBackground(Color.WHITE);
+		pnl_options.setBackground(new Color(255, 255, 255));
 		pnl_options.setLayout(null);
 		
 		

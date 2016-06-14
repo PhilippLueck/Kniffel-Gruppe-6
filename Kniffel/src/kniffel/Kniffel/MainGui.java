@@ -90,7 +90,12 @@ public class MainGui extends JFrame {
 		JPanel ERGBENIS = new JPanel();
 		ERGBENIS.setBounds(10, 68, 555, 516);
 		panel_1.add(ERGBENIS);
-		ERGBENIS.setLayout(null);repaint();
+		ERGBENIS.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/floor-1256804_1280.jpg")));
+		lblNewLabel.setBounds(0, 0, 555, 516);
+		ERGBENIS.add(lblNewLabel);repaint();
 		
 		
 		//Panel 3 placed on panel1
@@ -140,32 +145,42 @@ public class MainGui extends JFrame {
 		radioButton.setBounds(278, 505, 21, 23);
 		panel_3.add(radioButton);
 		
-		JLabel lblWelcheWrfelSollen = new JLabel("Welche W\u00FCrfel sollen neu Gew\u00FCrfelt werden:");
-		lblWelcheWrfelSollen.setBounds(89, 473, 220, 14);
+		JLabel lblWelcheWrfelSollen = new JLabel("Welche W\u00FCrfel sollen stehen bleiben:");
+		lblWelcheWrfelSollen.setBounds(89, 484, 273, 14);
 		panel_3.add(lblWelcheWrfelSollen);
 		//Wurefel Bilder einfügen 
 		ImageIcon img =
 				new ImageIcon("Bilder/wuerfel 1.png");
 		
-		JLabel lblNewLabel = new JLabel("0");
-		lblNewLabel.setBounds(97, 454, 13, 14);
-		panel_3.add(lblNewLabel);
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 150x50.png")));
+		lblNewLabel_1.setBounds(69, 411, 56, 57);
+		panel_3.add(lblNewLabel_1);
 		
-		JLabel label = new JLabel("0");
-		label.setBounds(146, 454, 13, 14);
+		JLabel label_4 = new JLabel("");
+		label_4.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 150x50.png")));
+		label_4.setBounds(122, 411, 56, 57);
+		panel_3.add(label_4);
+		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 150x50.png")));
+		label.setBounds(176, 411, 56, 57);
 		panel_3.add(label);
 		
-		JLabel label_1 = new JLabel("0");
-		label_1.setBounds(191, 454, 13, 14);
+		JLabel label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 150x50.png")));
+		label_1.setBounds(229, 411, 56, 57);
 		panel_3.add(label_1);
 		
-		JLabel label_2 = new JLabel("0");
-		label_2.setBounds(243, 454, 13, 14);
+		JLabel label_2 = new JLabel("");
+		label_2.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 150x50.png")));
+		label_2.setBounds(283, 411, 56, 57);
 		panel_3.add(label_2);
 		
-		JLabel label_3 = new JLabel("0");
-		label_3.setBounds(286, 454, 13, 14);
-		panel_3.add(label_3);
+	
+		
+		
+				
 		
 		
 		//Panel 2 
