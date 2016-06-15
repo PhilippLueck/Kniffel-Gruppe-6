@@ -86,7 +86,7 @@ public class Start extends JFrame {
 		pnl_player.setLayout(null);
 		
 		//comboListe -> Später in Combobox
-		 String comboBoxListe[] = {"2","3","4","5","6","7","8"}; 
+		 String comboBoxListe[] = {"Spieleranzahl","2","3","4","5","6","7","8"}; 
 		 
 		// Player Array, label Array, Namens Array
 		 this.players = new JTextField[8];

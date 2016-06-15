@@ -1,6 +1,6 @@
 package kniffel.Kniffel;
 
-
+import java.util.Iterator;
 import java.util.ArrayList;
 import java.util.TreeSet;
 
@@ -16,18 +16,10 @@ public static TreeSet <Spieler> spielerListe = new TreeSet<Spieler>() ;
 public static TreeSet<Würfel> würfelListe = new TreeSet<Würfel>() ;
 
 
-//Spielstart bei Klick auf start
-public void spielStart(){
-	if(spielerListe==null||würfelListe == null){
-	JOptionPane.showMessageDialog(null,"Keine Spieler und Würfel vorhanden");
-	}else{
-	
-		//Laden der Main Gui und start mit Spieler 1!!!
-	}
-}
 
 //Spieler hinzufügenmethode, wird wahrscheinlich verlagert
 public static boolean spielerHinzufügen(String name, int spielerID, int punkte, int wurfnummer){
+		
 		try {
 			//Checkt ob name leer, bzw ID nicht da
 			if(spielerID == 0){
@@ -52,7 +44,7 @@ public static boolean spielerHinzufügen(String name, int spielerID, int punkte, 
 
 public static boolean  würfelHinzufügen(int würfelnummer, int augenzahl, int wurf, boolean blocked){
 	try {
-		if(würfelnummer==0||augenzahl<1||augenzahl>6||wurf<0){
+		if(würfelnummer==0||augenzahl<0||augenzahl>6||wurf<0){
 			JOptionPane.showMessageDialog(null, "Würfel konnte wegen falscher Parameter nicht erstellt werden");
 			return false;
 		}else{
@@ -67,4 +59,21 @@ public static boolean  würfelHinzufügen(int würfelnummer, int augenzahl, int wur
 	}
 	
 }
+
+
+public static Würfel ermittleWürfel( int würfelnummer){
+	
+	Iterator<Würfel> i = würfelListe.iterator();
+	while(i.hasNext()){
+		Würfel tmp = (Würfel) i.next();
+		if(!(würfelnummer==tmp.getWürfelnummer())){
+			return null;
+		}else{
+			return(tmp); //Gibt Objekt aus
+		}
+	};
+	
+	return null;
+}
+
 }

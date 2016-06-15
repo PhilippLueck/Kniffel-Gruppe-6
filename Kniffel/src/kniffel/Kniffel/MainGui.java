@@ -27,6 +27,8 @@ public class MainGui extends JFrame {
 	private JPanel panel_3;
 	private JButton btnClose;
 	private JButton btnHilfe;
+	int[] augenzahl = new int[5];
+	JLabel[] würfellabel = new JLabel[5];
 
 	/**
 	 * Launch the application.
@@ -148,10 +150,11 @@ public class MainGui extends JFrame {
 		JLabel lblWelcheWrfelSollen = new JLabel("Welche W\u00FCrfel sollen stehen bleiben:");
 		lblWelcheWrfelSollen.setBounds(89, 484, 273, 14);
 		panel_3.add(lblWelcheWrfelSollen);
+		
 		//Wurefel Bilder einfügen 
 		ImageIcon img =
 				new ImageIcon("Bilder/wuerfel 1.png");
-		
+		/*
 		JLabel lblNewLabel_1 = new JLabel("");
 		int zahl1 = 2;
 		 switch (zahl1) {
@@ -254,11 +257,8 @@ public class MainGui extends JFrame {
 		lblNewLabel_2.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wood-1108307_1920.jpg")));
 		lblNewLabel_2.setBounds(0, 57, 402, 491);
 		panel_3.add(lblNewLabel_2);
+		*/
 		
-	
-		
-		
-				
 		
 		
 		//Panel 2 
@@ -287,27 +287,46 @@ public class MainGui extends JFrame {
 		panel_2.add(btnHilfe);
 		//Würfelbutton placed on panel 2
 		JButton btnWrfeln = new JButton("W\u00FCrfeln");
+		btnWrfeln.setBounds(161, 11, 89, 23);
+		panel_2.add(btnWrfeln);
 		
 		//würfelknopf (ruft würfelmethode aus würfelklasse auf)
 		btnWrfeln.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//checken, wie oft button geklickt
 				
-				Würfel wuerfel1 = new Würfel(1,0,0,false);
-				Würfel wuerfel2 = new Würfel(2,0,0,false);
-				Würfel wuerfel3 = new Würfel(3,0,0,false);
-				Würfel wuerfel4 = new Würfel(4,0,0,false);
-				Würfel wuerfel5 = new Würfel(5,0,0,false);
+			for(int i = 1;i<=5;i++){	 
+				// Hier checken ob geblockt
+				// Hier die Würfel Methoden
 				
+				// Hier Bilder darstellen
+				würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 150x50.png")));
+				würfellabel[i].setBounds(176, 411, 56, 57);
+				panel_3.add(würfellabel[i]);
 				
-				wuerfel1.würfeln(wuerfel1);
-				wuerfel2.würfeln(wuerfel2);
-				wuerfel3.würfeln(wuerfel3);
-				wuerfel4.würfeln(wuerfel4);
-				wuerfel5.würfeln(wuerfel5);
-			}
-		});
-		btnWrfeln.setBounds(161, 11, 89, 23);
-		panel_2.add(btnWrfeln);
-	}
+				augenzahl[i] = KniffelSpiel.ermittleWürfel(i).getAugenzahl();
+				switch(augenzahl[i]){
+				case 1:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 150x50.png")));
+				         break;
+				case 2:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 250x50.png")));
+				         break;
+				case 3:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 350x50.png")));
+				         break;
+				case 4: würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 450x50.png")));
+				         break;
+				case 5:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 550x50.png")));
+				         break;
+				case 6:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 650x50.png")));
+						 break;
+				        }
+					
+				}//Ende For
+			
+				//Hier Regelprüfungen
+			
+			
+				//Hier in Liste eintragen
+		}});
+		
+		}
 }
