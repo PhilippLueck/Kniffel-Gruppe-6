@@ -31,6 +31,7 @@ import java.awt.HeadlessException;
 
 import javax.swing.JProgressBar;
 import javax.swing.ImageIcon;
+import javax.swing.border.SoftBevelBorder;
 
 public class Start extends JFrame {
 	
@@ -118,7 +119,8 @@ public class Start extends JFrame {
 		
 
 		pnl_playerList = new JPanel();
-		pnl_playerList.setBorder(new LineBorder(new Color(0, 0, 0)));
+		pnl_playerList.setBackground(new Color(192, 192, 192));
+		pnl_playerList.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		pnl_playerList.setBounds(50, 40, 215, 252);
 		pnl_player.add(pnl_playerList);
 		

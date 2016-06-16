@@ -20,6 +20,8 @@ import javax.swing.JRadioButton;
 import javax.swing.border.TitledBorder;
 import javax.swing.border.EtchedBorder;
 import java.awt.SystemColor;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
 
 public class MainGui extends JFrame {
 
@@ -92,6 +94,7 @@ public class MainGui extends JFrame {
 		
 		//Ergebnis Panel
 		JPanel pnl_block = new JPanel();
+		pnl_block.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		pnl_block.setBackground(new Color(139, 69, 19));
 		pnl_block.setBounds(10, 56, 564, 528);
 		pnl_links.add(pnl_block);
