@@ -76,6 +76,6 @@ public class Würfel extends KniffelSpiel implements Comparable<Würfel> {
 	@Override
 	public int compareTo(Würfel tmp) {
 		// TODO Auto-generated method stub
-		return(this.augenzahl-tmp.getAugenzahl());
+		return(this.würfelnummer-tmp.getWürfelnummer());
 	}
 }

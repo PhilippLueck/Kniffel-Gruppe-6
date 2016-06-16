@@ -295,12 +295,18 @@ public static int kniffel(){
 
 		//Hier werden alle Zahlen geprüft, wenn da ++
 		switch(selectedWürfel.augenzahl){
-			case 1: einscount++;
-			case 2: zweicount++;
-			case 3: dreicount++;
-			case 4: viercount++;
-			case 5: fünfcount ++;
-			case 6: sechscount ++;
+		case 1: einscount++;
+				break;
+		case 2: zweicount++;
+				break;
+		case 3: dreicount++;
+				break;
+		case 4: viercount++;
+				break;
+		case 5: fünfcount ++;
+				break;
+		case 6: sechscount ++;
+				break;
 		};
 	}
 		
