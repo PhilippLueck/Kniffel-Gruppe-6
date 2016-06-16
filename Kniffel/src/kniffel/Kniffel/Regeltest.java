@@ -9,7 +9,7 @@ public static void main(String[]args){
 	KniffelSpiel.würfelHinzufügen(2, 5, 0, false);
 	KniffelSpiel.würfelHinzufügen(3, 5, 0, false);
 	KniffelSpiel.würfelHinzufügen(4, 5, 0, false);
-	KniffelSpiel.würfelHinzufügen(5, 5, 0, false);
+	KniffelSpiel.würfelHinzufügen(5, 4, 0, false);
 	
 	Iterator<Würfel> würfelIterator = KniffelSpiel.würfelListe.iterator();
 	while(würfelIterator.hasNext()){

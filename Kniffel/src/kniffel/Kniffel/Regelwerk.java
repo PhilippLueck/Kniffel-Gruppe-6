@@ -360,6 +360,15 @@ public static int großeStraße(){
 }
 	
 //chance
+public static int chance(){
+	punkte = 0;
+	Iterator<Würfel> WürfelIterator = KniffelSpiel.würfelListe.iterator();		
+	while(WürfelIterator.hasNext()){
+	Würfel selectedWürfel = WürfelIterator.next();
+	punkte = punkte +selectedWürfel.augenzahl ;
+	}
+	return punkte;
+}
 	
 //Sonderegeln
 	
