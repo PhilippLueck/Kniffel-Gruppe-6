@@ -171,95 +171,9 @@ public class MainGui extends JFrame {
          case 6:  lblNewLabel_1.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 650x50.png")));
          		  break;
 		 }
-		lblNewLabel_1.setBounds(69, 411, 56, 57);
-		panel_3.add(lblNewLabel_1);
 		
-		JLabel label_4 = new JLabel("");
-		int zahl2 = 2;
-		 switch (zahl2) {
-        case 1:  label_4.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 150x50.png")));
-                 break;
-        case 2:  label_4.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 250x50.png")));
-                 break;
-        case 3:  label_4.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 350x50.png")));
-                 break;
-        case 4:  label_4.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 450x50.png")));
-                 break;
-        case 5:  label_4.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 550x50.png")));
-                 break;
-        case 6:  label_4.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 650x50.png")));
-        		  break;
-		 }
-		label_4.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 150x50.png")));
-		label_4.setBounds(122, 411, 56, 57);
-		panel_3.add(label_4);
-		
-		JLabel label = new JLabel("");
-		int zahl3 = 3;
-		 switch (zahl3) {
-        case 1:  label.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 150x50.png")));
-                 break;
-        case 2:  label.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 250x50.png")));
-                 break;
-        case 3:  label.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 350x50.png")));
-                 break;
-        case 4:  label.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 450x50.png")));
-                 break;
-        case 5:  label.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 550x50.png")));
-                 break;
-        case 6:  label.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 650x50.png")));
-        		  break;
-		 }
-		label.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 150x50.png")));
-		label.setBounds(176, 411, 56, 57);
-		panel_3.add(label);
-		
-		JLabel label_1 = new JLabel("");
-		int zahl4 = 5;
-		 switch (zahl4) {
-        case 1:  label_1.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 150x50.png")));
-                 break;
-        case 2:  label_1.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 250x50.png")));
-                 break;
-        case 3:  label_1.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 350x50.png")));
-                 break;
-        case 4:  label_1.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 450x50.png")));
-                 break;
-        case 5:  label_1.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 550x50.png")));
-                 break;
-        case 6:  label_1.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 650x50.png")));
-        		  break;
-		 }
-		label_1.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 150x50.png")));
-		label_1.setBounds(229, 411, 56, 57);
-		panel_3.add(label_1);
-		
-		JLabel label_2 = new JLabel("");
-		int zahl5 = 3;
-		 switch (zahl5) {
-        case 1:  label_2.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 150x50.png")));
-                 break;
-        case 2:  label_2.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 250x50.png")));
-                 break;
-        case 3:  label_2.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 350x50.png")));
-                 break;
-        case 4:  label_2.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 450x50.png")));
-                 break;
-        case 5:  label_2.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 550x50.png")));
-                 break;
-        case 6:  label_2.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 650x50.png")));
-        		  break;
-		 }
-		label_2.setBounds(283, 411, 56, 57);
-		panel_3.add(label_2);
-		
-		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wood-1108307_1920.jpg")));
-		lblNewLabel_2.setBounds(0, 57, 402, 491);
 		panel_3.add(lblNewLabel_2);
 		*/
-		
-		
 		
 		//Panel 2 
 		panel_2 = new JPanel();
