@@ -76,7 +76,7 @@ public class MainGui extends JFrame {
 		KniffelSpiel.würfelHinzufügen(würfel5);
 		
 		//würfellabel 
-		würfellabel = new JLabel[5];
+		würfellabel = new JLabel[6];
 		
 		// Hier labels deklarieren
 		for(int i=1;i<würfellabel.length;i++){
@@ -160,27 +160,27 @@ public class MainGui extends JFrame {
 		JRadioButton rdbtn_w1 = new JRadioButton("");
 		rdbtn_w1.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		rdbtn_w1.setBackground(SystemColor.controlShadow);
-		rdbtn_w1.setBounds(89, 505, 21, 23);
+		rdbtn_w1.setBounds(80, 505, 21, 23);
 		pnl_rechts.add(rdbtn_w1);
 		
 		JRadioButton rdbtn_w2 = new JRadioButton("");
 		rdbtn_w2.setBackground(SystemColor.controlShadow);
-		rdbtn_w2.setBounds(138, 505, 21, 23);
+		rdbtn_w2.setBounds(140, 505, 21, 23);
 		pnl_rechts.add(rdbtn_w2);
 		
 		JRadioButton rdbtn_w3 = new JRadioButton("");
 		rdbtn_w3.setBackground(SystemColor.controlShadow);
-		rdbtn_w3.setBounds(183, 505, 21, 23);
+		rdbtn_w3.setBounds(200, 505, 21, 23);
 		pnl_rechts.add(rdbtn_w3);
 		
 		JRadioButton rdbtn_w4 = new JRadioButton("");
 		rdbtn_w4.setBackground(SystemColor.controlShadow);
-		rdbtn_w4.setBounds(235, 505, 21, 23);
+		rdbtn_w4.setBounds(260, 505, 21, 23);
 		pnl_rechts.add(rdbtn_w4);
 		
 		JRadioButton rdbtn_w5 = new JRadioButton("");
 		rdbtn_w5.setBackground(SystemColor.controlShadow);
-		rdbtn_w5.setBounds(278, 505, 21, 23);
+		rdbtn_w5.setBounds(320, 505, 21, 23);
 		pnl_rechts.add(rdbtn_w5);
 		
 		JLabel lblWelcheWrfelSollen = new JLabel("Welche W\u00FCrfel sollen stehen bleiben:");
@@ -240,15 +240,15 @@ public class MainGui extends JFrame {
 					
 					//Bounds setzen
 					switch(i){
-					case 1: würfellabel[i].setBounds(89, 411, 56, 57);
+					case 1: würfellabel[i].setBounds(60, 411, 56, 57);
 					break;
-					case 2: würfellabel[i].setBounds(140, 411, 56, 57);
+					case 2: würfellabel[i].setBounds(120, 411, 56, 57);
 					break;
-					case 3:würfellabel[i].setBounds(190, 411, 56, 57);
+					case 3:würfellabel[i].setBounds(180, 411, 56, 57);
 					break;
 					case 4: würfellabel[i].setBounds(240, 411, 56, 57);
 					break;
-					case 5: würfellabel[i].setBounds(285, 411, 56, 57);		
+					case 5: würfellabel[i].setBounds(300, 411, 56, 57);		
 					break;
 					}
 					pnl_rechts.add(würfellabel[i]);
