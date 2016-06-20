@@ -44,7 +44,7 @@ public static boolean spielerHinzufügen(String name, int spielerID, int punkte, 
 
 public static boolean  würfelHinzufügen(Würfel würfel){
 	try {
-		if(würfel.würfelnummer==0||würfel.augenzahl<0||würfel.augenzahl>6||würfel.wurf<0){
+		if(würfel.getWürfelnummer()==0||würfel.getAugenzahl()<0||würfel.getAugenzahl()>6||würfel.getWurf()<0){
 			JOptionPane.showMessageDialog(null, "Würfel konnte wegen falscher Parameter nicht erstellt werden");
 			return false;
 		}else{
