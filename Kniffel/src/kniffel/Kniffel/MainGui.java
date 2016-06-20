@@ -98,33 +98,22 @@ public class MainGui extends JFrame {
 		panel.add(pnl_links);
 		pnl_links.setLayout(null);
 		
-		JPanel pnl_überschrift = new JPanel();
-		pnl_überschrift.setBackground(new Color(139, 69, 19));
-		pnl_überschrift.setBorder(null);
-		pnl_überschrift.setBounds(0, 0, 574, 57);
-		pnl_links.add(pnl_überschrift);
-		pnl_überschrift.setLayout(null);
-		
-		//Ergebnis Label
-		
-		JLabel lblErgebnis = new JLabel("Kniffelblock");
-		lblErgebnis.setBounds(200, 0, 189, 61);
-		pnl_überschrift.add(lblErgebnis);
-		lblErgebnis.setFont(new Font("Script MT Bold", Font.PLAIN, 35));
-		
-		//Ergebnis Panel
-		JPanel pnl_block = new JPanel();
-		pnl_block.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		pnl_block.setBackground(new Color(139, 69, 19));
-		pnl_block.setBounds(10, 56, 564, 528);
-		pnl_links.add(pnl_block);
-		pnl_block.setLayout(null);
+		JLabel label_3 = new JLabel("Kniffelblock");
+		label_3.setForeground(Color.WHITE);
+		label_3.setBounds(127, 23, 473, 61);
+		pnl_links.add(label_3);
+		label_3.setFont(new Font("Lucida Calligraphy", Font.PLAIN, 50));
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(56, -20, 555, 537);
-		pnl_block.add(lblNewLabel);
+		lblNewLabel.setBounds(0, 0, 907, 715);
+		pnl_links.add(lblNewLabel);
 		lblNewLabel.setBackground(new Color(139, 69, 19));
-		lblNewLabel.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/floor-1256804_1280.jpg")));repaint();
+		lblNewLabel.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/floor-1256804_1280.jpg")));
+		
+		JLabel lblNewLabel_2 = new JLabel("New label");
+		lblNewLabel_2.setBounds(216, 262, 402, 47);
+		pnl_links.add(lblNewLabel_2);
+		lblNewLabel_2.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/floor-1256804_1280.jpg")));repaint();
 		
 		
 		//Panel 3 placed on panel1
@@ -134,27 +123,6 @@ public class MainGui extends JFrame {
 		pnl_rechts.setBounds(574, 0, 402, 548);
 		panel.add(pnl_rechts);
 		pnl_rechts.setLayout(null);
-		
-		//Panel 5 placed on Panel 3
-		JPanel pnl_Überschriftlinks = new JPanel();
-		pnl_Überschriftlinks.setBackground(new Color(139, 69, 19));
-		pnl_Überschriftlinks.setBorder(null);
-		pnl_Überschriftlinks.setBounds(0, 0, 402, 57);
-		pnl_rechts.add(pnl_Überschriftlinks);
-		pnl_Überschriftlinks.setLayout(null);
-		
-		//Kniffel Label placed on Panel 5
-		JLabel lblKniffel = new JLabel("Kniffel");
-		lblKniffel.setBackground(new Color(139, 69, 19));
-		lblKniffel.setBounds(10, 2, 262, 61);
-		lblKniffel.setFont(new Font("Script MT Bold", Font.PLAIN, 50));
-		pnl_Überschriftlinks.add(lblKniffel);
-		
-		//Copyright :D
-		JLabel lblByGruppe = new JLabel("by Gruppe 6");
-		lblByGruppe.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		lblByGruppe.setBounds(174, 14, 162, 53);
-		pnl_Überschriftlinks.add(lblByGruppe);
 		
 		//5 Radiobuttons
 		JRadioButton rdbtn_w1 = new JRadioButton("");
@@ -184,15 +152,28 @@ public class MainGui extends JFrame {
 		pnl_rechts.add(rdbtn_w5);
 		
 		JLabel lblWelcheWrfelSollen = new JLabel("Welche W\u00FCrfel sollen stehen bleiben:");
+		lblWelcheWrfelSollen.setForeground(Color.WHITE);
 		lblWelcheWrfelSollen.setBounds(89, 484, 273, 14);
 		pnl_rechts.add(lblWelcheWrfelSollen);
+		
+		JLabel label_1 = new JLabel("Kniffel");
+		label_1.setForeground(Color.WHITE);
+		label_1.setFont(new Font("Lucida Calligraphy", Font.PLAIN, 50));
+		label_1.setBackground(new Color(139, 69, 19));
+		label_1.setBounds(89, 25, 262, 61);
+		pnl_rechts.add(label_1);
+		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setBounds(0, 0, 402, 548);
+		pnl_rechts.add(lblNewLabel_1);
+		lblNewLabel_1.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/floor-1256804_1280.jpg")));
 		
 		
 		//Panel 2 
 		pnl_buttons = new JPanel();
 		pnl_buttons.setBounds(574, 548, 402, 47);
 		panel.add(pnl_buttons);
-		pnl_buttons.setBackground(new Color(139, 69, 19));
+		pnl_buttons.setBackground(Color.WHITE);
 		pnl_buttons.setBorder(null);
 		pnl_buttons.setLayout(null);
 		
@@ -216,6 +197,11 @@ public class MainGui extends JFrame {
 		JButton btnWrfeln = new JButton("W\u00FCrfeln");
 		btnWrfeln.setBounds(161, 11, 89, 23);
 		pnl_buttons.add(btnWrfeln);
+		
+		JLabel lblNewLabel_3 = new JLabel("New label");
+		lblNewLabel_3.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/balken.png")));
+		lblNewLabel_3.setBounds(0, 0, 402, 47);
+		pnl_buttons.add(lblNewLabel_3);
 		
 		//würfelknopf (ruft würfelmethode aus würfelklasse auf)
 		btnWrfeln.addActionListener(new ActionListener() {
