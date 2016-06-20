@@ -61,13 +61,34 @@ public class MainGui extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		// Würfel erstellen
+		
+		Würfel würfel1 = new Würfel(1,0, 0, false);
+		Würfel würfel2 = new Würfel(2,0, 0, false);
+		Würfel würfel3 = new Würfel(3,0, 0, false);
+		Würfel würfel4 = new Würfel(4,0, 0, false);
+		Würfel würfel5 = new Würfel(5,0, 0, false);
+		
+		KniffelSpiel.würfelHinzufügen(würfel1);
+		KniffelSpiel.würfelHinzufügen(würfel2);
+		KniffelSpiel.würfelHinzufügen(würfel3);
+		KniffelSpiel.würfelHinzufügen(würfel4);
+		KniffelSpiel.würfelHinzufügen(würfel5);
+		
+		//würfellabel 
+		würfellabel = new JLabel[5];
+		
+		// Hier labels deklarieren
+		for(int i=1;i<würfellabel.length;i++){
+		würfellabel[i] = new JLabel();
+		}
+		
 		//JPane1 placed on Contentpane
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 976, 595);
 		contentPane.add(panel);
 		panel.setLayout(null);
-		System.out.println("null");
 		
 		//Panel 1 placed on "main Panel"
 		JPanel pnl_links = new JPanel();
@@ -201,20 +222,38 @@ public class MainGui extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				//checken, wie oft radiobutton geklickt
 				
-				//würfellabel und augenzahlarray
-				würfellabel = new JLabel[5];
-				int[] augenzahl = new int[5];
-				for(int i = 1;i<5;i++){	 
-					// Hier checken ob geblockt
+				
+				//Würfelliste ausgeben
+				KniffelSpiel.würfelListeAusgeben();
+				
+				//Würfeln
+				
+				würfel1.würfeln(würfel1);
+				würfel1.würfeln(würfel2);
+				würfel1.würfeln(würfel3);
+				würfel1.würfeln(würfel4);
+				würfel1.würfeln(würfel5);
+				
+				//Jetzt Schleife für Bilder
+				for(int i = 1;i<würfellabel.length;i++){	 
 					
-					// Hier die Würfel Methoden
-					würfellabel[i] = new JLabel();
-					würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 150x50.png")));
-					würfellabel[i].setBounds(176, 411, 56, 57);
+					
+					//Bounds setzen
+					switch(i){
+					case 1: würfellabel[i].setBounds(89, 411, 56, 57);
+					break;
+					case 2: würfellabel[i].setBounds(140, 411, 56, 57);
+					break;
+					case 3:würfellabel[i].setBounds(190, 411, 56, 57);
+					break;
+					case 4: würfellabel[i].setBounds(240, 411, 56, 57);
+					break;
+					case 5: würfellabel[i].setBounds(285, 411, 56, 57);		
+					break;
+					}
 					pnl_rechts.add(würfellabel[i]);
-					// Hier Bilder darstellen
-					//augenzahl[i] = KniffelSpiel.ermittleWürfel(i).getAugenzahl();
-					switch(augenzahl[i]){
+					int augenzahl =KniffelSpiel.ermittleWürfel(i).getAugenzahl();
+					switch(augenzahl){
 					case 1:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 150x50.png")));
 	                break;
 					case 2:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 250x50.png")));

@@ -58,13 +58,14 @@ public class Würfel extends KniffelSpiel implements Comparable<Würfel> {
 	}
 
 	// Würfel methode
-	public void würfeln (Würfel wuerfel) {
-			if (this.blocked==false){}
-			else{
-			Random würfel = new Random ();		
-			this.augenzahl = 1 + würfel.nextInt(6);
-			System.out.println(this.augenzahl);
-			würfelListe.add(wuerfel);
+	public void würfeln (Würfel würfel) {
+		
+		if (würfel.blocked==true){}
+		else{
+			Random zahl = new Random ();		
+			würfel.setAugenzahl( 1 + zahl.nextInt(6));
+			System.out.println("Die gewürfelte Augenzahl: " + würfel.getAugenzahl());
+			KniffelSpiel.würfelHinzufügen(würfel);
 			};
 			
 			

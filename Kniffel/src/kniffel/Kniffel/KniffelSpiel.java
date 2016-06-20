@@ -42,14 +42,14 @@ public static boolean spielerHinzufügen(String name, int spielerID, int punkte, 
 	
 }
 
-public static boolean  würfelHinzufügen(int würfelnummer, int augenzahl, int wurf, boolean blocked){
+public static boolean  würfelHinzufügen(Würfel würfel){
 	try {
-		if(würfelnummer==0||augenzahl<0||augenzahl>6||wurf<0){
+		if(würfel.würfelnummer==0||würfel.augenzahl<0||würfel.augenzahl>6||würfel.wurf<0){
 			JOptionPane.showMessageDialog(null, "Würfel konnte wegen falscher Parameter nicht erstellt werden");
 			return false;
 		}else{
 			System.out.println("Würfel hinzugefügt");
-			return würfelListe.add(new Würfel(würfelnummer,augenzahl,wurf,blocked));
+			return würfelListe.add(würfel);
 		}
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
@@ -63,17 +63,23 @@ public static boolean  würfelHinzufügen(int würfelnummer, int augenzahl, int wur
 
 public static Würfel ermittleWürfel( int würfelnummer){
 	
-	Iterator<Würfel> i = würfelListe.iterator();
-	while(i.hasNext()){
-		Würfel tmp = (Würfel) i.next();
-		if(!(würfelnummer==tmp.getWürfelnummer())){
-			return null;
-		}else{
-			return(tmp); //Gibt Objekt aus
-		}
-	};
+	Würfel tmp = new Würfel(würfelnummer,0, 0, false);
 	
-	return null;
-}
+	if (würfelListe.contains(tmp))
+		tmp = würfelListe.floor(tmp);
+	else
+		tmp = null;
+	
+	return tmp;
+
+}// Ende ermittle Würfel
+
+public static void würfelListeAusgeben() {
+	Iterator<Würfel> iter = würfelListe.iterator();
+	while(iter.hasNext()) {
+		Würfel tmp = iter.next();
+		System.out.println("Würfelnummer: "+ tmp.würfelnummer + " vorhanden");
+	}
+}// Ende würfellistausgeben
 
 }

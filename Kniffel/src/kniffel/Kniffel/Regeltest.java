@@ -5,11 +5,17 @@ import java.util.Iterator;
 public class Regeltest {
 	
 public static void main(String[]args){
-	KniffelSpiel.würfelHinzufügen(1, 5, 0, false);
-	KniffelSpiel.würfelHinzufügen(2, 5, 0, false);
-	KniffelSpiel.würfelHinzufügen(3, 5, 0, false);
-	KniffelSpiel.würfelHinzufügen(4, 5, 0, false);
-	KniffelSpiel.würfelHinzufügen(5, 4, 0, false);
+	Würfel würfel1 = new Würfel(1,0, 0, false);
+	Würfel würfel2 = new Würfel(2,0, 0, false);
+	Würfel würfel3 = new Würfel(3,0, 0, false);
+	Würfel würfel4 = new Würfel(4,0, 0, false);
+	Würfel würfel5 = new Würfel(5,0, 0, false);
+	
+	KniffelSpiel.würfelHinzufügen(würfel1);
+	KniffelSpiel.würfelHinzufügen(würfel2);
+	KniffelSpiel.würfelHinzufügen(würfel3);
+	KniffelSpiel.würfelHinzufügen(würfel4);
+	KniffelSpiel.würfelHinzufügen(würfel5);
 	
 	Iterator<Würfel> würfelIterator = KniffelSpiel.würfelListe.iterator();
 	while(würfelIterator.hasNext()){

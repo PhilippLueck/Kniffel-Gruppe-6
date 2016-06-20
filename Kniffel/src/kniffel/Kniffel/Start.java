@@ -197,12 +197,7 @@ public class Start extends JFrame {
      		//Start button öffnet main Gui
      		//Erzeugt Würfel
      		btn_start.addActionListener(new ActionListener() {
-     			public void actionPerformed(ActionEvent e) {
-     				
-     				//Würfel erzeugen
-     				for(int i = 1;i<=5;i++){
-     				KniffelSpiel.würfelHinzufügen(i, 0, 1, false);
-     				};
+     			public void actionPerformed(ActionEvent e) {	
      				//öffnen von main Gui
      				MainGui wnd = new MainGui();
      				wnd.setVisible(true);
