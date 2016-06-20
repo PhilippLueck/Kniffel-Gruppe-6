@@ -163,10 +163,10 @@ public class MainGui extends JFrame {
 		label_1.setBounds(89, 25, 262, 61);
 		pnl_rechts.add(label_1);
 		
-		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setBounds(0, 0, 402, 548);
-		pnl_rechts.add(lblNewLabel_1);
-		lblNewLabel_1.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/floor-1256804_1280.jpg")));
+		JLabel lbl_rechts = new JLabel("New label");
+		lbl_rechts.setBounds(0, 0, 402, 548);
+		pnl_rechts.add(lbl_rechts);
+		lbl_rechts.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/floor-1256804_1280.jpg")));
 		
 		
 		//Panel 2 
@@ -253,7 +253,7 @@ public class MainGui extends JFrame {
 					case 6:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 650x50.png")));
 					break;
 					        }
-					pnl_rechts.add(würfellabel[i]);
+					lbl_rechts.add(würfellabel[i]);
 					würfellabel[i].setVisible(true);
 						
 				}//Ende For 
