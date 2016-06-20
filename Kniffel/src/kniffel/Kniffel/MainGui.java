@@ -30,8 +30,7 @@ public class MainGui extends JFrame {
 	private JPanel pnl_rechts;
 	private JButton btnClose;
 	private JButton btnHilfe;
-	int[] augenzahl = new int[5];
-	JLabel[] würfellabel = new JLabel[5];
+	JLabel[] würfellabel;
 
 	/**
 	 * Launch the application.
@@ -98,7 +97,13 @@ public class MainGui extends JFrame {
 		pnl_block.setBackground(new Color(139, 69, 19));
 		pnl_block.setBounds(10, 56, 564, 528);
 		pnl_links.add(pnl_block);
-		pnl_block.setLayout(null);repaint();
+		pnl_block.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(56, -20, 555, 537);
+		pnl_block.add(lblNewLabel);
+		lblNewLabel.setBackground(new Color(139, 69, 19));
+		lblNewLabel.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/floor-1256804_1280.jpg")));repaint();
 		
 		
 		//Panel 3 placed on panel1
@@ -130,6 +135,7 @@ public class MainGui extends JFrame {
 		lblByGruppe.setBounds(174, 14, 162, 53);
 		pnl_Überschriftlinks.add(lblByGruppe);
 		
+		//5 Radiobuttons
 		JRadioButton rdbtn_w1 = new JRadioButton("");
 		rdbtn_w1.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		rdbtn_w1.setBackground(SystemColor.controlShadow);
@@ -160,35 +166,6 @@ public class MainGui extends JFrame {
 		lblWelcheWrfelSollen.setBounds(89, 484, 273, 14);
 		pnl_rechts.add(lblWelcheWrfelSollen);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(0, 45, 555, 537);
-		pnl_rechts.add(lblNewLabel);
-		lblNewLabel.setBackground(new Color(139, 69, 19));
-		lblNewLabel.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/floor-1256804_1280.jpg")));
-		
-		//Wurefel Bilder einfügen 
-		ImageIcon img =
-				new ImageIcon("Bilder/wuerfel 1.png");
-		/*
-		JLabel lblNewLabel_1 = new JLabel("");
-		int zahl1 = 2;
-		 switch (zahl1) {
-         case 1:  lblNewLabel_1.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 150x50.png")));
-                  break;
-         case 2:  lblNewLabel_1.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 250x50.png")));
-                  break;
-         case 3:  lblNewLabel_1.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 350x50.png")));
-                  break;
-         case 4:  lblNewLabel_1.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 450x50.png")));
-                  break;
-         case 5:  lblNewLabel_1.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 550x50.png")));
-                  break;
-         case 6:  lblNewLabel_1.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 650x50.png")));
-         		  break;
-		 }
-		
-		panel_3.add(lblNewLabel_2);
-		*/
 		
 		//Panel 2 
 		pnl_buttons = new JPanel();
@@ -222,34 +199,39 @@ public class MainGui extends JFrame {
 		//würfelknopf (ruft würfelmethode aus würfelklasse auf)
 		btnWrfeln.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//checken, wie oft button geklickt
+				//checken, wie oft radiobutton geklickt
 				
-			for(int i = 1;i<=5;i++){	 
-				// Hier checken ob geblockt
-				// Hier die Würfel Methoden
-				
-				// Hier Bilder darstellen
-				würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 150x50.png")));
-				würfellabel[i].setBounds(176, 411, 56, 57);
-				pnl_rechts.add(würfellabel[i]);
-				
-				augenzahl[i] = KniffelSpiel.ermittleWürfel(i).getAugenzahl();
-				switch(augenzahl[i]){
-				case 1:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 150x50.png")));
-				         break;
-				case 2:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 250x50.png")));
-				         break;
-				case 3:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 350x50.png")));
-				         break;
-				case 4: würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 450x50.png")));
-				         break;
-				case 5:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 550x50.png")));
-				         break;
-				case 6:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 650x50.png")));
-						 break;
-				        }
+				//würfellabel und augenzahlarray
+				würfellabel = new JLabel[5];
+				int[] augenzahl = new int[5];
+				for(int i = 1;i<5;i++){	 
+					// Hier checken ob geblockt
 					
-				}//Ende For
+					// Hier die Würfel Methoden
+					würfellabel[i] = new JLabel();
+					würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 150x50.png")));
+					würfellabel[i].setBounds(176, 411, 56, 57);
+					pnl_rechts.add(würfellabel[i]);
+					// Hier Bilder darstellen
+					//augenzahl[i] = KniffelSpiel.ermittleWürfel(i).getAugenzahl();
+					switch(augenzahl[i]){
+					case 1:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 150x50.png")));
+	                break;
+					case 2:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 250x50.png")));
+	                break;
+					case 3:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 350x50.png")));
+	                break;
+					case 4:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 450x50.png")));
+	                break;
+					case 5:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 550x50.png")));
+	                break;
+					case 6:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 650x50.png")));
+					break;
+					        }
+					pnl_rechts.add(würfellabel[i]);
+					würfellabel[i].setVisible(true);
+						
+				}//Ende For 
 			
 				//Hier Regelprüfungen
 			
