@@ -22,6 +22,7 @@ import javax.swing.border.EtchedBorder;
 import java.awt.SystemColor;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
+import javax.swing.table.DefaultTableModel;
 
 public class MainGui extends JFrame {
 
@@ -31,6 +32,7 @@ public class MainGui extends JFrame {
 	private JButton btnClose;
 	private JButton btnHilfe;
 	JLabel[] würfellabel;
+	private JTable tbl_KniffelBlock;
 
 	/**
 	 * Launch the application.
@@ -97,6 +99,55 @@ public class MainGui extends JFrame {
 		pnl_links.setBounds(0, 0, 575, 595);
 		panel.add(pnl_links);
 		pnl_links.setLayout(null);
+		
+		
+		// Tabelle
+		tbl_KniffelBlock = new JTable();
+		tbl_KniffelBlock.setRowHeight(24);
+		tbl_KniffelBlock.setModel(new DefaultTableModel(
+			new Object[][] {
+				{"Einser", null, null, null, null, null, null},
+				{"Zweier", null, null, null, null, null, null},
+				{"Dreier", null, null, null, null, null, null},
+				{"Vierer", null, null, null, null, null, null},
+				{"F\u00FCnfer", null, null, null, null, null, null},
+				{"Sechser", null, null, null, null, null, null},
+				{"Gesamt", null, null, null, null, null, null},
+				{"Bonus", null, null, null, null, null, null},
+				{"Gesamt Oben", null, null, null, null, null, null},
+				{"Dreierpasch", null, null, null, null, null, null},
+				{"Viererpasch", null, null, null, null, null, null},
+				{"Full-House", null, null, null, null, null, null},
+				{"Kleine Stra\u00DFe", null, null, null, null, null, null},
+				{"Gro\u00DFe Stra\u00DFe", null, null, null, null, null, null},
+				{"Kniffel", null, null, null, null, null, null},
+				{"Chance", null, null, null, null, null, null},
+				{"Gesamt unten", null, null, null, null, null, null},
+				{"Gesamt oben", null, null, null, null, null, null},
+				{"Ergebnis", null, null, null, null, null, null},
+			},
+			new String[] {
+				"Regeln", "Spiel 1", "Spiel 2", "Spiel 3", "Spiel 4", "Spiel 5", "Spiel 6"
+			}
+		) {
+			boolean[] columnEditables = new boolean[] {
+				false, false, false, false, false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		tbl_KniffelBlock.getColumnModel().getColumn(0).setResizable(false);
+		tbl_KniffelBlock.getColumnModel().getColumn(1).setResizable(false);
+		tbl_KniffelBlock.getColumnModel().getColumn(2).setResizable(false);
+		tbl_KniffelBlock.getColumnModel().getColumn(3).setResizable(false);
+		tbl_KniffelBlock.getColumnModel().getColumn(4).setResizable(false);
+		tbl_KniffelBlock.getColumnModel().getColumn(5).setResizable(false);
+		tbl_KniffelBlock.getColumnModel().getColumn(6).setResizable(false);
+		tbl_KniffelBlock.setBounds(10, 104, 565, 456);
+		pnl_links.add(tbl_KniffelBlock);
+		//END TABLE
+		
 		
 		JLabel label_3 = new JLabel("Kniffelblock");
 		label_3.setForeground(Color.WHITE);
