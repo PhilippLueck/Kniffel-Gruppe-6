@@ -316,28 +316,91 @@ public class MainGui extends JFrame {
 			
 				//Hier Regelprüfungen
 			System.out.println("REGELPRÜFUNGEN");
+			
 			System.out.println("Einser : "+Regelwerk.einser());
+			tbl_KniffelBlock.setValueAt(Regelwerk.einser(), 1, 1);
+			
 			System.out.println("Zweier : "+Regelwerk.zweier());
+			tbl_KniffelBlock.setValueAt(Regelwerk.zweier(),2, 1);
+			
 			System.out.println("Dreier : "+Regelwerk.dreier());
+			tbl_KniffelBlock.setValueAt(Regelwerk.dreier(),3, 1);
+			
 			System.out.println("Vierer : "+Regelwerk.vierer());
+			tbl_KniffelBlock.setValueAt(Regelwerk.vierer(),4, 1);
+			
 			System.out.println("Fünfer : "+Regelwerk.fuenfer());
+			tbl_KniffelBlock.setValueAt(Regelwerk.fuenfer(),5, 1);
+			
 			System.out.println("Sechser : "+Regelwerk.sechser());
+			tbl_KniffelBlock.setValueAt(Regelwerk.sechser(),6, 1);
+			
 			System.out.println("Dreierpasch :"+ Regelwerk.dreierPasch());
-			System.out.println("Viererpsch: "+ Regelwerk.viererPasch());
+			tbl_KniffelBlock.setValueAt(Regelwerk.dreierPasch(),10, 1);
+			
+			System.out.println("Viererpasch: "+ Regelwerk.viererPasch());
+			tbl_KniffelBlock.setValueAt(Regelwerk.viererPasch(),11, 1);
+			
+			System.out.println("Full-House: "+ Regelwerk.fullHouse());
+			tbl_KniffelBlock.setValueAt(Regelwerk.fullHouse(), 12, 1);
+			
 			System.out.println("kleine Straße: "+ Regelwerk.kleineStraße());
+			tbl_KniffelBlock.setValueAt(Regelwerk.kleineStraße(),13, 1);
+			
 			System.out.println("große Straße: "+ Regelwerk.großeStraße());
+			tbl_KniffelBlock.setValueAt(Regelwerk.großeStraße(),14, 1);
+			
 			System.out.println("Kniffel :"+ Regelwerk.kniffel());
+			tbl_KniffelBlock.setValueAt(Regelwerk.kniffel(), 15, 1);
+			
 			System.out.println("Chance :"+ Regelwerk.chance());
+			tbl_KniffelBlock.setValueAt(Regelwerk.chance(),16, 1);
 			
 			//Würfelliste ausgeben
 			System.out.println("WÜRFEL ÜBERSCHRIEBEN");
 			KniffelSpiel.würfelListeAusgeben();
 			
 				
-			
-			
-				//Hier in Liste eintragen
+			//Hier in Liste eintragen
 		}});
+		// Radiobuttonsfunktionen
+		
+		//eins
+		rdbtn_w1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				würfel1.block(würfel1);
+			}
+		});
+		// zwei
+		rdbtn_w2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				würfel2.block(würfel2);
+			}
+		});
+		
+		//drei
+		rdbtn_w3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				würfel3.block(würfel3);
+			}
+		});
+		
+		//vier
+		rdbtn_w4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				würfel4.block(würfel4);
+			}
+		});
+		
+		//fünf
+		rdbtn_w5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				würfel5.block(würfel5);
+			}
+		});
+		
+		
+			
 		
 		}// Ende Main Gui Funktion
 }

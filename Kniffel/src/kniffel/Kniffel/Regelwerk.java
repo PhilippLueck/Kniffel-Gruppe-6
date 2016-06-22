@@ -191,7 +191,7 @@ public static int dreierPasch(){
 	Iterator<Würfel> WürfelIterator = KniffelSpiel.würfelListe.iterator();		
 	while(WürfelIterator.hasNext()){
 		Würfel selectedWürfel = WürfelIterator.next();
-		punkte = punkte + selectedWürfel.augenzahl;
+		punkte = punkte + selectedWürfel.getAugenzahl();
 		//Hier werden alle Zahlen geprüft, wenn da ++
 		switch(selectedWürfel.augenzahl){
 			case 1: einscount++;
@@ -226,7 +226,7 @@ public static int viererPasch(){
 	Iterator<Würfel> WürfelIterator = KniffelSpiel.würfelListe.iterator();		
 	while(WürfelIterator.hasNext()){
 		Würfel selectedWürfel = WürfelIterator.next();
-		punkte = punkte + selectedWürfel.augenzahl;
+		punkte = punkte + selectedWürfel.getAugenzahl();
 		//Hier werden alle Zahlen geprüft, wenn da ++
 		switch(selectedWürfel.augenzahl){
 		case 1: einscount++;
@@ -260,7 +260,7 @@ public static int fullHouse(){
 	Iterator<Würfel> WürfelIterator = KniffelSpiel.würfelListe.iterator();		
 	while(WürfelIterator.hasNext()){
 		Würfel selectedWürfel = WürfelIterator.next();
-		punkte = punkte + selectedWürfel.augenzahl;
+		punkte = punkte + selectedWürfel.getAugenzahl();
 		//Hier werden alle Zahlen geprüft, wenn da ++
 		switch(selectedWürfel.augenzahl){
 		case 1: einscount++;
@@ -303,7 +303,7 @@ public static int kniffel(){
 		Würfel selectedWürfel = WürfelIterator.next();
 
 		//Hier werden alle Zahlen geprüft, wenn da ++
-		switch(selectedWürfel.augenzahl){
+		switch(selectedWürfel.getAugenzahl()){
 		case 1: einscount++;
 				break;
 		case 2: zweicount++;
@@ -374,7 +374,7 @@ public static int chance(){
 	Iterator<Würfel> WürfelIterator = KniffelSpiel.würfelListe.iterator();		
 	while(WürfelIterator.hasNext()){
 	Würfel selectedWürfel = WürfelIterator.next();
-	punkte = punkte +selectedWürfel.augenzahl ;
+	punkte = punkte +selectedWürfel.getAugenzahl() ;
 	}
 	return punkte;
 }

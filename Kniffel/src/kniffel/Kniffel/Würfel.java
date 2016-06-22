@@ -67,12 +67,18 @@ public class Würfel extends KniffelSpiel implements Comparable<Würfel> {
 			System.out.println("Die gewürfelte Augenzahl: " + würfel.getAugenzahl());
 			KniffelSpiel.würfelHinzufügen(würfel);
 			};
-			
-			
-		
-	
 }
 
+	
+	public void block(Würfel würfel){
+		if (würfel.isBlocked()==true){
+			würfel.setBlocked(false);
+		}else{
+			würfel.setBlocked(true);
+		}	
+	}
+	
+	
 	// nach größe sotiert
 	@Override
 	public int compareTo(Würfel tmp) {
