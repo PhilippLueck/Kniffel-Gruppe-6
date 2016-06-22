@@ -23,6 +23,7 @@ import java.awt.SystemColor;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.border.MatteBorder;
 
 public class MainGui extends JFrame {
 
@@ -37,8 +38,8 @@ public class MainGui extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
+	//public static void main(String[] args) {
+		//EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					MainGui frame = new MainGui();
@@ -47,8 +48,8 @@ public class MainGui extends JFrame {
 					e.printStackTrace();
 				}
 			}
-		});
-	}
+		//});
+	//}
 
 	/**
 	 * Create the frame.
@@ -103,35 +104,38 @@ public class MainGui extends JFrame {
 		
 		// Tabelle
 		tbl_KniffelBlock = new JTable();
+		tbl_KniffelBlock.setBackground(SystemColor.menu);
+		tbl_KniffelBlock.setBorder(new MatteBorder(2, 2, 1, 1, (Color) new Color(0, 0, 0)));
 		tbl_KniffelBlock.setRowHeight(24);
 		tbl_KniffelBlock.setModel(new DefaultTableModel(
 			new Object[][] {
-				{"Einser", null, null, null, null, null, null},
-				{"Zweier", null, null, null, null, null, null},
-				{"Dreier", null, null, null, null, null, null},
-				{"Vierer", null, null, null, null, null, null},
-				{"F\u00FCnfer", null, null, null, null, null, null},
-				{"Sechser", null, null, null, null, null, null},
-				{"Gesamt", null, null, null, null, null, null},
-				{"Bonus", null, null, null, null, null, null},
-				{"Gesamt Oben", null, null, null, null, null, null},
-				{"Dreierpasch", null, null, null, null, null, null},
-				{"Viererpasch", null, null, null, null, null, null},
-				{"Full-House", null, null, null, null, null, null},
-				{"Kleine Stra\u00DFe", null, null, null, null, null, null},
-				{"Gro\u00DFe Stra\u00DFe", null, null, null, null, null, null},
-				{"Kniffel", null, null, null, null, null, null},
-				{"Chance", null, null, null, null, null, null},
-				{"Gesamt unten", null, null, null, null, null, null},
-				{"Gesamt oben", null, null, null, null, null, null},
-				{"Ergebnis", null, null, null, null, null, null},
+				{"Spieler", null, null, null, null, null, null, null, null},
+				{"Einser", null, null, null, null, null, null, null, null},
+				{"Zweier", null, null, null, null, null, null, null, null},
+				{"Dreier", null, null, null, null, null, null, null, null},
+				{"Vierer", null, null, null, null, null, null, null, null},
+				{"F\u00FCnfer", null, null, null, null, null, null, null, null},
+				{"Sechser", null, null, null, null, null, null, null, null},
+				{"Gesamt", null, null, null, null, null, null, null, null},
+				{"Bonus", null, null, null, null, null, null, null, null},
+				{"Gesamt Oben", null, null, null, null, null, null, null, null},
+				{"Dreierpasch", null, null, null, null, null, null, null, null},
+				{"Viererpasch", null, null, null, null, null, null, null, null},
+				{"Full-House", null, null, null, null, null, null, null, null},
+				{"Kleine Stra\u00DFe", null, null, null, null, null, null, null, null},
+				{"Gro\u00DFe Stra\u00DFe", null, null, null, null, null, null, null, null},
+				{"Kniffel", null, null, null, null, null, null, null, null},
+				{"Chance", null, null, null, null, null, null, null, null},
+				{"Gesamt unten", null, null, null, null, null, null, null, null},
+				{"Gesamt oben", null, null, null, null, null, null, null, null},
+				{"Ergebnis", null, null, null, null, null, null, null, null},
 			},
 			new String[] {
-				"Regeln", "Spiel 1", "Spiel 2", "Spiel 3", "Spiel 4", "Spiel 5", "Spiel 6"
+				"Regeln", "Spiel 1", "Spiel 2", "Spiel 3", "Spiel 4", "Spiel 5", "Spiel 6", "Spiel 7", "Spiel 8"
 			}
 		) {
 			boolean[] columnEditables = new boolean[] {
-				false, false, false, false, false, false, false
+				false, false, false, false, false, false, false, true, true
 			};
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
@@ -144,7 +148,7 @@ public class MainGui extends JFrame {
 		tbl_KniffelBlock.getColumnModel().getColumn(4).setResizable(false);
 		tbl_KniffelBlock.getColumnModel().getColumn(5).setResizable(false);
 		tbl_KniffelBlock.getColumnModel().getColumn(6).setResizable(false);
-		tbl_KniffelBlock.setBounds(10, 104, 565, 456);
+		tbl_KniffelBlock.setBounds(10, 108, 565, 456);
 		pnl_links.add(tbl_KniffelBlock);
 		//END TABLE
 		
@@ -203,8 +207,9 @@ public class MainGui extends JFrame {
 		pnl_rechts.add(rdbtn_w5);
 		
 		JLabel lblWelcheWrfelSollen = new JLabel("Welche W\u00FCrfel sollen stehen bleiben:");
+		lblWelcheWrfelSollen.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblWelcheWrfelSollen.setForeground(Color.WHITE);
-		lblWelcheWrfelSollen.setBounds(89, 484, 273, 14);
+		lblWelcheWrfelSollen.setBounds(80, 479, 273, 14);
 		pnl_rechts.add(lblWelcheWrfelSollen);
 		
 		JLabel label_1 = new JLabel("Kniffel");
@@ -264,7 +269,7 @@ public class MainGui extends JFrame {
 				KniffelSpiel.würfelListeAusgeben();
 				
 				//Würfeln
-				
+				System.out.println("WÜRFEL DA?");
 				würfel1.würfeln(würfel1);
 				würfel1.würfeln(würfel2);
 				würfel1.würfeln(würfel3);
@@ -310,10 +315,29 @@ public class MainGui extends JFrame {
 				}//Ende For 
 			
 				//Hier Regelprüfungen
+			System.out.println("REGELPRÜFUNGEN");
+			System.out.println("Einser : "+Regelwerk.einser());
+			System.out.println("Zweier : "+Regelwerk.zweier());
+			System.out.println("Dreier : "+Regelwerk.dreier());
+			System.out.println("Vierer : "+Regelwerk.vierer());
+			System.out.println("Fünfer : "+Regelwerk.fuenfer());
+			System.out.println("Sechser : "+Regelwerk.sechser());
+			System.out.println("Dreierpasch :"+ Regelwerk.dreierPasch());
+			System.out.println("Viererpsch: "+ Regelwerk.viererPasch());
+			System.out.println("kleine Straße: "+ Regelwerk.kleineStraße());
+			System.out.println("große Straße: "+ Regelwerk.großeStraße());
+			System.out.println("Kniffel :"+ Regelwerk.kniffel());
+			System.out.println("Chance :"+ Regelwerk.chance());
+			
+			//Würfelliste ausgeben
+			System.out.println("WÜRFEL ÜBERSCHRIEBEN");
+			KniffelSpiel.würfelListeAusgeben();
+			
+				
 			
 			
 				//Hier in Liste eintragen
 		}});
 		
-		}
+		}// Ende Main Gui Funktion
 }

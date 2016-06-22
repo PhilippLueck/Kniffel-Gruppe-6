@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.text.ParseException;
 import java.util.Iterator;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
@@ -21,6 +22,7 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane.CloseAction;
+import javax.swing.text.MaskFormatter;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -94,6 +96,13 @@ public class Start extends JFrame {
 		 this.labels = new JLabel[8];
 		 this.player_names = new String[8];
 		 
+		 //Maskformatter für Textfelder
+		 try {
+			MaskFormatter formatter = new MaskFormatter("????????????????????");
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		 
 		 //Schleife, für jeden Player ein neues Textfeld
 		 for(int i = 0; i < players.length; i++){
@@ -280,6 +289,8 @@ public class Start extends JFrame {
        JButton btn_instruction = new JButton("Anleitung");
        btn_instruction.setBounds(311, 17, 198, 46);
        pnl_head.add(btn_instruction);
+       
+       
        
        //Öffnet Anleitung
      /*  btn_instruction.addActionListener(new ActionListener() {

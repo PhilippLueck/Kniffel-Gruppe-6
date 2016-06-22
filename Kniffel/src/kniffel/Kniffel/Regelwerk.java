@@ -55,11 +55,12 @@ public static void setExists(boolean exists) {
 public static int einser(){
 	//Punkte zurücksetzen
 	punkte =0;
+	zahlenCount=0;
 	//jetzt Liste durchlaufen
 	Iterator<Würfel> WürfelIterator = KniffelSpiel.würfelListe.iterator();		
 	while(WürfelIterator.hasNext()){
 		Würfel selectedWürfel = WürfelIterator.next();
-		if(selectedWürfel.augenzahl==1){
+		if(selectedWürfel.getAugenzahl()==1){
 			zahlenCount++;
 		}
 	}//Ende While
@@ -76,11 +77,12 @@ public static int einser(){
 public static int zweier(){
 	//Punkte zurücksetzen
 	punkte =0;
+	zahlenCount=0;
 	//jetzt Liste durchlaufen
 	Iterator<Würfel> WürfelIterator = KniffelSpiel.würfelListe.iterator();		
 	while(WürfelIterator.hasNext()){
 		Würfel selectedWürfel = WürfelIterator.next();
-		if(selectedWürfel.augenzahl==2){
+		if(selectedWürfel.getAugenzahl()==2){
 			zahlenCount++;
 		}
 	}//Ende While
@@ -97,11 +99,12 @@ public static int zweier(){
 public static int dreier(){
 	//Punkte zurücksetzen
 	punkte =0;
+	zahlenCount=0;
 	//jetzt Liste durchlaufen
 	Iterator<Würfel> WürfelIterator = KniffelSpiel.würfelListe.iterator();		
 	while(WürfelIterator.hasNext()){
 		Würfel selectedWürfel = WürfelIterator.next();
-		if(selectedWürfel.augenzahl==3){
+		if(selectedWürfel.getAugenzahl()==3){
 			zahlenCount++;
 		}
 	}//Ende While
@@ -117,11 +120,12 @@ public static int dreier(){
 public static int vierer(){
 	//Punkte zurücksetzen
 	punkte =0;
+	zahlenCount=0;
 	//jetzt Liste durchlaufen
 	Iterator<Würfel> WürfelIterator = KniffelSpiel.würfelListe.iterator();		
 	while(WürfelIterator.hasNext()){
 		Würfel selectedWürfel = WürfelIterator.next();
-		if(selectedWürfel.augenzahl==4){
+		if(selectedWürfel.getAugenzahl()==4){
 			zahlenCount++;
 		}
 	}//Ende While
@@ -137,11 +141,12 @@ public static int vierer(){
 public static int fuenfer(){
 	//Punkte zurücksetzen
 	punkte =0;
+	zahlenCount=0;
 	//jetzt Liste durchlaufen
 	Iterator<Würfel> WürfelIterator = KniffelSpiel.würfelListe.iterator();		
 	while(WürfelIterator.hasNext()){
 		Würfel selectedWürfel = WürfelIterator.next();
-		if(selectedWürfel.augenzahl==5){
+		if(selectedWürfel.getAugenzahl()==5){
 			zahlenCount++;
 		}
 	}//Ende While
@@ -158,11 +163,12 @@ public static int fuenfer(){
 public static int sechser(){
 	//Punkte zurücksetzen
 	punkte =0;
+	zahlenCount=0;
 	//jetzt Liste durchlaufen
 	Iterator<Würfel> WürfelIterator = KniffelSpiel.würfelListe.iterator();		
 	while(WürfelIterator.hasNext()){
 		Würfel selectedWürfel = WürfelIterator.next();
-		if(selectedWürfel.augenzahl==6){
+		if(selectedWürfel.getAugenzahl()==6){
 			zahlenCount++;
 		}
 	}//Ende While
@@ -180,6 +186,7 @@ public static int sechser(){
 //3er pasch
 public static int dreierPasch(){
 	punkte =0;
+	zahlenCount=0;
 	int einscount=0,zweicount=0,dreicount=0,viercount=0,fünfcount=0,sechscount=0;
 	Iterator<Würfel> WürfelIterator = KniffelSpiel.würfelListe.iterator();		
 	while(WürfelIterator.hasNext()){
@@ -214,6 +221,7 @@ public static int dreierPasch(){
 
 public static int viererPasch(){
 	punkte =0;
+	zahlenCount=0;
 	int einscount=0,zweicount=0,dreicount=0,viercount=0,fünfcount=0,sechscount=0;
 	Iterator<Würfel> WürfelIterator = KniffelSpiel.würfelListe.iterator();		
 	while(WürfelIterator.hasNext()){
@@ -245,6 +253,7 @@ public static int viererPasch(){
 
 //FullHouse
 public static int fullHouse(){
+	
 	punkte =0;
 	int einscount=0,zweicount=0,dreicount=0,viercount=0,fünfcount=0,sechscount=0;
 	boolean hasdrei=false, haszwei=false;
