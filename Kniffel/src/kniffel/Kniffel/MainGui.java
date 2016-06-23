@@ -37,7 +37,7 @@ public class MainGui extends JFrame {
 	JLabel[] würfellabel;
 	private JTable tbl_KniffelBlock;
 	private Regelwerk Regelwerk = new Regelwerk();
-	private boolean[][] tableBlock= new boolean[8][12];
+	private boolean[][] tableBlock= new boolean[(KniffelSpiel.spielerCount())][12];
 	private  int wurfCounter =0;
 	/**
 	 * Launch the application.
@@ -69,7 +69,6 @@ public class MainGui extends JFrame {
 		contentPane.setLayout(null);
 		
 		// Würfel erstellen
-		
 		Würfel würfel1 = new Würfel(1,0, 0, false);
 		Würfel würfel2 = new Würfel(2,0, 0, false);
 		Würfel würfel3 = new Würfel(3,0, 0, false);
@@ -81,6 +80,15 @@ public class MainGui extends JFrame {
 		KniffelSpiel.würfelHinzufügen(würfel3);
 		KniffelSpiel.würfelHinzufügen(würfel4);
 		KniffelSpiel.würfelHinzufügen(würfel5);
+		
+		
+		//Array befüllen, was Jtable Zellen simuliert
+		for (int x =0; x<tableBlock.length;x++){
+			for (int y=0; y< 12;y++){
+				tableBlock[x][y]= false;
+			}
+		}
+		
 		
 		//würfellabel 
 		würfellabel = new JLabel[6];

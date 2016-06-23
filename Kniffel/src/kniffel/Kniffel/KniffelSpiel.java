@@ -41,7 +41,7 @@ public static boolean spielerHinzufügen(String name, int spielerID, int punkte, 
 }
 
 public static int spielerCount(){
-	return (spielerListe.size());
+	return (spielerListe.last().getSpielerID());
 }
 
 public static boolean  würfelHinzufügen(Würfel würfel){
