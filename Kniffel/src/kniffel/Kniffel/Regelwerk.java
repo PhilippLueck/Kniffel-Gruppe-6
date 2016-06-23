@@ -5,43 +5,47 @@ import java.util.Iterator;
 
 public  class Regelwerk extends KniffelSpiel {
 
-private static int zahlenCount;
-private static int punkte;
-private static String zahlenStrahl;
-private static boolean exists;
+private  int zahlenCount;
+private  int punkte;
+private  String zahlenStrahl;
+private  boolean exists;
+
+
+
+
 
 //Getter und Setters mit Logik befüllen (da sie statisch sind können sie überall geändert werden, also aufpassen) blub
 
-public static int getZahlenCount() {
+public  int getZahlenCount() {
 	return zahlenCount;
 }
 
-public static void setZahlenCount(int zahlenCount) {
-	Regelwerk.zahlenCount = zahlenCount;
+public  void setZahlenCount(int zahlenCount) {
+	this.zahlenCount = zahlenCount;
 }
 
-public static int getPunkte() {
+public  int getPunkte() {
 	return punkte;
 }
 
-public static void setPunkte(int punkte) {
-	Regelwerk.punkte = punkte;
+public  void setPunkte(int punkte) {
+	this.punkte = punkte;
 }
 
-public static String getZahlenStrahl() {
+public  String getZahlenStrahl() {
 	return zahlenStrahl;
 }
 
-public static void setZahlenStrahl(String zahlenStrahl) {
-	Regelwerk.zahlenStrahl = zahlenStrahl;
+public  void setZahlenStrahl(String zahlenStrahl) {
+	this.zahlenStrahl = zahlenStrahl;
 }
 
-public static boolean isExists() {
+public  boolean isExists() {
 	return exists;
 }
 
-public static void setExists(boolean exists) {
-	Regelwerk.exists = exists;
+public  void setExists(boolean exists) {
+	this.exists = exists;
 }
 
 
@@ -52,7 +56,7 @@ public static void setExists(boolean exists) {
 
 /*---------------------------------------------------------------------------------------------------------------------------------------*/
 //1er
-public static int einser(){
+public  int einser(){
 	//Punkte zurücksetzen
 	punkte =0;
 	zahlenCount=0;
@@ -74,7 +78,7 @@ public static int einser(){
 }
 	
 //2er
-public static int zweier(){
+public  int zweier(){
 	//Punkte zurücksetzen
 	punkte =0;
 	zahlenCount=0;
@@ -96,7 +100,7 @@ public static int zweier(){
 }
 	
 //3er
-public static int dreier(){
+public  int dreier(){
 	//Punkte zurücksetzen
 	punkte =0;
 	zahlenCount=0;
@@ -117,7 +121,7 @@ public static int dreier(){
 	return punkte;
 }	
 //4er
-public static int vierer(){
+public  int vierer(){
 	//Punkte zurücksetzen
 	punkte =0;
 	zahlenCount=0;
@@ -138,7 +142,7 @@ public static int vierer(){
 	return punkte;
 }
 //5er
-public static int fuenfer(){
+public  int fuenfer(){
 	//Punkte zurücksetzen
 	punkte =0;
 	zahlenCount=0;
@@ -160,7 +164,7 @@ public static int fuenfer(){
 }
 	
 //6er
-public static int sechser(){
+public  int sechser(){
 	//Punkte zurücksetzen
 	punkte =0;
 	zahlenCount=0;
@@ -184,7 +188,7 @@ public static int sechser(){
 
 	
 //3er pasch
-public static int dreierPasch(){
+public  int dreierPasch(){
 	punkte =0;
 	zahlenCount=0;
 	int einscount=0,zweicount=0,dreicount=0,viercount=0,fünfcount=0,sechscount=0;
@@ -219,7 +223,7 @@ public static int dreierPasch(){
 	
 //4er Pasch
 
-public static int viererPasch(){
+public  int viererPasch(){
 	punkte =0;
 	zahlenCount=0;
 	int einscount=0,zweicount=0,dreicount=0,viercount=0,fünfcount=0,sechscount=0;
@@ -252,7 +256,7 @@ public static int viererPasch(){
 }
 
 //FullHouse
-public static int fullHouse(){
+public  int fullHouse(){
 	
 	punkte =0;
 	int einscount=0,zweicount=0,dreicount=0,viercount=0,fünfcount=0,sechscount=0;
@@ -295,7 +299,7 @@ public static int fullHouse(){
 
 
 //Kniffel
-public static int kniffel(){
+public  int kniffel(){
 	punkte =0;
 	int einscount=0,zweicount=0,dreicount=0,viercount=0,fünfcount=0,sechscount=0;
 	Iterator<Würfel> WürfelIterator = KniffelSpiel.würfelListe.iterator();		
@@ -327,7 +331,7 @@ public static int kniffel(){
 }
 	
 //kleine Straße
-public static int kleineStraße(){
+public  int kleineStraße(){
 	exists= false;
 	//Punkte zurücksetzen
 	punkte =0;
@@ -348,7 +352,7 @@ public static int kleineStraße(){
 }
 	
 //große Straße
-public static int großeStraße(){
+public  int großeStraße(){
 	exists= false;
 	//Punkte zurücksetzen
 	punkte =0;
@@ -369,7 +373,7 @@ public static int großeStraße(){
 }
 	
 //chance
-public static int chance(){
+public  int chance(){
 	punkte = 0;
 	Iterator<Würfel> WürfelIterator = KniffelSpiel.würfelListe.iterator();		
 	while(WürfelIterator.hasNext()){

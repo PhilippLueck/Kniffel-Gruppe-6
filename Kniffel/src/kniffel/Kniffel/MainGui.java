@@ -34,6 +34,7 @@ public class MainGui extends JFrame {
 	private JButton btnHilfe;
 	JLabel[] würfellabel;
 	private JTable tbl_KniffelBlock;
+	private Regelwerk Regelwerk = new Regelwerk();
 
 	/**
 	 * Launch the application.
