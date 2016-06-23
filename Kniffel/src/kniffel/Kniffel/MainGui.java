@@ -15,6 +15,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JRadioButton;
 import javax.swing.border.TitledBorder;
@@ -35,7 +37,8 @@ public class MainGui extends JFrame {
 	JLabel[] würfellabel;
 	private JTable tbl_KniffelBlock;
 	private Regelwerk Regelwerk = new Regelwerk();
-
+	private boolean[][] tableBlock= new boolean[8][12];
+	private  int wurfCounter =0;
 	/**
 	 * Launch the application.
 	 */
@@ -263,105 +266,112 @@ public class MainGui extends JFrame {
 		//würfelknopf (ruft würfelmethode aus würfelklasse auf)
 		btnWrfeln.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//checken, wie oft radiobutton geklickt
+				if(wurfCounter==3){
+					JOptionPane.showMessageDialog(null, "bitte Werte eintragen, schon 3 mal gewürfelt!");
+					btnWrfeln.setEnabled(false);
+				}else{
+					//checken, wie oft radiobutton geklickt
+					
+					
+					//Würfelliste ausgeben
+					KniffelSpiel.würfelListeAusgeben();
+					
+					//Würfeln
+					System.out.println("WÜRFEL DA?");
+					würfel1.würfeln(würfel1);
+					würfel1.würfeln(würfel2);
+					würfel1.würfeln(würfel3);
+					würfel1.würfeln(würfel4);
+					würfel1.würfeln(würfel5);
+					
+					//Jetzt Schleife für Bilder
+					for(int i = 1;i<würfellabel.length;i++){	 
+						
+						
+						//Bounds setzen
+						switch(i){
+						case 1: würfellabel[i].setBounds(60, 411, 56, 57);
+						break;
+						case 2: würfellabel[i].setBounds(120, 411, 56, 57);
+						break;
+						case 3:würfellabel[i].setBounds(180, 411, 56, 57);
+						break;
+						case 4: würfellabel[i].setBounds(240, 411, 56, 57);
+						break;
+						case 5: würfellabel[i].setBounds(300, 411, 56, 57);		
+						break;
+						}
+						pnl_rechts.add(würfellabel[i]);
+						int augenzahl =KniffelSpiel.ermittleWürfel(i).getAugenzahl();
+						switch(augenzahl){
+						case 1:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 150x50.png")));
+		                break;
+						case 2:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 250x50.png")));
+		                break;
+						case 3:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 350x50.png")));
+		                break;
+						case 4:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 450x50.png")));
+		                break;
+						case 5:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 550x50.png")));
+		                break;
+						case 6:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 650x50.png")));
+						break;
+						        }
+						lbl_rechts.add(würfellabel[i]);
+						würfellabel[i].setVisible(true);
+							
+					}//Ende For 
 				
+					//Hier Regelprüfungen
+				System.out.println("REGELPRÜFUNGEN");
+				
+				System.out.println("Einser : "+Regelwerk.einser());
+				tbl_KniffelBlock.setValueAt(Regelwerk.einser(), 1, 1);
+				
+				System.out.println("Zweier : "+Regelwerk.zweier());
+				tbl_KniffelBlock.setValueAt(Regelwerk.zweier(),2, 1);
+				
+				System.out.println("Dreier : "+Regelwerk.dreier());
+				tbl_KniffelBlock.setValueAt(Regelwerk.dreier(),3, 1);
+				
+				System.out.println("Vierer : "+Regelwerk.vierer());
+				tbl_KniffelBlock.setValueAt(Regelwerk.vierer(),4, 1);
+				
+				System.out.println("Fünfer : "+Regelwerk.fuenfer());
+				tbl_KniffelBlock.setValueAt(Regelwerk.fuenfer(),5, 1);
+				
+				System.out.println("Sechser : "+Regelwerk.sechser());
+				tbl_KniffelBlock.setValueAt(Regelwerk.sechser(),6, 1);
+				
+				System.out.println("Dreierpasch :"+ Regelwerk.dreierPasch());
+				tbl_KniffelBlock.setValueAt(Regelwerk.dreierPasch(),10, 1);
+				
+				System.out.println("Viererpasch: "+ Regelwerk.viererPasch());
+				tbl_KniffelBlock.setValueAt(Regelwerk.viererPasch(),11, 1);
+				
+				System.out.println("Full-House: "+ Regelwerk.fullHouse());
+				tbl_KniffelBlock.setValueAt(Regelwerk.fullHouse(), 12, 1);
+				
+				System.out.println("kleine Straße: "+ Regelwerk.kleineStraße());
+				tbl_KniffelBlock.setValueAt(Regelwerk.kleineStraße(),13, 1);
+				
+				System.out.println("große Straße: "+ Regelwerk.großeStraße());
+				tbl_KniffelBlock.setValueAt(Regelwerk.großeStraße(),14, 1);
+				
+				System.out.println("Kniffel :"+ Regelwerk.kniffel());
+				tbl_KniffelBlock.setValueAt(Regelwerk.kniffel(), 15, 1);
+				
+				System.out.println("Chance :"+ Regelwerk.chance());
+				tbl_KniffelBlock.setValueAt(Regelwerk.chance(),16, 1);
 				
 				//Würfelliste ausgeben
+				System.out.println("WÜRFEL ÜBERSCHRIEBEN");
 				KniffelSpiel.würfelListeAusgeben();
 				
-				//Würfeln
-				System.out.println("WÜRFEL DA?");
-				würfel1.würfeln(würfel1);
-				würfel1.würfeln(würfel2);
-				würfel1.würfeln(würfel3);
-				würfel1.würfeln(würfel4);
-				würfel1.würfeln(würfel5);
 				
-				//Jetzt Schleife für Bilder
-				for(int i = 1;i<würfellabel.length;i++){	 
-					
-					
-					//Bounds setzen
-					switch(i){
-					case 1: würfellabel[i].setBounds(60, 411, 56, 57);
-					break;
-					case 2: würfellabel[i].setBounds(120, 411, 56, 57);
-					break;
-					case 3:würfellabel[i].setBounds(180, 411, 56, 57);
-					break;
-					case 4: würfellabel[i].setBounds(240, 411, 56, 57);
-					break;
-					case 5: würfellabel[i].setBounds(300, 411, 56, 57);		
-					break;
-					}
-					pnl_rechts.add(würfellabel[i]);
-					int augenzahl =KniffelSpiel.ermittleWürfel(i).getAugenzahl();
-					switch(augenzahl){
-					case 1:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 150x50.png")));
-	                break;
-					case 2:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 250x50.png")));
-	                break;
-					case 3:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 350x50.png")));
-	                break;
-					case 4:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 450x50.png")));
-	                break;
-					case 5:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 550x50.png")));
-	                break;
-					case 6:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 650x50.png")));
-					break;
-					        }
-					lbl_rechts.add(würfellabel[i]);
-					würfellabel[i].setVisible(true);
-						
-				}//Ende For 
+				}//Ende if, die prüft ob schon 3 mal gewürfelt
 			
-				//Hier Regelprüfungen
-			System.out.println("REGELPRÜFUNGEN");
-			
-			System.out.println("Einser : "+Regelwerk.einser());
-			tbl_KniffelBlock.setValueAt(Regelwerk.einser(), 1, 1);
-			
-			System.out.println("Zweier : "+Regelwerk.zweier());
-			tbl_KniffelBlock.setValueAt(Regelwerk.zweier(),2, 1);
-			
-			System.out.println("Dreier : "+Regelwerk.dreier());
-			tbl_KniffelBlock.setValueAt(Regelwerk.dreier(),3, 1);
-			
-			System.out.println("Vierer : "+Regelwerk.vierer());
-			tbl_KniffelBlock.setValueAt(Regelwerk.vierer(),4, 1);
-			
-			System.out.println("Fünfer : "+Regelwerk.fuenfer());
-			tbl_KniffelBlock.setValueAt(Regelwerk.fuenfer(),5, 1);
-			
-			System.out.println("Sechser : "+Regelwerk.sechser());
-			tbl_KniffelBlock.setValueAt(Regelwerk.sechser(),6, 1);
-			
-			System.out.println("Dreierpasch :"+ Regelwerk.dreierPasch());
-			tbl_KniffelBlock.setValueAt(Regelwerk.dreierPasch(),10, 1);
-			
-			System.out.println("Viererpasch: "+ Regelwerk.viererPasch());
-			tbl_KniffelBlock.setValueAt(Regelwerk.viererPasch(),11, 1);
-			
-			System.out.println("Full-House: "+ Regelwerk.fullHouse());
-			tbl_KniffelBlock.setValueAt(Regelwerk.fullHouse(), 12, 1);
-			
-			System.out.println("kleine Straße: "+ Regelwerk.kleineStraße());
-			tbl_KniffelBlock.setValueAt(Regelwerk.kleineStraße(),13, 1);
-			
-			System.out.println("große Straße: "+ Regelwerk.großeStraße());
-			tbl_KniffelBlock.setValueAt(Regelwerk.großeStraße(),14, 1);
-			
-			System.out.println("Kniffel :"+ Regelwerk.kniffel());
-			tbl_KniffelBlock.setValueAt(Regelwerk.kniffel(), 15, 1);
-			
-			System.out.println("Chance :"+ Regelwerk.chance());
-			tbl_KniffelBlock.setValueAt(Regelwerk.chance(),16, 1);
-			
-			//Würfelliste ausgeben
-			System.out.println("WÜRFEL ÜBERSCHRIEBEN");
-			KniffelSpiel.würfelListeAusgeben();
-			
-				
+				wurfCounter++;
 			//Hier in Liste eintragen
 		}});
 		// Radiobuttonsfunktionen

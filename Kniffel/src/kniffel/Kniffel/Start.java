@@ -165,6 +165,7 @@ public class Start extends JFrame {
 			public void actionPerformed(ActionEvent e) {				
 				 
 				 int spieleranzahl = Integer.parseInt((String)cb_playernumber.getSelectedItem());
+				 
 				 System.out.println("Spieleranzahl: "+ spieleranzahl );
 				 for (int i = 0; i < 8; i++) {
 					 if(i <spieleranzahl){

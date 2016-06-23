@@ -38,8 +38,10 @@ public static boolean spielerHinzufügen(String name, int spielerID, int punkte, 
 			JOptionPane.showMessageDialog(null, "Spieler konnte nicht hinzugefügt werden");
 			return false;
 		}
-	
-	
+}
+
+public static int spielerCount(){
+	return (spielerListe.size());
 }
 
 public static boolean  würfelHinzufügen(Würfel würfel){
