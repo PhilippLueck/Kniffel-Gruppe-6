@@ -1,6 +1,20 @@
 package kniffel.Kniffel;
+import java.io.File;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -10,9 +24,15 @@ import javax.swing.JTable;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 import javax.swing.UIManager;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.InputStream;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -44,6 +64,27 @@ public class MainGui extends JFrame {
 	 */
 	//public static void main(String[] args) {
 		//EventQueue.invokeLater(new Runnable() {
+	//Sounds Allgemein
+	 public void playSound(String soundName)
+     {
+       try 
+       {
+        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioInputStream);
+        clip.start();
+       }
+       catch(Exception ex)
+       {
+         System.out.println("Error with playing sound.");
+         ex.printStackTrace( );
+       }
+     }
+	
+	//Sounds Allgemein Ende
+	
+	
+	
 			public void run() {
 				try {
 					MainGui frame = new MainGui();
@@ -58,7 +99,10 @@ public class MainGui extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	
+			
+			
+			
+			
 	// Main frame
 	public MainGui() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -181,7 +225,7 @@ public class MainGui extends JFrame {
 		lblNewLabel_2.setBounds(216, 262, 402, 47);
 		pnl_links.add(lblNewLabel_2);
 		lblNewLabel_2.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/floor-1256804_1280.jpg")));repaint();
-		
+	
 		
 		//Panel 3 placed on panel1
 		pnl_rechts = new JPanel();
@@ -273,11 +317,18 @@ public class MainGui extends JFrame {
 		
 		//würfelknopf (ruft würfelmethode aus würfelklasse auf)
 		btnWrfeln.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+						public void actionPerformed(ActionEvent arg0) {
+				
 				if(wurfCounter==3){
 					JOptionPane.showMessageDialog(null, "bitte Werte eintragen, schon 3 mal gewürfelt!");
 					btnWrfeln.setEnabled(false);
 				}else{
+				//Sound
+				playSound("C:/Users/IBM_ADMIN/git/New folder (5)/Kniffel-Gruppe-6/Kniffel/src/kniffel/Kniffel/Sound/Shake And Roll Dice-SoundBible.com-591494296.wav");
+				
+				//Ende Sound
+
+
 					//checken, wie oft radiobutton geklickt
 					
 					
