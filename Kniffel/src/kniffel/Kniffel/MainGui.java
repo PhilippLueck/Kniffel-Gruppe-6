@@ -164,6 +164,11 @@ public class MainGui extends JFrame {
 		pnl_links.add(tbl_KniffelBlock);
 		//END TABLE
 		
+		//Spieler in Tabelle eintragen
+		for(int i = 1; i<=KniffelSpiel.spielerCount();i++){
+		tbl_KniffelBlock.setValueAt(KniffelSpiel.ermittleSpieler(i).getName(),0, i);
+		}
+		
 		
 		JLabel label_3 = new JLabel("Kniffelblock");
 		label_3.setForeground(Color.WHITE);

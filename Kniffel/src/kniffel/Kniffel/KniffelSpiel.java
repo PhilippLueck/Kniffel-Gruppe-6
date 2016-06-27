@@ -44,6 +44,19 @@ public static int spielerCount(){
 	return (spielerListe.last().getSpielerID());
 }
 
+public static Spieler ermittleSpieler( int spielernummer){
+	
+	Spieler tmp = new Spieler("__", spielernummer, 0,0);
+	
+	if (spielerListe.contains(tmp))
+		tmp = spielerListe.floor(tmp);
+	else
+		tmp = null;
+	
+	return tmp;
+
+}// Ende ermittle Würfel
+
 public static boolean  würfelHinzufügen(Würfel würfel){
 	try {
 		if(würfel.getWürfelnummer()==0||würfel.getAugenzahl()<0||würfel.getAugenzahl()>6||würfel.getWurf()<0){
