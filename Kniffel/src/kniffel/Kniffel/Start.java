@@ -117,6 +117,10 @@ public class Start extends JFrame {
 			 labels[i].setVisible(false);
 		 }
 		 
+		 //Spieler 1 aber schon visible setzen
+		 
+		 players[0].setVisible(true);
+		 labels[0].setVisible(true);
 		 
 
 		//playerhead, also playerlist Überschrift
