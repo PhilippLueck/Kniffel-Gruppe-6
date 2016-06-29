@@ -303,6 +303,8 @@ public class MainGui extends JFrame {
 		lblKniffelAktion.setBounds(76, 146, 240, 191);
 		pnl_rechts.add(lblKniffelAktion);
 		lblKniffelAktion.setVisible(false);
+	
+		
 		
 		//hintergrund 
 		
