@@ -40,6 +40,8 @@ import javax.swing.JOptionPane;
 import java.awt.Font;
 import javax.swing.JRadioButton;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.border.EtchedBorder;
 import java.awt.SystemColor;
 import javax.swing.border.SoftBevelBorder;
@@ -54,14 +56,18 @@ public class MainGui extends JFrame {
 	private JPanel pnl_rechts;
 	private JButton btnClose;
 	private JButton btnHilfe;
-	JLabel[] würfellabel;
+	private JLabel[] würfellabel;
 	private JTable tbl_KniffelBlock;
 	private Regelwerk Regelwerk = new Regelwerk();
-	private boolean[][] tableBlock= new boolean[(KniffelSpiel.spielerCount())][12];
+	private boolean[][] tableBlock= new boolean[(KniffelSpiel.spielerCount())][13];
+	private int[] regelArray = new int[13];
 	private  int wurfCounter =0;
+	private boolean gewürfelt = false;
+	private boolean zugEnde = false;
 	/**
 	 * Launch the application.
 	 */
+	
 	//public static void main(String[] args) {
 		//EventQueue.invokeLater(new Runnable() {
 	//Sounds Allgemein
@@ -82,9 +88,6 @@ public class MainGui extends JFrame {
      }
 	
 	//Sounds Allgemein Ende
-	
-	
-	
 			public void run() {
 				try {
 					MainGui frame = new MainGui();
@@ -98,10 +101,7 @@ public class MainGui extends JFrame {
 
 	/**
 	 * Create the frame.
-	 */
-			
-			
-			
+	 */	
 			
 	// Main frame
 	public MainGui() {
@@ -125,11 +125,27 @@ public class MainGui extends JFrame {
 		KniffelSpiel.würfelHinzufügen(würfel4);
 		KniffelSpiel.würfelHinzufügen(würfel5);
 		
+		//Regelarray befüllen
+		regelArray[0]= Regelwerk.einser();
+		regelArray[1]= Regelwerk.zweier();
+		regelArray[2]= Regelwerk.dreier();
+		regelArray[3]= Regelwerk.vierer();
+		regelArray[4]= Regelwerk.fuenfer();
+		regelArray[5]= Regelwerk.sechser();
+		regelArray[6]= Regelwerk.dreierPasch();
+		regelArray[7]= Regelwerk.viererPasch();
+		regelArray[8]= Regelwerk.fullHouse();
+		regelArray[9]= Regelwerk.kleineStraße();
+		regelArray[10]= Regelwerk.großeStraße();
+		regelArray[11]= Regelwerk.kniffel();
+		regelArray[12]= Regelwerk.chance();
 		
-		//Array befüllen, was Jtable Zellen simuliert
+		
+		//Kniffelblock Array befüllen, was Jtable Zellen simuliert
 		for (int x =0; x<tableBlock.length;x++){
-			for (int y=0; y< 12;y++){
+			for (int y=0; y< 13;y++){
 				tableBlock[x][y]= false;
+				System.out.println("x: "+ x+ " y: " + y + ""+tableBlock[x][y]);
 			}
 		}
 		
@@ -296,13 +312,6 @@ public class MainGui extends JFrame {
 		
 		//Button placed on panel 2 + Actionlistener
 		btnClose = new JButton("Beenden");
-		
-		//Action Listener
-		btnClose.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {System.exit( 0 );
-			}
-		});
-		
 		btnClose.setBounds(303, 11, 89, 23);
 		pnl_buttons.add(btnClose);
 		
@@ -324,24 +333,15 @@ public class MainGui extends JFrame {
 		btnWrfeln.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent arg0) {
 				
-				if(wurfCounter==3){
-					JOptionPane.showMessageDialog(null, "bitte Werte eintragen, schon 3 mal gewürfelt!");
+				if(wurfCounter==3|| zugEnde == true){
+					JOptionPane.showMessageDialog(null, "Würfeln nicht mehr möglich.");
 					btnWrfeln.setEnabled(false);
 				}else{
-				//Sound
-				playSound("C:/Users/IBM_ADMIN/git/New folder (5)/Kniffel-Gruppe-6/Kniffel/src/kniffel/Kniffel/Sound/Shake And Roll Dice-SoundBible.com-591494296.wav");
-				
-				//Ende Sound
-
-
-					//checken, wie oft radiobutton geklickt
-					
-					
-					//Würfelliste ausgeben
-					KniffelSpiel.würfelListeAusgeben();
+				/*	//Sound
+					playSound("C:/Users/IBM_ADMIN/git/New folder (5)/Kniffel-Gruppe-6/Kniffel/src/kniffel/Kniffel/Sound/Shake And Roll Dice-SoundBible.com-591494296.wav");	
+					//Ende Sound */
 					
 					//Würfeln
-					System.out.println("WÜRFEL DA?");
 					würfel1.würfeln(würfel1);
 					würfel1.würfeln(würfel2);
 					würfel1.würfeln(würfel3);
@@ -350,8 +350,6 @@ public class MainGui extends JFrame {
 					
 					//Jetzt Schleife für Bilder
 					for(int i = 1;i<würfellabel.length;i++){	 
-						
-						
 						//Bounds setzen
 						switch(i){
 						case 1: würfellabel[i].setBounds(60, 411, 56, 57);
@@ -385,59 +383,57 @@ public class MainGui extends JFrame {
 						würfellabel[i].setVisible(true);
 							
 					}//Ende For 
+					
+					//Regelarray befüllen
+					regelArray[0]= Regelwerk.einser();
+					regelArray[1]= Regelwerk.zweier();
+					regelArray[2]= Regelwerk.dreier();
+					regelArray[3]= Regelwerk.vierer();
+					regelArray[4]= Regelwerk.fuenfer();
+					regelArray[5]= Regelwerk.sechser();
+					regelArray[6]= Regelwerk.dreierPasch();
+					regelArray[7]= Regelwerk.viererPasch();
+					regelArray[8]= Regelwerk.fullHouse();
+					regelArray[9]= Regelwerk.kleineStraße();
+					regelArray[10]= Regelwerk.großeStraße();
+					regelArray[11]= Regelwerk.kniffel();
+					regelArray[12]= Regelwerk.chance();
 				
 					//Hier Regelprüfungen
-				System.out.println("REGELPRÜFUNGEN");
-				
-				System.out.println("Einser : "+Regelwerk.einser());
-				tbl_KniffelBlock.setValueAt(Regelwerk.einser(), 1, 1);
-				
-				System.out.println("Zweier : "+Regelwerk.zweier());
-				tbl_KniffelBlock.setValueAt(Regelwerk.zweier(),2, 1);
-				
-				System.out.println("Dreier : "+Regelwerk.dreier());
-				tbl_KniffelBlock.setValueAt(Regelwerk.dreier(),3, 1);
-				
-				System.out.println("Vierer : "+Regelwerk.vierer());
-				tbl_KniffelBlock.setValueAt(Regelwerk.vierer(),4, 1);
-				
-				System.out.println("Fünfer : "+Regelwerk.fuenfer());
-				tbl_KniffelBlock.setValueAt(Regelwerk.fuenfer(),5, 1);
-				
-				System.out.println("Sechser : "+Regelwerk.sechser());
-				tbl_KniffelBlock.setValueAt(Regelwerk.sechser(),6, 1);
-				
-				System.out.println("Dreierpasch :"+ Regelwerk.dreierPasch());
-				tbl_KniffelBlock.setValueAt(Regelwerk.dreierPasch(),10, 1);
-				
-				System.out.println("Viererpasch: "+ Regelwerk.viererPasch());
-				tbl_KniffelBlock.setValueAt(Regelwerk.viererPasch(),11, 1);
-				
-				System.out.println("Full-House: "+ Regelwerk.fullHouse());
-				tbl_KniffelBlock.setValueAt(Regelwerk.fullHouse(), 12, 1);
-				
-				System.out.println("kleine Straße: "+ Regelwerk.kleineStraße());
-				tbl_KniffelBlock.setValueAt(Regelwerk.kleineStraße(),13, 1);
-				
-				System.out.println("große Straße: "+ Regelwerk.großeStraße());
-				tbl_KniffelBlock.setValueAt(Regelwerk.großeStraße(),14, 1);
-				
-				System.out.println("Kniffel :"+ Regelwerk.kniffel());
-				tbl_KniffelBlock.setValueAt(Regelwerk.kniffel(), 15, 1);
-				
-				System.out.println("Chance :"+ Regelwerk.chance());
-				tbl_KniffelBlock.setValueAt(Regelwerk.chance(),16, 1);
-				
+					System.out.println("REGELPRÜFUNGEN");
+					//Oberen Block prüfen
+					for(int k =0; k<6;k++){
+						if(tableBlock[0][k]== false){
+							tbl_KniffelBlock.setValueAt(regelArray[k], k+1, 1);
+						}
+					}
+						//Unteren Block prüfen
+						for(int k =6; k<=12;k++){
+							if(tableBlock[0][k]== false){
+								tbl_KniffelBlock.setValueAt(regelArray[k], k+4, 1);	
+							}
+						
+						}
+					
 				//Würfelliste ausgeben
 				System.out.println("WÜRFEL ÜBERSCHRIEBEN");
 				KniffelSpiel.würfelListeAusgeben();
 				
 				
 				}//Ende if, die prüft ob schon 3 mal gewürfelt
-			
+				gewürfelt = true;
 				wurfCounter++;
-			//Hier in Liste eintragen
-		}});
+			
+		}});// ENDE WÜRFEL BUTTON
+		
+		//Action Listener Close Button
+				btnClose.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {System.exit( 0 );
+					}
+				});
+		
+		
+		
 		// Radiobuttonsfunktionen
 		
 		//eins
@@ -475,7 +471,36 @@ public class MainGui extends JFrame {
 		});
 		
 		
+		
+		
+		tbl_KniffelBlock.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				int row = tbl_KniffelBlock.getSelectedRow();
+				if(gewürfelt == false){
+					JOptionPane.showMessageDialog(null, "Bitte erst Würfeln");
+				}else{
+					// TODO Auto-generated method stub
+					//Wert blockieren
+					if(row>0&&row<=6){
+						tableBlock[0][row-1]= true;
+						System.out.println("blockiert: "+ "Zeile: " +row);
+						zugEnde = true;
+					}else{
+						if(row>9 && row<17){
+							tableBlock[0][row-4]= true;
+							System.out.println("blockiert: "+ "Zeile: " +row);
+							zugEnde = true;
+						}else{
+							JOptionPane.showMessageDialog(null, "Keine Eintragung in diese Felder möglich");
+						}
+					}
+				}
+			}
+		});
+	        
 		
 		}// Ende Main Gui Funktion
 }
+
