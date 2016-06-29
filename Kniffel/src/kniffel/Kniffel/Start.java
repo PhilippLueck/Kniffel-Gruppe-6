@@ -298,7 +298,7 @@ public class Start extends JFrame {
        
        
        //Öffnet Anleitung
-     /*  btn_instruction.addActionListener(new ActionListener() {
+       btn_instruction.addActionListener(new ActionListener() {
        	public void actionPerformed(ActionEvent e) {
        		Anleitung anl;
 			try {
@@ -309,7 +309,7 @@ public class Start extends JFrame {
 			}
 			
        	}
-       });*/
+       });
        
 	
 	}

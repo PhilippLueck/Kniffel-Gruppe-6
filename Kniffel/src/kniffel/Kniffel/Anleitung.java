@@ -46,18 +46,14 @@ public class Anleitung extends JFrame {
 	 * @throws HeadlessException 
 	 * @throws URISyntaxException 
 	 */
-	/*public Anleitung() throws HeadlessException, IOException, URISyntaxException {
+	public Anleitung() throws HeadlessException, IOException, URISyntaxException {
 		//Create Anleitungsfenster
 		JFrame f = new JFrame();
-    	try {
-    		f.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("C:/Users/IBM_ADMIN/Documents/IBM/1. PE Düsseldorf/Kniffel.PNG")))));
-    	} catch (IOException e) {
-    		e.printStackTrace();
-    	}
+    	f.setContentPane(new JLabel(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/Kniffel Anleitung.png"))));
     	f.pack();
     	f.setVisible(true);
     	
-	}*/
+	}
 
 }
 
