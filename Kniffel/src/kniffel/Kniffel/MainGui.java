@@ -296,6 +296,18 @@ public class MainGui extends JFrame {
 		label_1.setBounds(89, 25, 262, 61);
 		pnl_rechts.add(label_1);
 		
+		//Bild was auftauchen soll wenn Kniffel gewürfelt wird
+		
+		JLabel lblKniffelAktion= new JLabel("Kniffel Aktions Bild");
+		lblKniffelAktion.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/Kniffel.PNG")));
+		lblKniffelAktion.setBounds(76, 146, 240, 191);
+		pnl_rechts.add(lblKniffelAktion);
+		lblKniffelAktion.setVisible(false);
+	
+		
+		
+		//hintergrund 
+		
 		JLabel lbl_rechts = new JLabel("New label");
 		lbl_rechts.setBounds(0, 0, 402, 548);
 		pnl_rechts.add(lbl_rechts);
