@@ -405,12 +405,14 @@ public class MainGui extends JFrame {
 					for(int k =0; k<6;k++){
 						if(tableBlock[0][k]== false){
 							tbl_KniffelBlock.setValueAt(regelArray[k], k+1, 1);
+							System.out.println("1-6: "+regelArray[k]);
 						}
 					}
 						//Unteren Block prüfen
 						for(int k =6; k<=12;k++){
 							if(tableBlock[0][k]== false){
 								tbl_KniffelBlock.setValueAt(regelArray[k], k+4, 1);	
+								System.out.println("7-13: "+regelArray[k]);
 							}
 						
 						}
