@@ -45,7 +45,6 @@ public static int spielerCount(){
 }
 
 public static Spieler ermittleSpieler( int spielernummer){
-	
 	Spieler tmp = new Spieler("__", spielernummer, 0,0);
 	
 	if (spielerListe.contains(tmp))
@@ -87,7 +86,7 @@ public static Würfel ermittleWürfel( int würfelnummer){
 	
 	return tmp;
 
-}// Ende ermittle Würfel
+}// Ende ermittle Würfel 
 
 public static void würfelListeAusgeben() {
 	Iterator<Würfel> iter = würfelListe.iterator();

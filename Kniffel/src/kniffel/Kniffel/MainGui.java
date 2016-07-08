@@ -345,7 +345,7 @@ public class MainGui extends JFrame {
 		btnWrfeln.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent arg0) {
 				
-				if(wurfCounter==3|| zugEnde == true){
+				if(wurfCounter==500|| zugEnde == true){
 					JOptionPane.showMessageDialog(null, "Würfeln nicht mehr möglich.");
 					btnWrfeln.setEnabled(false);
 				}else{
@@ -376,6 +376,7 @@ public class MainGui extends JFrame {
 						break;
 						}
 						pnl_rechts.add(würfellabel[i]);
+						System.out.println("Augenzahlen"+KniffelSpiel.ermittleWürfel(i).augenzahl);
 						int augenzahl =KniffelSpiel.ermittleWürfel(i).getAugenzahl();
 						switch(augenzahl){
 						case 1:  würfellabel[i].setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/wuerfel 150x50.png")));

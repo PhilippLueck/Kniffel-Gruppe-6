@@ -332,7 +332,40 @@ public  int kniffel(){
 	
 //kleine Straße
 public  int kleineStraße(){
-	exists= false;
+	
+	punkte =0;
+	int einscount=0,zweicount=0,dreicount=0,viercount=0,fünfcount=0,sechscount=0;
+	Iterator<Würfel> WürfelIterator = KniffelSpiel.würfelListe.iterator();		
+	while(WürfelIterator.hasNext()){
+		Würfel selectedWürfel = WürfelIterator.next();
+
+		//Hier werden alle Zahlen geprüft, wenn da ++
+		switch(selectedWürfel.getAugenzahl()){
+		case 1: einscount++;
+				break;
+		case 2: zweicount++;
+				break;
+		case 3: dreicount++;
+				break;
+		case 4: viercount++;
+				break;
+		case 5: fünfcount ++;
+				break;
+		case 6: sechscount ++;
+				break;
+		};
+	}
+		
+		if((einscount>=1&&zweicount>=1&&dreicount>=1&&viercount>=1)||
+			(zweicount>=1&&dreicount>=1&&viercount>=1&&fünfcount>=1)||
+			(dreicount>=1&&viercount>=1&&fünfcount>=1&&sechscount>=1)){
+				return (punkte=30);
+		}else{
+				return(punkte=0);
+		}	
+	
+	
+/*	exists= false;
 	//Punkte zurücksetzen
 	punkte =0;
 	//jetzt Liste durchlaufen
@@ -348,11 +381,44 @@ public  int kleineStraße(){
 	return (punkte=30);
 	}else{
 		return (punkte=0);
-	}
+	}*/
 }
 	
 //große Straße
 public  int großeStraße(){
+	punkte =0;
+	int einscount=0,zweicount=0,dreicount=0,viercount=0,fünfcount=0,sechscount=0;
+	Iterator<Würfel> WürfelIterator = KniffelSpiel.würfelListe.iterator();		
+	while(WürfelIterator.hasNext()){
+		Würfel selectedWürfel = WürfelIterator.next();
+
+		//Hier werden alle Zahlen geprüft, wenn da ++
+		switch(selectedWürfel.getAugenzahl()){
+		case 1: einscount++;
+				break;
+		case 2: zweicount++;
+				break;
+		case 3: dreicount++;
+				break;
+		case 4: viercount++;
+				break;
+		case 5: fünfcount ++;
+				break;
+		case 6: sechscount ++;
+				break;
+		};
+	}
+		
+		if((einscount>=1&&zweicount>=1&&dreicount>=1&&viercount>=1&&fünfcount>=1)||
+			(zweicount>=1&&dreicount>=1&&viercount>=1&&fünfcount>=1&&sechscount>=1)
+			){
+				return (punkte=40);
+		}else{
+				return(punkte=0);
+		}	
+	
+	
+	/*
 	exists= false;
 	//Punkte zurücksetzen
 	punkte =0;
@@ -369,9 +435,11 @@ public  int großeStraße(){
 	return (punkte=40);
 	}else{
 		return (punkte=0);
-	}
+	}*/
 }
 	
+
+
 //chance
 public  int chance(){
 	punkte = 0;
