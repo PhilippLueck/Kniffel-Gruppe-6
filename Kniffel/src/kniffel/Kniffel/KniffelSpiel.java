@@ -7,8 +7,6 @@ import java.util.TreeSet;
 import javax.swing.JOptionPane;
 
 public class KniffelSpiel {
-	
-private int anzahlSpiele;
 
 //ArrayList Spielerliste
 public static TreeSet <Spieler> spielerListe = new TreeSet<Spieler>() ;
@@ -17,6 +15,8 @@ public static TreeSet<Würfel> würfelListe = new TreeSet<Würfel>() ;
 
 
 
+
+/* Methoden für die Spielerliste*/
 //Spieler hinzufügenmethode, wird wahrscheinlich verlagert
 public static boolean spielerHinzufügen(String name, int spielerID, int punkte, int wurfnummer){
 		
@@ -40,9 +40,13 @@ public static boolean spielerHinzufügen(String name, int spielerID, int punkte, 
 		}
 }
 
+
+
 public static int spielerCount(){
 	return (spielerListe.last().getSpielerID());
 }
+
+
 
 public static Spieler ermittleSpieler( int spielernummer){
 	Spieler tmp = new Spieler("__", spielernummer, 0,0);
@@ -54,7 +58,11 @@ public static Spieler ermittleSpieler( int spielernummer){
 	
 	return tmp;
 
-}// Ende ermittle Würfel
+}// Ende ermittle Spieler
+
+
+
+/*Jetzt die Methoden für die Würfelliste*/
 
 public static boolean  würfelHinzufügen(Würfel würfel){
 	try {
@@ -75,6 +83,7 @@ public static boolean  würfelHinzufügen(Würfel würfel){
 }
 
 
+
 public static Würfel ermittleWürfel( int würfelnummer){
 	
 	Würfel tmp = new Würfel(würfelnummer,0, 0, false);
@@ -88,6 +97,8 @@ public static Würfel ermittleWürfel( int würfelnummer){
 
 }// Ende ermittle Würfel 
 
+
+
 public static void würfelListeAusgeben() {
 	Iterator<Würfel> iter = würfelListe.iterator();
 	while(iter.hasNext()) {
@@ -95,5 +106,7 @@ public static void würfelListeAusgeben() {
 		System.out.println("Würfelnummer: "+ tmp.würfelnummer + " vorhanden");
 	}
 }// Ende würfellistausgeben
+
+
 
 }

@@ -125,21 +125,6 @@ public class MainGui extends JFrame {
 		KniffelSpiel.würfelHinzufügen(würfel4);
 		KniffelSpiel.würfelHinzufügen(würfel5);
 		
-		//Regelarray befüllen
-		regelArray[0]= Regelwerk.einser();
-		regelArray[1]= Regelwerk.zweier();
-		regelArray[2]= Regelwerk.dreier();
-		regelArray[3]= Regelwerk.vierer();
-		regelArray[4]= Regelwerk.fuenfer();
-		regelArray[5]= Regelwerk.sechser();
-		regelArray[6]= Regelwerk.dreierPasch();
-		regelArray[7]= Regelwerk.viererPasch();
-		regelArray[8]= Regelwerk.fullHouse();
-		regelArray[9]= Regelwerk.kleineStraße();
-		regelArray[10]= Regelwerk.großeStraße();
-		regelArray[11]= Regelwerk.kniffel();
-		regelArray[12]= Regelwerk.chance();
-		
 		
 		//Kniffelblock Array befüllen, was Jtable Zellen simuliert
 		for (int x =0; x<tableBlock.length;x++){
@@ -148,18 +133,7 @@ public class MainGui extends JFrame {
 				System.out.println("x: "+ x+ " y: " + y + ""+tableBlock[x][y]);
 			}
 		}
-		
-		
-		//würfellabel 
-		würfellabel = new JLabel[6];
-		
-		// Hier labels deklarieren
-		for(int i=1;i<würfellabel.length;i++){
-		würfellabel[i] = new JLabel();
-		}
-		
-		//JPane1 placed on Contentpane
-		
+/*-----------------------------------------Panel-----------------------------------------------------------------------------------------------------*/
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 976, 595);
 		contentPane.add(panel);
@@ -173,7 +147,22 @@ public class MainGui extends JFrame {
 		panel.add(pnl_links);
 		pnl_links.setLayout(null);
 		
+		//Panel 3 placed on panel1
+		pnl_rechts = new JPanel();
+		pnl_rechts.setBackground(new Color(255, 255, 240));
+		pnl_rechts.setBorder(new LineBorder(new Color(0, 0, 0)));
+		pnl_rechts.setBounds(574, 0, 402, 548);
+		panel.add(pnl_rechts);
+		pnl_rechts.setLayout(null);
 		
+		//Panel 2 
+		pnl_buttons = new JPanel();
+		pnl_buttons.setBounds(574, 548, 402, 47);
+		panel.add(pnl_buttons);
+		pnl_buttons.setBackground(Color.WHITE);
+		pnl_buttons.setBorder(null);
+		pnl_buttons.setLayout(null);
+/*-----------------------------------------Table-----------------------------------------------------------------------------------------------------*/		
 		// Tabelle
 		tbl_KniffelBlock = new JTable();
 		tbl_KniffelBlock.setBackground(SystemColor.menu);
@@ -223,12 +212,13 @@ public class MainGui extends JFrame {
 		tbl_KniffelBlock.setBounds(10, 108, 565, 456);
 		pnl_links.add(tbl_KniffelBlock);
 		//END TABLE
-		
-		//Spieler in Tabelle eintragen
-		for(int i = 1; i<=KniffelSpiel.spielerCount();i++){
-		tbl_KniffelBlock.setValueAt(KniffelSpiel.ermittleSpieler(i).getName(),0, i);
+	/*-----------------------------------------Label-----------------------------------------------------------------------------------------------------*/		
+		//würfellabel 
+		würfellabel = new JLabel[6];
+		for(int i=1;i<würfellabel.length;i++){
+			würfellabel[i] = new JLabel();
 		}
-		
+				
 		
 		JLabel label_3 = new JLabel("Kniffelblock");
 		label_3.setForeground(Color.WHITE);
@@ -246,15 +236,32 @@ public class MainGui extends JFrame {
 		lblNewLabel_2.setBounds(216, 262, 402, 47);
 		pnl_links.add(lblNewLabel_2);
 		lblNewLabel_2.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/floor-1256804_1280.jpg")));repaint();
+		
+		JLabel lblWelcheWrfelSollen = new JLabel("Welche W\u00FCrfel sollen stehen bleiben:");
+		lblWelcheWrfelSollen.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblWelcheWrfelSollen.setForeground(Color.WHITE);
+		lblWelcheWrfelSollen.setBounds(80, 479, 273, 14);
+		pnl_rechts.add(lblWelcheWrfelSollen);
+		
+		JLabel label_1 = new JLabel("Kniffel");
+		label_1.setForeground(Color.WHITE);
+		label_1.setFont(new Font("Lucida Calligraphy", Font.PLAIN, 50));
+		label_1.setBackground(new Color(139, 69, 19));
+		label_1.setBounds(89, 25, 262, 61);
+		pnl_rechts.add(label_1);
+		
+		//Bild was auftauchen soll wenn Kniffel gewürfelt wird
+		
+		JLabel lblKniffelAktion= new JLabel("Kniffel Aktions Bild");
+		lblKniffelAktion.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/Kniffel.PNG")));
+		lblKniffelAktion.setBounds(76, 146, 240, 191);
+		pnl_rechts.add(lblKniffelAktion);
+		lblKniffelAktion.setVisible(false);
+		
+		
 	
 		
-		//Panel 3 placed on panel1
-		pnl_rechts = new JPanel();
-		pnl_rechts.setBackground(new Color(255, 255, 240));
-		pnl_rechts.setBorder(new LineBorder(new Color(0, 0, 0)));
-		pnl_rechts.setBounds(574, 0, 402, 548);
-		panel.add(pnl_rechts);
-		pnl_rechts.setLayout(null);
+/*-----------------------------------------Buttons-----------------------------------------------------------------------------------------------------*/		
 		
 		//5 Radiobuttons
 		JRadioButton rdbtn_w1 = new JRadioButton("");
@@ -283,44 +290,12 @@ public class MainGui extends JFrame {
 		rdbtn_w5.setBounds(320, 505, 21, 23);
 		pnl_rechts.add(rdbtn_w5);
 		
-		JLabel lblWelcheWrfelSollen = new JLabel("Welche W\u00FCrfel sollen stehen bleiben:");
-		lblWelcheWrfelSollen.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblWelcheWrfelSollen.setForeground(Color.WHITE);
-		lblWelcheWrfelSollen.setBounds(80, 479, 273, 14);
-		pnl_rechts.add(lblWelcheWrfelSollen);
+			//hintergrund 
+			JLabel lbl_rechts = new JLabel("New label");
+			lbl_rechts.setBounds(0, 0, 402, 548);
+			pnl_rechts.add(lbl_rechts);
+			lbl_rechts.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/floor-1256804_1280.jpg")));
 		
-		JLabel label_1 = new JLabel("Kniffel");
-		label_1.setForeground(Color.WHITE);
-		label_1.setFont(new Font("Lucida Calligraphy", Font.PLAIN, 50));
-		label_1.setBackground(new Color(139, 69, 19));
-		label_1.setBounds(89, 25, 262, 61);
-		pnl_rechts.add(label_1);
-		
-		//Bild was auftauchen soll wenn Kniffel gewürfelt wird
-		
-		JLabel lblKniffelAktion= new JLabel("Kniffel Aktions Bild");
-		lblKniffelAktion.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/Kniffel.PNG")));
-		lblKniffelAktion.setBounds(76, 146, 240, 191);
-		pnl_rechts.add(lblKniffelAktion);
-		lblKniffelAktion.setVisible(false);
-	
-		
-		
-		//hintergrund 
-		
-		JLabel lbl_rechts = new JLabel("New label");
-		lbl_rechts.setBounds(0, 0, 402, 548);
-		pnl_rechts.add(lbl_rechts);
-		lbl_rechts.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/floor-1256804_1280.jpg")));
-		
-		
-		//Panel 2 
-		pnl_buttons = new JPanel();
-		pnl_buttons.setBounds(574, 548, 402, 47);
-		panel.add(pnl_buttons);
-		pnl_buttons.setBackground(Color.WHITE);
-		pnl_buttons.setBorder(null);
-		pnl_buttons.setLayout(null);
 		
 		//Button placed on panel 2 + Actionlistener
 		btnClose = new JButton("Beenden");
@@ -341,11 +316,13 @@ public class MainGui extends JFrame {
 		lblNewLabel_3.setBounds(0, 0, 402, 47);
 		pnl_buttons.add(lblNewLabel_3);
 		
+		/*----------------------------------Functions-------------------------------------------------------------------------------------------------*/
+		
 		//würfelknopf (ruft würfelmethode aus würfelklasse auf)
 		btnWrfeln.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent arg0) {
 				
-				if(wurfCounter==500|| zugEnde == true){
+				if(wurfCounter==3|| zugEnde == true){
 					JOptionPane.showMessageDialog(null, "Würfeln nicht mehr möglich.");
 					btnWrfeln.setEnabled(false);
 				}else{
@@ -412,42 +389,38 @@ public class MainGui extends JFrame {
 					regelArray[11]= Regelwerk.kniffel();
 					regelArray[12]= Regelwerk.chance();
 				
-					//Hier Regelprüfungen
-					System.out.println("REGELPRÜFUNGEN");
 					//Oberen Block prüfen
 					for(int k =0; k<6;k++){
 						if(tableBlock[0][k]== false){
 							tbl_KniffelBlock.setValueAt(regelArray[k], k+1, 1);
-							System.out.println("1-6: "+regelArray[k]);
 						}
 					}
 						//Unteren Block prüfen
 						for(int k =6; k<=12;k++){
 							if(tableBlock[0][k]== false){
 								tbl_KniffelBlock.setValueAt(regelArray[k], k+4, 1);	
-								System.out.println("7-13: "+regelArray[k]);
 							}
 						
 						}
 					
-				//Würfelliste ausgeben
-				System.out.println("WÜRFEL ÜBERSCHRIEBEN");
-				KniffelSpiel.würfelListeAusgeben();
-				
-				
 				}//Ende if, die prüft ob schon 3 mal gewürfelt
 				gewürfelt = true;
 				wurfCounter++;
 			
 		}});// ENDE WÜRFEL BUTTON
 		
+		
 		//Action Listener Close Button
-				btnClose.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {System.exit( 0 );
-					}
-				});
-		
-		
+		btnClose.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit( 0 );
+			}
+		});
+			
+		//Spieler in Tabelle eintragen
+		for(int i = 1; i<=KniffelSpiel.spielerCount();i++){
+			tbl_KniffelBlock.setValueAt(KniffelSpiel.ermittleSpieler(i).getName(),0, i);
+		}
 		
 		// Radiobuttonsfunktionen
 		

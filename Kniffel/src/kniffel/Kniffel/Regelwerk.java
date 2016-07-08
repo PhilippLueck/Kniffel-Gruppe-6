@@ -11,9 +11,6 @@ private  String zahlenStrahl;
 private  boolean exists;
 
 
-
-
-
 //Getter und Setters mit Logik befüllen (da sie statisch sind können sie überall geändert werden, also aufpassen) blub
 
 public  int getZahlenCount() {
@@ -47,11 +44,6 @@ public  boolean isExists() {
 public  void setExists(boolean exists) {
 	this.exists = exists;
 }
-
-
-
-
-
 
 
 /*---------------------------------------------------------------------------------------------------------------------------------------*/
@@ -363,25 +355,7 @@ public  int kleineStraße(){
 		}else{
 				return(punkte=0);
 		}	
-	
-	
-/*	exists= false;
-	//Punkte zurücksetzen
-	punkte =0;
-	//jetzt Liste durchlaufen
-	Iterator<Würfel> WürfelIterator = KniffelSpiel.würfelListe.iterator();		
-	while(WürfelIterator.hasNext()){
-		Würfel selectedWürfel = WürfelIterator.next();
-		zahlenStrahl= zahlenStrahl + Integer.toString(selectedWürfel.getAugenzahl());	
-	}//Ende While
-	//schaut ob Straßenmöglichkeiten vorhanden
-	exists= zahlenStrahl.contains("1234")||zahlenStrahl.contains("2345")||zahlenStrahl.contains("3456");//liefert true oder false
-	
-	if(exists==true){
-	return (punkte=30);
-	}else{
-		return (punkte=0);
-	}*/
+
 }
 	
 //große Straße
@@ -416,29 +390,9 @@ public  int großeStraße(){
 		}else{
 				return(punkte=0);
 		}	
-	
-	
-	/*
-	exists= false;
-	//Punkte zurücksetzen
-	punkte =0;
-	//jetzt Liste durchlaufen
-	Iterator<Würfel> WürfelIterator = KniffelSpiel.würfelListe.iterator();		
-	while(WürfelIterator.hasNext()){
-		Würfel selectedWürfel = WürfelIterator.next();
-		zahlenStrahl= zahlenStrahl + Integer.toString(selectedWürfel.getAugenzahl());	
-	}//Ende While
-	//schaut ob Straßenmöglichkeiten vorhanden
-	exists= zahlenStrahl.contains("12345")||zahlenStrahl.contains("23456");//liefert true oder false
-	
-	if(exists==true){
-	return (punkte=40);
-	}else{
-		return (punkte=0);
-	}*/
+
 }
 	
-
 
 //chance
 public  int chance(){
