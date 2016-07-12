@@ -47,7 +47,7 @@ public class Anleitung extends JFrame {
 	 * @throws URISyntaxException 
 	 */
 	public Anleitung() throws HeadlessException, IOException, URISyntaxException {
-		//Create Anleitungsfenster
+		//Erstellt das Anleitungsfenster, mit der Anleitung als png Datei
 		JFrame f = new JFrame();
     	f.setContentPane(new JLabel(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/Kniffel Anleitung.png"))));
     	f.pack();
