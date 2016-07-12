@@ -54,7 +54,7 @@ public class MainGui extends JFrame {
 	private JPanel contentPane;
 	private JPanel pnl_buttons;
 	private JPanel pnl_rechts;
-	private JButton btnClose;
+	private JButton btn_nextZug;
 	private JButton btnHilfe;
 	private JLabel[] würfellabel;
 	private JTable tbl_KniffelBlock;
@@ -64,12 +64,12 @@ public class MainGui extends JFrame {
 	private  int wurfCounter =0;
 	private boolean gewürfelt = false;
 	private boolean zugEnde = false;
+	private int actPlayer = KniffelSpiel.ermittleSpieler(1).getSpielerID();
 	/**
 	 * Launch the application.
 	 */
 	
-	//public static void main(String[] args) {
-		//EventQueue.invokeLater(new Runnable() {
+	
 	//Sounds Allgemein
 	 public void playSound(String soundName)
      {
@@ -96,8 +96,7 @@ public class MainGui extends JFrame {
 					e.printStackTrace();
 				}
 			}
-		//});
-	//}
+		
 
 	/**
 	 * Create the frame.
@@ -124,6 +123,7 @@ public class MainGui extends JFrame {
 		KniffelSpiel.würfelHinzufügen(würfel3);
 		KniffelSpiel.würfelHinzufügen(würfel4);
 		KniffelSpiel.würfelHinzufügen(würfel5);
+		
 		
 		
 		//Kniffelblock Array befüllen, was Jtable Zellen simuliert
@@ -298,9 +298,10 @@ public class MainGui extends JFrame {
 		
 		
 		//Button placed on panel 2 + Actionlistener
-		btnClose = new JButton("Beenden");
-		btnClose.setBounds(303, 11, 89, 23);
-		pnl_buttons.add(btnClose);
+		btn_nextZug = new JButton("N\u00E4chster Zug");
+		btn_nextZug.setEnabled(false);
+		btn_nextZug.setBounds(295, 11, 97, 23);
+		pnl_buttons.add(btn_nextZug);
 		
 		//Hilfebutton placed on panel2
 		btnHilfe = new JButton("Hilfe");
@@ -391,14 +392,14 @@ public class MainGui extends JFrame {
 				
 					//Oberen Block prüfen
 					for(int k =0; k<6;k++){
-						if(tableBlock[0][k]== false){
-							tbl_KniffelBlock.setValueAt(regelArray[k], k+1, 1);
+						if(tableBlock[actPlayer-1][k]== false){
+							tbl_KniffelBlock.setValueAt(regelArray[k], k+1, actPlayer);
 						}
 					}
 						//Unteren Block prüfen
 						for(int k =6; k<=12;k++){
-							if(tableBlock[0][k]== false){
-								tbl_KniffelBlock.setValueAt(regelArray[k], k+4, 1);	
+							if(tableBlock[actPlayer-1][k]== false){
+								tbl_KniffelBlock.setValueAt(regelArray[k], k+4, actPlayer);	
 							}
 						
 						}
@@ -410,17 +411,34 @@ public class MainGui extends JFrame {
 		}});// ENDE WÜRFEL BUTTON
 		
 		
-		//Action Listener Close Button
-		btnClose.addActionListener(new ActionListener() {
+		//Action Listener Next Zug
+		btn_nextZug.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.exit( 0 );
+				btnWrfeln.setEnabled(true);
+				wurfCounter =0;
+				gewürfelt = false;
+				zugEnde = false;
+				
+				
+				rdbtn_w1.setSelected(false);
+				rdbtn_w2.setSelected(false);
+				rdbtn_w3.setSelected(false);
+				rdbtn_w4.setSelected(false);
+				rdbtn_w5.setSelected(false);
+				
+				if(actPlayer==KniffelSpiel.spielerCount()){
+					actPlayer = KniffelSpiel.ermittleSpieler(1).getSpielerID();
+				}else{
+					actPlayer++;
+				}
+				btn_nextZug.setEnabled(false);
 			}
 		});
-			
+		
 		//Spieler in Tabelle eintragen
-		for(int i = 1; i<=KniffelSpiel.spielerCount();i++){
-			tbl_KniffelBlock.setValueAt(KniffelSpiel.ermittleSpieler(i).getName(),0, i);
-		}
+				for(int i = 1; i<=KniffelSpiel.spielerCount();i++){
+					tbl_KniffelBlock.setValueAt(KniffelSpiel.ermittleSpieler(i).getName(),0, i);
+				}
 		
 		// Radiobuttonsfunktionen
 		
@@ -472,14 +490,16 @@ public class MainGui extends JFrame {
 					// TODO Auto-generated method stub
 					//Wert blockieren
 					if(row>0&&row<=6){
-						tableBlock[0][row-1]= true;
+						tableBlock[actPlayer-1][row-1]= true;
 						System.out.println("blockiert: "+ "Zeile: " +row);
 						zugEnde = true;
+						btn_nextZug.setEnabled(true);
 					}else{
 						if(row>9 && row<17){
-							tableBlock[0][row-4]= true;
+							tableBlock[actPlayer-1][row-4]= true;
 							System.out.println("blockiert: "+ "Zeile: " +row);
 							zugEnde = true;
+							btn_nextZug.setEnabled(true);
 						}else{
 							JOptionPane.showMessageDialog(null, "Keine Eintragung in diese Felder möglich");
 						}

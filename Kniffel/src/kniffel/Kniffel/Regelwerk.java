@@ -7,8 +7,7 @@ public  class Regelwerk extends KniffelSpiel {
 
 private  int zahlenCount;
 private  int punkte;
-private  String zahlenStrahl;
-private  boolean exists;
+
 
 
 //Getter und Setters mit Logik befüllen (da sie statisch sind können sie überall geändert werden, also aufpassen) blub
@@ -29,21 +28,6 @@ public  void setPunkte(int punkte) {
 	this.punkte = punkte;
 }
 
-public  String getZahlenStrahl() {
-	return zahlenStrahl;
-}
-
-public  void setZahlenStrahl(String zahlenStrahl) {
-	this.zahlenStrahl = zahlenStrahl;
-}
-
-public  boolean isExists() {
-	return exists;
-}
-
-public  void setExists(boolean exists) {
-	this.exists = exists;
-}
 
 
 /*---------------------------------------------------------------------------------------------------------------------------------------*/
