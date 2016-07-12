@@ -292,7 +292,7 @@ public class Start extends JFrame {
        lbl_group.setBounds(0, 43, 139, 32);
        pnl_head.add(lbl_group);
        
-       //Instructions Button (noch ausfüllen)
+       //Anleitungsbutton
        JButton btn_instruction = new JButton("Anleitung");
        btn_instruction.setBounds(311, 17, 198, 46);
        pnl_head.add(btn_instruction);
