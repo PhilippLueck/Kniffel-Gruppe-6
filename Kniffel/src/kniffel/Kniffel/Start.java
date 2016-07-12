@@ -211,7 +211,7 @@ public class Start extends JFrame {
      		//Start button öffnet main Gui
      		//Erzeugt Würfel
      		btn_start.addActionListener(new ActionListener() {
-     			public void actionPerformed(ActionEvent e) {	
+     			public void actionPerformed(ActionEvent e) {
      				//öffnen von main Gui
      				MainGui wnd = new MainGui();
      				wnd.setVisible(true);
@@ -229,8 +229,8 @@ public class Start extends JFrame {
        btn_ready.addActionListener(new ActionListener() {
        	public void actionPerformed(ActionEvent e) {
        		for (int i = 0; i < 8; i++) {	
-       		players[i].setEnabled(false);
-       		labels[i].setEnabled(false);	
+       		players[i].setEnabled(!players[i].isEnabled());
+       		//labels[i].setEnabled(false);	
 	       		}//Schleifenende
 	       		
 	       		//Jetzt Spieler erstellen
@@ -239,8 +239,10 @@ public class Start extends JFrame {
 	       		for (int j = 0; j<spieleranzahl; j++){
 	       			if(players[j].getText().isEmpty()){
 	           			JOptionPane.showMessageDialog(null, "Name von Spieler "+( j+1) + " fehlt!");
-	           			players[j].setEnabled(true);
-	               		labels[j].setEnabled(true);
+	           			for (int i = 0; i < 8; i++){
+	         				players[i].setEnabled(true);}
+	           			//players[j].setEnabled(true);
+	               		//labels[j].setEnabled(true);
 	           		}else{
 	           			KniffelSpiel.spielerHinzufügen(players[j].getText(),j+1,0,0);	
 	           			ready = true;
