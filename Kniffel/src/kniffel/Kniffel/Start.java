@@ -115,6 +115,7 @@ public class Start extends JFrame {
 			 players[i].setBounds(147, Parameters.YCOORDS_TEXTFIELD[i], 86, 20);
 			 pnl_player.add(players[i]);
 			 //players[i].setColumns(10);
+			 players[i].setFocusLostBehavior(JFormattedTextField.COMMIT);
 			 players[i].setVisible(false);
 			 
 			 labels[i] = new JLabel("Spieler " + (i+1) + ": ");
