@@ -27,7 +27,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
-import javax.swing.JTextField;
+import javax.swing.JFormattedTextField;
 import java.awt.Font;
 import java.awt.HeadlessException;
 
@@ -43,7 +43,7 @@ public class Start extends JFrame {
 	private JPanel pnl_playerList;
 	
 	
-	private JTextField[] players;
+	private JFormattedTextField[] players;
 	private JLabel[] labels;
 	private String[] player_names;
 	
@@ -92,7 +92,7 @@ public class Start extends JFrame {
 		 String comboBoxListe[] = {"1","2","3","4","5","6","7","8"}; 
 		 
 		// Player Array, label Array, Namens Array
-		 this.players = new JTextField[8];
+		 this.players = new JFormattedTextField[8];
 		 this.labels = new JLabel[8];
 		 this.player_names = new String[8];
 		 
@@ -106,11 +106,17 @@ public class Start extends JFrame {
 		 
 		 //Schleife, für jeden Player ein neues Textfeld
 		 for(int i = 0; i < players.length; i++){
-			 players[i] = new JTextField();
+			 try {
+					players[i] = new JFormattedTextField(new MaskFormatter("????????"));
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			 players[i].setBounds(147, Parameters.YCOORDS_TEXTFIELD[i], 86, 20);
 			 pnl_player.add(players[i]);
-			 players[i].setColumns(10);
+			 //players[i].setColumns(10);
 			 players[i].setVisible(false);
+			 
 			 labels[i] = new JLabel("Spieler " + (i+1) + ": ");
 			 labels[i].setBounds(64, Parameters.YCOORDS_LABEL[i], 73, 14);
 			 pnl_player.add(labels[i]);
@@ -132,7 +138,7 @@ public class Start extends JFrame {
 		
 
 		pnl_playerList = new JPanel();
-		pnl_playerList.setBackground(new Color(192, 192, 192));
+		pnl_playerList.setBackground(new Color(255, 255, 255));
 		pnl_playerList.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		pnl_playerList.setBounds(50, 40, 215, 252);
 		pnl_player.add(pnl_playerList);
@@ -146,7 +152,7 @@ public class Start extends JFrame {
 		JPanel pnl_options = new JPanel();
 		pnl_options.setBounds(308, 75, 211, 292);
 		startMainPane.add(pnl_options);
-		pnl_options.setBorder(new LineBorder(new Color(0, 0, 0)));
+		pnl_options.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		pnl_options.setBackground(new Color(255, 255, 255));
 		pnl_options.setLayout(null);
 		
@@ -221,7 +227,7 @@ public class Start extends JFrame {
        
        //ready button
        JButton btn_ready = new JButton("Bereit");
-       btn_ready.setBounds(54, 147, 89, 23);
+       btn_ready.setBounds(64, 162, 89, 23);
        pnl_options.add(btn_ready);
        
        // Jetzt Actionlistener Start Button
@@ -261,27 +267,29 @@ public class Start extends JFrame {
 	       			System.out.println( "Starten nicht möglich.");
 	       		}//ende if
        }// Ende Action Listener
-     });//ende Action Listener
-       
-       //progress bar
-       JProgressBar progressBar = new JProgressBar();
-       progressBar.setBounds(10, 203, 191, 14);
-       pnl_options.add(progressBar);
+     });
        
        //help button
        JButton btn_help = new JButton("Hilfe");
-       btn_help.setBounds(54, 262, 89, 23);
+       btn_help.setBounds(64, 262, 89, 23);
        pnl_options.add(btn_help);
+       
+       JLabel lblNewLabel_1 = new JLabel("New label");
+       lblNewLabel_1.setIcon(new ImageIcon(Start.class.getResource("/kniffel/Kniffel/Images/w\u00FCrfelbilderangepasstverschwommen.png")));
+       lblNewLabel_1.setBounds(0, 0, 211, 292);
+       pnl_options.add(lblNewLabel_1);
        
        //HEAD Panel
        JPanel pnl_head = new JPanel();
-       pnl_head.setBackground(Color.WHITE);
+       pnl_head.setBorder(null);
+       pnl_head.setBackground(new Color(255, 255, 255));
        pnl_head.setBounds(0, 0, 519, 75);
        startMainPane.add(pnl_head);
        pnl_head.setLayout(null);
        
        //HEAD Label
        JLabel lbl_Head = new JLabel("Kniffel");
+       lbl_Head.setBackground(new Color(255, 255, 255));
        lbl_Head.setFont(new Font("Arial", Font.PLAIN, 50));
        lbl_Head.setBounds(0, 0, 347, 53);
        pnl_head.add(lbl_Head);
