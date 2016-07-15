@@ -2,6 +2,8 @@ package kniffel.Kniffel;
 
 import java.util.Random;
 
+import javax.swing.JOptionPane;
+
 public class Würfel extends KniffelSpiel implements Comparable<Würfel> {
 	
 	public int würfelnummer;
@@ -70,11 +72,15 @@ public class Würfel extends KniffelSpiel implements Comparable<Würfel> {
 }
 
 	
-	public void block(Würfel würfel){
-		if (würfel.isBlocked()==true){
+	public void block(Würfel würfel, boolean blocking){
+		if (blocking==false){
 			würfel.setBlocked(false);
 		}else{
+			if(blocking==true){
 			würfel.setBlocked(true);
+			}else{
+				JOptionPane.showMessageDialog(null,"Falsche Parameter bei blockieren");
+			}
 		}	
 	}
 	

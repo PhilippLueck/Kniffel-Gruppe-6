@@ -261,6 +261,8 @@ public class Start extends JFrame {
        }// Ende Action Listener
      });//ende Action Listener
        
+       
+       
        //progress bar
        JProgressBar progressBar = new JProgressBar();
        progressBar.setBounds(10, 203, 191, 14);
@@ -294,6 +296,8 @@ public class Start extends JFrame {
        JButton btn_instruction = new JButton("Anleitung");
        btn_instruction.setBounds(311, 17, 198, 46);
        pnl_head.add(btn_instruction);
+       
+     
        
        
        

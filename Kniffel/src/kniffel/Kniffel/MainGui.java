@@ -60,11 +60,14 @@ public class MainGui extends JFrame {
 	private JTable tbl_KniffelBlock;
 	private Regelwerk Regelwerk = new Regelwerk();
 	private boolean[][] tableBlock= new boolean[(KniffelSpiel.spielerCount())][13];
+	private int row= 0;
 	private int[] regelArray = new int[13];
 	private  int wurfCounter =0;
 	private boolean gewürfelt = false;
 	private boolean zugEnde = false;
 	private int actPlayer = KniffelSpiel.ermittleSpieler(1).getSpielerID();
+	private int[] upPoints= new int[KniffelSpiel.spielerCount()+1];
+	private int[] bottomPoints =new int[KniffelSpiel.spielerCount()+1];
 	/**
 	 * Launch the application.
 	 */
@@ -123,6 +126,8 @@ public class MainGui extends JFrame {
 		KniffelSpiel.würfelHinzufügen(würfel3);
 		KniffelSpiel.würfelHinzufügen(würfel4);
 		KniffelSpiel.würfelHinzufügen(würfel5);
+		
+		
 		
 		
 		
@@ -211,6 +216,14 @@ public class MainGui extends JFrame {
 		tbl_KniffelBlock.getColumnModel().getColumn(6).setResizable(false);
 		tbl_KniffelBlock.setBounds(10, 108, 565, 456);
 		pnl_links.add(tbl_KniffelBlock);
+		
+		//tabelle erstmals befüllen
+		
+		for(int i=1;i<=KniffelSpiel.spielerCount();i++){
+			for(int y=1; y<=19;y++){
+			tbl_KniffelBlock.setValueAt(0, y, i);
+			}
+		}
 		//END TABLE
 	/*-----------------------------------------Label-----------------------------------------------------------------------------------------------------*/		
 		//würfellabel 
@@ -421,17 +434,66 @@ public class MainGui extends JFrame {
 				
 				
 				rdbtn_w1.setSelected(false);
-				rdbtn_w2.setSelected(false);
-				rdbtn_w3.setSelected(false);
-				rdbtn_w4.setSelected(false);
-				rdbtn_w5.setSelected(false);
+				rdbtn_w1.setEnabled(true);
 				
+				rdbtn_w2.setSelected(false);
+				rdbtn_w2.setEnabled(true);
+				
+				rdbtn_w3.setSelected(false);
+				rdbtn_w3.setEnabled(true);
+				
+				rdbtn_w4.setSelected(false);
+				rdbtn_w4.setEnabled(true);
+				
+				rdbtn_w5.setSelected(false);
+				rdbtn_w5.setEnabled(true);
+				
+				würfel1.block(würfel1,false);
+				würfel2.block(würfel2,false);
+				würfel3.block(würfel3,false);
+				würfel4.block(würfel4,false);
+				würfel5.block(würfel5,false);
+				
+				for(int k =0; k<6;k++){
+					
+					if(tableBlock[actPlayer-1][k]== false){
+						tbl_KniffelBlock.setValueAt(0, k+1, actPlayer);
+					}
+					
+				}
+					//Unteren Block prüfen
+					for(int k =6; k<=12;k++){
+						if(tableBlock[actPlayer-1][k]== false){
+							tbl_KniffelBlock.setValueAt(0, k+4, actPlayer);	
+						}
+					
+					}
+				//Punkte oben zusammenzählen	
+				if(row<=6){
+						upPoints[actPlayer] =upPoints[actPlayer] + Integer.parseInt(tbl_KniffelBlock.getValueAt(row, actPlayer).toString());
+						tbl_KniffelBlock.setValueAt(upPoints[actPlayer], 7, actPlayer);
+				//Punkte unten zusammenzählen		
+				}else{
+						bottomPoints[actPlayer] = bottomPoints[actPlayer] +Integer.parseInt(tbl_KniffelBlock.getValueAt(row, actPlayer).toString());
+						tbl_KniffelBlock.setValueAt(bottomPoints[actPlayer], 17, actPlayer);
+				}
+				//Gesamtpunkte oben (+Bonus)
+				tbl_KniffelBlock.setValueAt(upPoints[actPlayer]+Integer.parseInt(tbl_KniffelBlock.getValueAt(8, actPlayer).toString()), 9, actPlayer);
+				
+				//Gesamtpunkte (oben+unten)
+				tbl_KniffelBlock.setValueAt(upPoints[actPlayer]+bottomPoints[actPlayer],18,actPlayer);
+				
+				
+				
+				//Spieler aktualisieren
 				if(actPlayer==KniffelSpiel.spielerCount()){
 					actPlayer = KniffelSpiel.ermittleSpieler(1).getSpielerID();
 				}else{
 					actPlayer++;
 				}
+				JOptionPane.showMessageDialog(null, KniffelSpiel.ermittleSpieler(actPlayer).getName() +" ist dran!");
 				btn_nextZug.setEnabled(false);
+				
 			}
 		});
 		
@@ -445,34 +507,39 @@ public class MainGui extends JFrame {
 		//eins
 		rdbtn_w1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				würfel1.block(würfel1);
+				würfel1.block(würfel1,true);
+				rdbtn_w1.setEnabled(false);
 			}
 		});
 		// zwei
 		rdbtn_w2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				würfel2.block(würfel2);
+				würfel2.block(würfel2,true);
+				rdbtn_w2.setEnabled(false);
 			}
 		});
 		
 		//drei
 		rdbtn_w3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				würfel3.block(würfel3);
+				würfel3.block(würfel3,true);
+				rdbtn_w3.setEnabled(false);
 			}
 		});
 		
 		//vier
 		rdbtn_w4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				würfel4.block(würfel4);
+				würfel4.block(würfel4,true);
+				rdbtn_w4.setEnabled(false);
 			}
 		});
 		
 		//fünf
 		rdbtn_w5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				würfel5.block(würfel5);
+				würfel5.block(würfel5,true);
+				rdbtn_w5.setEnabled(false);
 			}
 		});
 		
@@ -483,25 +550,39 @@ public class MainGui extends JFrame {
 			
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
-				int row = tbl_KniffelBlock.getSelectedRow();
-				if(gewürfelt == false){
-					JOptionPane.showMessageDialog(null, "Bitte erst Würfeln");
-				}else{
-					// TODO Auto-generated method stub
-					//Wert blockieren
-					if(row>0&&row<=6){
-						tableBlock[actPlayer-1][row-1]= true;
-						System.out.println("blockiert: "+ "Zeile: " +row);
-						zugEnde = true;
-						btn_nextZug.setEnabled(true);
+				if(zugEnde==true){}else{	
+					 row = tbl_KniffelBlock.getSelectedRow();
+					if(gewürfelt == false){
+						JOptionPane.showMessageDialog(null, "Bitte erst Würfeln");
 					}else{
-						if(row>9 && row<17){
-							tableBlock[actPlayer-1][row-4]= true;
-							System.out.println("blockiert: "+ "Zeile: " +row);
-							zugEnde = true;
-							btn_nextZug.setEnabled(true);
-						}else{
-							JOptionPane.showMessageDialog(null, "Keine Eintragung in diese Felder möglich");
+						// TODO Auto-generated method stub
+						//Wert blockieren, wenn nicht schon blockiert!
+						
+							if(row>0&&row<=6){
+								if(tableBlock[actPlayer-1][row-1]== true){
+									JOptionPane.showMessageDialog(null, "Dieser Wert ist schon gespeichert!");
+								}else
+								{
+									tableBlock[actPlayer-1][row-1]= true;
+									System.out.println("blockiert: "+ "Zeile: " +row);
+									zugEnde = true;
+									btn_nextZug.setEnabled(true);
+								}
+							}else{
+								if(row>9 && row<17){
+									if(tableBlock[actPlayer-1][row-4]== true){
+										JOptionPane.showMessageDialog(null, "Dieser Wert ist schon gespeichert!");
+									}else
+									{
+										tableBlock[actPlayer-1][row-4]= true;
+										System.out.println("blockiert: "+ "Zeile: " +row);
+										zugEnde = true;
+										btn_nextZug.setEnabled(true);
+									}
+								}else{
+									JOptionPane.showMessageDialog(null, "Keine Eintragung in diese Felder möglich");
+								}
+							
 						}
 					}
 				}
