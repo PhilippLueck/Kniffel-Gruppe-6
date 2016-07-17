@@ -68,6 +68,8 @@ public class MainGui extends JFrame {
 	private int actPlayer = KniffelSpiel.ermittleSpieler(1).getSpielerID();
 	private int[] upPoints= new int[KniffelSpiel.spielerCount()+1];
 	private int[] bottomPoints =new int[KniffelSpiel.spielerCount()+1];
+	private int entryCount =0;
+	private boolean spielEnde= false;
 	/**
 	 * Launch the application.
 	 */
@@ -128,14 +130,10 @@ public class MainGui extends JFrame {
 		KniffelSpiel.würfelHinzufügen(würfel5);
 		
 		
-		
-		
-		
 		//Kniffelblock Array befüllen, was Jtable Zellen simuliert
 		for (int x =0; x<tableBlock.length;x++){
 			for (int y=0; y< 13;y++){
 				tableBlock[x][y]= false;
-				System.out.println("x: "+ x+ " y: " + y + ""+tableBlock[x][y]);
 			}
 		}
 /*-----------------------------------------Panel-----------------------------------------------------------------------------------------------------*/
@@ -336,7 +334,7 @@ public class MainGui extends JFrame {
 		btnWrfeln.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent arg0) {
 				
-				if(wurfCounter==3|| zugEnde == true){
+				if(wurfCounter==500|| zugEnde == true){
 					JOptionPane.showMessageDialog(null, "Würfeln nicht mehr möglich.");
 					btnWrfeln.setEnabled(false);
 				}else{
@@ -427,73 +425,82 @@ public class MainGui extends JFrame {
 		//Action Listener Next Zug
 		btn_nextZug.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btnWrfeln.setEnabled(true);
-				wurfCounter =0;
-				gewürfelt = false;
-				zugEnde = false;
 				
-				
-				rdbtn_w1.setSelected(false);
-				rdbtn_w1.setEnabled(true);
-				
-				rdbtn_w2.setSelected(false);
-				rdbtn_w2.setEnabled(true);
-				
-				rdbtn_w3.setSelected(false);
-				rdbtn_w3.setEnabled(true);
-				
-				rdbtn_w4.setSelected(false);
-				rdbtn_w4.setEnabled(true);
-				
-				rdbtn_w5.setSelected(false);
-				rdbtn_w5.setEnabled(true);
-				
-				würfel1.block(würfel1,false);
-				würfel2.block(würfel2,false);
-				würfel3.block(würfel3,false);
-				würfel4.block(würfel4,false);
-				würfel5.block(würfel5,false);
-				
-				for(int k =0; k<6;k++){
+				if(spielEnde==true){
+					JOptionPane.showMessageDialog(null, "Spielende");
+					btn_nextZug.setEnabled(false);
+					btnWrfeln.setEnabled(false);
+				}else{
+					btnWrfeln.setEnabled(true);
+	
+					rdbtn_w1.setSelected(false);
+					rdbtn_w1.setEnabled(true);
 					
-					if(tableBlock[actPlayer-1][k]== false){
-						tbl_KniffelBlock.setValueAt(0, k+1, actPlayer);
-					}
+					rdbtn_w2.setSelected(false);
+					rdbtn_w2.setEnabled(true);
 					
-				}
-					//Unteren Block prüfen
-					for(int k =6; k<=12;k++){
+					rdbtn_w3.setSelected(false);
+					rdbtn_w3.setEnabled(true);
+					
+					rdbtn_w4.setSelected(false);
+					rdbtn_w4.setEnabled(true);
+					
+					rdbtn_w5.setSelected(false);
+					rdbtn_w5.setEnabled(true);
+					
+					würfel1.block(würfel1,false);
+					würfel2.block(würfel2,false);
+					würfel3.block(würfel3,false);
+					würfel4.block(würfel4,false);
+					würfel5.block(würfel5,false);
+					
+					for(int k =0; k<6;k++){
+						
 						if(tableBlock[actPlayer-1][k]== false){
-							tbl_KniffelBlock.setValueAt(0, k+4, actPlayer);	
+							tbl_KniffelBlock.setValueAt(0, k+1, actPlayer);
 						}
-					
+						
 					}
-				//Punkte oben zusammenzählen	
-				if(row<=6){
-						upPoints[actPlayer] =upPoints[actPlayer] + Integer.parseInt(tbl_KniffelBlock.getValueAt(row, actPlayer).toString());
-						tbl_KniffelBlock.setValueAt(upPoints[actPlayer], 7, actPlayer);
-				//Punkte unten zusammenzählen		
-				}else{
-						bottomPoints[actPlayer] = bottomPoints[actPlayer] +Integer.parseInt(tbl_KniffelBlock.getValueAt(row, actPlayer).toString());
-						tbl_KniffelBlock.setValueAt(bottomPoints[actPlayer], 17, actPlayer);
+						//Unteren Block prüfen
+						for(int k =6; k<=12;k++){
+							if(tableBlock[actPlayer-1][k]== false){
+								tbl_KniffelBlock.setValueAt(0, k+4, actPlayer);	
+							}
+						
+						}
+					//Punkte oben zusammenzählen	
+					if(row<=6){
+							upPoints[actPlayer] =upPoints[actPlayer] + Integer.parseInt(tbl_KniffelBlock.getValueAt(row, actPlayer).toString());
+							tbl_KniffelBlock.setValueAt(upPoints[actPlayer], 7, actPlayer);
+					//Punkte unten zusammenzählen		
+					}else{
+							bottomPoints[actPlayer] = bottomPoints[actPlayer] +Integer.parseInt(tbl_KniffelBlock.getValueAt(row, actPlayer).toString());
+							tbl_KniffelBlock.setValueAt(bottomPoints[actPlayer], 17, actPlayer);
+					}
+					//Gesamtpunkte oben (+Bonus)
+					tbl_KniffelBlock.setValueAt(upPoints[actPlayer]+Integer.parseInt(tbl_KniffelBlock.getValueAt(8, actPlayer).toString()), 9, actPlayer);
+					//Bonus prüfen
+					if(upPoints[actPlayer]>=63){
+						tbl_KniffelBlock.setValueAt(35, 8, actPlayer);
+					}
+					
+					//Gesamtpunkte (oben+unten)
+					tbl_KniffelBlock.setValueAt(upPoints[actPlayer]+bottomPoints[actPlayer],18,actPlayer);
+					
+					//Spieler aktualisieren
+					if(actPlayer==KniffelSpiel.spielerCount()){
+						actPlayer = KniffelSpiel.ermittleSpieler(1).getSpielerID();
+					}else{
+						actPlayer++;
+					}
+					JOptionPane.showMessageDialog(null, KniffelSpiel.ermittleSpieler(actPlayer).getName() +" ist dran!");
+					tbl_KniffelBlock.changeSelection(0,actPlayer, false, false);
+					wurfCounter =0;
+					gewürfelt = false;
+					zugEnde = false;
+					btn_nextZug.setEnabled(false);
+					
 				}
-				//Gesamtpunkte oben (+Bonus)
-				tbl_KniffelBlock.setValueAt(upPoints[actPlayer]+Integer.parseInt(tbl_KniffelBlock.getValueAt(8, actPlayer).toString()), 9, actPlayer);
-				
-				//Gesamtpunkte (oben+unten)
-				tbl_KniffelBlock.setValueAt(upPoints[actPlayer]+bottomPoints[actPlayer],18,actPlayer);
-				
-				
-				
-				//Spieler aktualisieren
-				if(actPlayer==KniffelSpiel.spielerCount()){
-					actPlayer = KniffelSpiel.ermittleSpieler(1).getSpielerID();
-				}else{
-					actPlayer++;
-				}
-				JOptionPane.showMessageDialog(null, KniffelSpiel.ermittleSpieler(actPlayer).getName() +" ist dran!");
-				btn_nextZug.setEnabled(false);
-				
 			}
 		});
 		
@@ -550,6 +557,7 @@ public class MainGui extends JFrame {
 			
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
+				
 				if(zugEnde==true){}else{	
 					 row = tbl_KniffelBlock.getSelectedRow();
 					if(gewürfelt == false){
@@ -567,6 +575,7 @@ public class MainGui extends JFrame {
 									System.out.println("blockiert: "+ "Zeile: " +row);
 									zugEnde = true;
 									btn_nextZug.setEnabled(true);
+									
 								}
 							}else{
 								if(row>9 && row<17){
@@ -582,6 +591,23 @@ public class MainGui extends JFrame {
 								}else{
 									JOptionPane.showMessageDialog(null, "Keine Eintragung in diese Felder möglich");
 								}
+						}
+					}
+					
+					//Abbruchbedingung für Spielende, hier wird geschaut, ob jeder Eintrag im boolean-Array auf true, dann ende
+					entryCount=0;
+					for (int x =0; x<tableBlock.length;x++){
+						for (int y=0; y< 13;y++){
+							if(tableBlock[x][y]== true){
+								entryCount++;		
+								System.out.println("entrycount:"+""+entryCount);
+							}
+							if(entryCount == 13*KniffelSpiel.spielerCount()){
+								 spielEnde = true;
+								btn_nextZug.setText("Spiel beenden!");
+								btn_nextZug.setForeground(Color.GREEN);
+								
+							}
 							
 						}
 					}

@@ -8,14 +8,14 @@ public class Spieler extends KniffelSpiel implements Comparable<Spieler>{
 	private int spielerID;
 	private int punkte;
 	private int spielgewonnen;
-	public int wurfnummer;
 	
 	
-	public Spieler(String name, int spielerID, int punkte, int wurfnummer){
+	
+	public Spieler(String name, int spielerID, int punkte){
 		setName(name);
 		setSpielerID(spielerID); 
 		setPunkte(punkte);
-		setWurfnummer(wurfnummer);
+		
 
 	}
 
@@ -68,16 +68,6 @@ public class Spieler extends KniffelSpiel implements Comparable<Spieler>{
 			this.spielgewonnen = spielgewonnen;	
 		}else{
 			JOptionPane.showMessageDialog(null, "Ungültige Eingabe");
-		}
-	}
-
-	public int getWurfnummer() {
-		return wurfnummer;
-	}
-
-	public void setWurfnummer(int wurfnummer) { // nur ganze Zahlen aktzeptieren
-		if(wurfnummer < 0 || wurfnummer > 3){
-			JOptionPane.showMessageDialog(null, "Würfe im ungültigen Bereich");
 		}
 	}
 

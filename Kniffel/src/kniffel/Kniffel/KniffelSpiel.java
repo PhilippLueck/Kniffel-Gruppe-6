@@ -18,7 +18,7 @@ public static TreeSet<Würfel> würfelListe = new TreeSet<Würfel>() ;
 
 /* Methoden für die Spielerliste*/
 //Spieler hinzufügenmethode, wird wahrscheinlich verlagert
-public static boolean spielerHinzufügen(String name, int spielerID, int punkte, int wurfnummer){
+public static boolean spielerHinzufügen(String name, int spielerID, int punkte){
 		
 		try {
 			//Checkt ob name leer, bzw ID nicht da
@@ -28,7 +28,7 @@ public static boolean spielerHinzufügen(String name, int spielerID, int punkte, 
 			}else{
 				//Spieler in Liste hinzufügen
 				System.out.println("Spieler hinzugefügt");
-				return spielerListe.add(new Spieler(name,spielerID,punkte,wurfnummer));
+				return spielerListe.add(new Spieler(name,spielerID,punkte));
 				
 			}// if Anweisung Ende
 			
@@ -49,7 +49,7 @@ public static int spielerCount(){
 
 
 public static Spieler ermittleSpieler( int spielernummer){
-	Spieler tmp = new Spieler("__", spielernummer, 0,0);
+	Spieler tmp = new Spieler("__", spielernummer, 0);
 	
 	if (spielerListe.contains(tmp))
 		tmp = spielerListe.floor(tmp);

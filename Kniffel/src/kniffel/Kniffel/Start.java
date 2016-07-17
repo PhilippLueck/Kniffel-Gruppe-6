@@ -251,7 +251,7 @@ public class Start extends JFrame {
 	           			//players[j].setEnabled(true);
 	               		//labels[j].setEnabled(true);
 	           		}else{
-	           			KniffelSpiel.spielerHinzufügen(players[j].getText(),j+1,0,0);	
+	           			KniffelSpiel.spielerHinzufügen(players[j].getText(),j+1,0);	
 	           			ready = true;
 	           		}
 	       		}//Schleifenende
@@ -268,7 +268,7 @@ public class Start extends JFrame {
 	       			System.out.println( "Starten nicht möglich.");
 	       		}//ende if
        }// Ende Action Listener
-<<<<<<< HEAD
+
      });//ende Action Listener
        
        
@@ -277,9 +277,7 @@ public class Start extends JFrame {
        JProgressBar progressBar = new JProgressBar();
        progressBar.setBounds(10, 203, 191, 14);
        pnl_options.add(progressBar);
-=======
-     });
->>>>>>> refs/remotes/origin/master
+
        
        //help button
        JButton btn_help = new JButton("Hilfe");
