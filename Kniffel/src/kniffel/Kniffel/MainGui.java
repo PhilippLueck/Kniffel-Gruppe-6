@@ -58,18 +58,24 @@ public class MainGui extends JFrame {
 	private JButton btnHilfe;
 	private JLabel[] würfellabel;
 	private JTable tbl_KniffelBlock;
+	
 	private Regelwerk Regelwerk = new Regelwerk();
+	
+	//Variablen für korrekten Ablauf initialisieren
 	private boolean[][] tableBlock= new boolean[(KniffelSpiel.spielerCount())][13];
+	private boolean gewürfelt = false;
+	private boolean zugEnde = false;
+	private boolean spielEnde= false;
 	private int row= 0;
 	private int[] regelArray = new int[13];
 	private  int wurfCounter =0;
-	private boolean gewürfelt = false;
-	private boolean zugEnde = false;
 	private int actPlayer = KniffelSpiel.ermittleSpieler(1).getSpielerID();
 	private int[] upPoints= new int[KniffelSpiel.spielerCount()+1];
 	private int[] bottomPoints =new int[KniffelSpiel.spielerCount()+1];
 	private int entryCount =0;
-	private boolean spielEnde= false;
+	private int bottomRuleCount=0;
+	private int kniffelBonus=0;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -334,13 +340,17 @@ public class MainGui extends JFrame {
 		btnWrfeln.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent arg0) {
 				
-				if(wurfCounter==500|| zugEnde == true){
+				if(wurfCounter==3|| zugEnde == true){
 					JOptionPane.showMessageDialog(null, "Würfeln nicht mehr möglich.");
 					btnWrfeln.setEnabled(false);
 				}else{
 				/*	//Sound
 					playSound("C:/Users/IBM_ADMIN/git/New folder (5)/Kniffel-Gruppe-6/Kniffel/src/kniffel/Kniffel/Sound/Shake And Roll Dice-SoundBible.com-591494296.wav");	
 					//Ende Sound */
+					
+					//Werte vom vorherigen Würfeln zurücksetzen (für Sonderregeln)
+					boolean fullPoints = false;
+					boolean streichen = false;
 					
 					//Würfeln
 					würfel1.würfeln(würfel1);
@@ -386,18 +396,34 @@ public class MainGui extends JFrame {
 							
 					}//Ende For 
 					
+					//Prüfen ob Kniffel (Für Kniffel Sonderregel)
+					//Wenn Kniffel, dann Blöcke prüfen und dementsprechend Regelprüfung Übergabeparameter anpassen um Punkte in Regelmethoden anzupassen
+					if(würfel1.getAugenzahl()==würfel2.getAugenzahl()&&würfel2.getAugenzahl()==würfel3.getAugenzahl()&&würfel3.getAugenzahl()==würfel4.getAugenzahl()&&würfel4.getAugenzahl()==würfel5.getAugenzahl()){
+						if(tableBlock[actPlayer-1][11]==true){//Kniffel schonmal?
+							if(tableBlock[actPlayer-1][würfel1.getAugenzahl()]==true){
+								if(bottomRuleCount==0){
+									streichen=true;				
+								}else{
+									fullPoints=true;	
+								}
+							}else{
+								kniffelBonus=50;
+							}
+						}
+					}
+					
 					//Regelarray befüllen
-					regelArray[0]= Regelwerk.einser();
-					regelArray[1]= Regelwerk.zweier();
-					regelArray[2]= Regelwerk.dreier();
-					regelArray[3]= Regelwerk.vierer();
-					regelArray[4]= Regelwerk.fuenfer();
-					regelArray[5]= Regelwerk.sechser();
+					regelArray[0]= Regelwerk.einser(streichen);
+					regelArray[1]= Regelwerk.zweier(streichen);
+					regelArray[2]= Regelwerk.dreier(streichen);
+					regelArray[3]= Regelwerk.vierer(streichen);
+					regelArray[4]= Regelwerk.fuenfer(streichen);
+					regelArray[5]= Regelwerk.sechser(streichen);
 					regelArray[6]= Regelwerk.dreierPasch();
-					regelArray[7]= Regelwerk.viererPasch();
-					regelArray[8]= Regelwerk.fullHouse();
-					regelArray[9]= Regelwerk.kleineStraße();
-					regelArray[10]= Regelwerk.großeStraße();
+					regelArray[7]= Regelwerk.viererPasch(fullPoints);
+					regelArray[8]= Regelwerk.fullHouse(fullPoints);
+					regelArray[9]= Regelwerk.kleineStraße(fullPoints);
+					regelArray[10]= Regelwerk.großeStraße(fullPoints);
 					regelArray[11]= Regelwerk.kniffel();
 					regelArray[12]= Regelwerk.chance();
 				
@@ -431,6 +457,9 @@ public class MainGui extends JFrame {
 					btn_nextZug.setEnabled(false);
 					btnWrfeln.setEnabled(false);
 				}else{
+					//für Sonderregeln zurückgesetzt
+					bottomRuleCount=0;
+					
 					btnWrfeln.setEnabled(true);
 	
 					rdbtn_w1.setSelected(false);
@@ -465,6 +494,7 @@ public class MainGui extends JFrame {
 						for(int k =6; k<=12;k++){
 							if(tableBlock[actPlayer-1][k]== false){
 								tbl_KniffelBlock.setValueAt(0, k+4, actPlayer);	
+								bottomRuleCount++; //für Sonderregeln hochzählen, um zu sehen, ob unterer Block voll
 							}
 						
 						}
@@ -485,7 +515,7 @@ public class MainGui extends JFrame {
 					}
 					
 					//Gesamtpunkte (oben+unten)
-					tbl_KniffelBlock.setValueAt(upPoints[actPlayer]+bottomPoints[actPlayer],18,actPlayer);
+					tbl_KniffelBlock.setValueAt(upPoints[actPlayer]+bottomPoints[actPlayer]+kniffelBonus,18,actPlayer);
 					
 					//Spieler aktualisieren
 					if(actPlayer==KniffelSpiel.spielerCount()){
@@ -493,7 +523,7 @@ public class MainGui extends JFrame {
 					}else{
 						actPlayer++;
 					}
-					JOptionPane.showMessageDialog(null, KniffelSpiel.ermittleSpieler(actPlayer).getName() +" ist dran!");
+					JOptionPane.showMessageDialog(null, KniffelSpiel.ermittleSpieler(actPlayer).getName() +"ist dran!");
 					tbl_KniffelBlock.changeSelection(0,actPlayer, false, false);
 					wurfCounter =0;
 					gewürfelt = false;
