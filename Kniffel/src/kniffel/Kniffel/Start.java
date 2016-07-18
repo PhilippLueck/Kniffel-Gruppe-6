@@ -49,25 +49,7 @@ public class Start extends JFrame {
 	
 	private boolean ready = false;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Start frame = new Start();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.yo.
-	 */
+	
 	
 	
 	
