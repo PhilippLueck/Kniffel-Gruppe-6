@@ -46,7 +46,7 @@ public class Start extends JFrame {
 	private JFormattedTextField[] players;
 	private JLabel[] labels;
 	private String[] player_names;
-	
+	private int spieleranzahl=0;
 	private boolean ready = false;
 
 	/**
@@ -158,6 +158,7 @@ public class Start extends JFrame {
 		pnl_options.setLayout(null);
 		
 		
+		
 		//Closebutton schließt Programm
 		JButton btn_close = new JButton("Beenden");
 		btn_close.setForeground(Color.RED);
@@ -175,7 +176,7 @@ public class Start extends JFrame {
 		cb_playernumber.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				
 				 
-				 int spieleranzahl = Integer.parseInt((String)cb_playernumber.getSelectedItem());
+				 spieleranzahl = Integer.parseInt((String)cb_playernumber.getSelectedItem());
 				 
 				 System.out.println("Spieleranzahl: "+ spieleranzahl );
 				 for (int i = 0; i < 8; i++) {
@@ -219,59 +220,69 @@ public class Start extends JFrame {
      		//Erzeugt Würfel
      		btn_start.addActionListener(new ActionListener() {
      			public void actionPerformed(ActionEvent e) {
+     				//Jetzt Spieler erstellen
+    	       		//Spieler werden in Listen eingetragen und sotiert mit comparable in Spielerklasse
+    	       		int spieleranzahl = Integer.parseInt((String)cb_playernumber.getSelectedItem());
+    	       		for (int j = 0; j<spieleranzahl; j++){
+    	       			if(players[j].getText().isEmpty()){
+    	           			JOptionPane.showMessageDialog(null, "Name von Spieler "+( j+1) + " fehlt!");
+    	           			for (int i = 0; i < 8; i++){
+    	         				players[i].setEnabled(true);}
+    	           		}else{
+    	           			KniffelSpiel.spielerHinzufügen(players[j].getText(),j+1,0);	          			
+    	           		}
+    	       			
+    	       		//Jetzt Spieler ausgeben
+    		       		Iterator<Spieler> spielerIterator = KniffelSpiel.spielerListe.iterator();//Iterator ´nach collections!!! Sonst putt.			
+    		       		while(spielerIterator.hasNext()){
+    		       			Spieler selectedSpieler = spielerIterator.next();
+    		       			System.out.println(selectedSpieler.getSpielerID()+","+ selectedSpieler.getName() );
+    		       		}//Ende While
+    	       		}//Schleifenende
+    	       		
      				//öffnen von main Gui
      				MainGui wnd = new MainGui();
      				wnd.setVisible(true);
      				dispose();
      			}
      		});
+     		
+
        
        //ready button
        JButton btn_ready = new JButton("Bereit");
-       btn_ready.setBounds(64, 162, 89, 23);
+       btn_ready.setBounds(10, 162, 89, 23);
        pnl_options.add(btn_ready);
-       
-       // Jetzt Actionlistener Start Button
-       //disabled die Namen der Spieler und enabled den Start button
-       btn_ready.addActionListener(new ActionListener() {
+       btn_ready.addActionListener(new ActionListener() { //disabled die Namen der Spieler und enabled den Start button
        	public void actionPerformed(ActionEvent e) {
        		for (int i = 0; i < 8; i++) {	
        		players[i].setEnabled(!players[i].isEnabled());
-       		//labels[i].setEnabled(false);	
-	       		}//Schleifenende
-	       		
-	       		//Jetzt Spieler erstellen
-	       		//Spieler werden in Listen eingetragen und sotiert mit comparable in Spielerklasse
-	       		int spieleranzahl = Integer.parseInt((String)cb_playernumber.getSelectedItem());
-	       		for (int j = 0; j<spieleranzahl; j++){
-	       			if(players[j].getText().isEmpty()){
-	           			JOptionPane.showMessageDialog(null, "Name von Spieler "+( j+1) + " fehlt!");
-	           			for (int i = 0; i < 8; i++){
-	         				players[i].setEnabled(true);}
-	           			//players[j].setEnabled(true);
-	               		//labels[j].setEnabled(true);
-	           		}else{
-	           			KniffelSpiel.spielerHinzufügen(players[j].getText(),j+1,0);	
-	           			ready = true;
-	           		}
-	       		}//Schleifenende
-
-	       		//Jetzt Spieler ausgeben
-	       		Iterator<Spieler> spielerIterator = KniffelSpiel.spielerListe.iterator();//Iterator ´nach collections!!! Sonst putt.			
-	       		while(spielerIterator.hasNext()){
-	       			Spieler selectedSpieler = spielerIterator.next();
-	       			System.out.println(selectedSpieler.getSpielerID()+","+ selectedSpieler.getName() );
-	       		}//Ende While
-	       		if(ready == true){
-	       			btn_start.setEnabled(true);	
-	       		}else{
-	       			System.out.println( "Starten nicht möglich.");
-	       		}//ende if
+       		btn_ready.setEnabled(false);
+       		btn_start.setEnabled(true);
+	       		}
+       	
        }// Ende Action Listener
 
      });//ende Action Listener
        
-       
+     //Zurücksetzen Button
+		JButton btn_cancel = new JButton("zur\u00FCck");
+		btn_cancel.setBounds(112, 162, 89, 23);
+		pnl_options.add(btn_cancel);
+		btn_cancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				btn_start.setEnabled(false);
+				for (int i = 0; i <= spieleranzahl; i++) {
+					
+						 players[i].setVisible(true);
+						 players[i].setText("");
+						 players[i].setEnabled(true);
+						 labels[i].setVisible(true);
+					 }
+				btn_ready.setEnabled(true);
+			}
+		});
+     
        
        //progress bar
        JProgressBar progressBar = new JProgressBar();

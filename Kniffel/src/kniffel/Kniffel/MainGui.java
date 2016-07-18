@@ -218,6 +218,11 @@ public class MainGui extends JFrame {
 		tbl_KniffelBlock.getColumnModel().getColumn(4).setResizable(false);
 		tbl_KniffelBlock.getColumnModel().getColumn(5).setResizable(false);
 		tbl_KniffelBlock.getColumnModel().getColumn(6).setResizable(false);
+		
+		//Hilfebutton placed on panel2
+		btnHilfe = new JButton("Hilfe");
+		btnHilfe.setBounds(21, 44, 71, 23);
+		pnl_links.add(btnHilfe);
 		tbl_KniffelBlock.setBounds(10, 108, 565, 456);
 		pnl_links.add(tbl_KniffelBlock);
 		
@@ -267,14 +272,6 @@ public class MainGui extends JFrame {
 		label_1.setBounds(89, 25, 262, 61);
 		pnl_rechts.add(label_1);
 		
-		//Bild was auftauchen soll wenn Kniffel gewürfelt wird
-		
-		JLabel lblKniffelAktion= new JLabel("Kniffel Aktions Bild");
-		lblKniffelAktion.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/Kniffel.PNG")));
-		lblKniffelAktion.setBounds(76, 146, 240, 191);
-		pnl_rechts.add(lblKniffelAktion);
-		lblKniffelAktion.setVisible(false);
-		
 		
 	
 		
@@ -317,16 +314,11 @@ public class MainGui extends JFrame {
 		//Button placed on panel 2 + Actionlistener
 		btn_nextZug = new JButton("N\u00E4chster Zug");
 		btn_nextZug.setEnabled(false);
-		btn_nextZug.setBounds(295, 11, 97, 23);
+		btn_nextZug.setBounds(221, 11, 120, 23);
 		pnl_buttons.add(btn_nextZug);
-		
-		//Hilfebutton placed on panel2
-		btnHilfe = new JButton("Hilfe");
-		btnHilfe.setBounds(20, 11, 89, 23);
-		pnl_buttons.add(btnHilfe);
 		//Würfelbutton placed on panel 2
 		JButton btnWrfeln = new JButton("W\u00FCrfeln");
-		btnWrfeln.setBounds(161, 11, 89, 23);
+		btnWrfeln.setBounds(77, 11, 89, 23);
 		pnl_buttons.add(btnWrfeln);
 		
 		JLabel lblNewLabel_3 = new JLabel("New label");
@@ -351,6 +343,15 @@ public class MainGui extends JFrame {
 					//Werte vom vorherigen Würfeln zurücksetzen (für Sonderregeln)
 					boolean fullPoints = false;
 					boolean streichen = false;
+					
+					//Radiobuttons visible setzen
+					lblWelcheWrfelSollen.setVisible(true);
+					rdbtn_w1.setVisible(true);
+					rdbtn_w2.setVisible(true);
+					rdbtn_w3.setVisible(true);
+					rdbtn_w4.setVisible(true);
+					rdbtn_w5.setVisible(true);
+					
 					
 					//Würfeln
 					würfel1.würfeln(würfel1);
@@ -460,22 +461,33 @@ public class MainGui extends JFrame {
 					//für Sonderregeln zurückgesetzt
 					bottomRuleCount=0;
 					
+					for(int i=1;i<=5;i++){
+						würfellabel[i].setVisible(false);
+					}
+					
 					btnWrfeln.setEnabled(true);
+					
+					lblWelcheWrfelSollen.setVisible(false);
 	
 					rdbtn_w1.setSelected(false);
 					rdbtn_w1.setEnabled(true);
+					rdbtn_w1.setVisible(false);
 					
 					rdbtn_w2.setSelected(false);
 					rdbtn_w2.setEnabled(true);
+					rdbtn_w2.setVisible(false);
 					
 					rdbtn_w3.setSelected(false);
 					rdbtn_w3.setEnabled(true);
+					rdbtn_w3.setVisible(false);
 					
 					rdbtn_w4.setSelected(false);
 					rdbtn_w4.setEnabled(true);
+					rdbtn_w4.setVisible(false);
 					
 					rdbtn_w5.setSelected(false);
 					rdbtn_w5.setEnabled(true);
+					rdbtn_w5.setVisible(false);
 					
 					würfel1.block(würfel1,false);
 					würfel2.block(würfel2,false);
