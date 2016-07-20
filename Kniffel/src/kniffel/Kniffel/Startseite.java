@@ -56,7 +56,7 @@ public class Startseite extends JFrame {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		ImageIcon rules = new ImageIcon(getClass().getResource("Startseite.PNG"));
+		ImageIcon rules = new ImageIcon(getClass().getResource("/kniffel/Kniffel/Images/Startseite.PNG"));
 		frame.setResizable(false);
 		
 		JLabel lblNewLabel = new JLabel("");

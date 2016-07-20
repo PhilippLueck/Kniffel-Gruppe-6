@@ -57,7 +57,7 @@ public class Start extends JFrame {
 		setResizable(false);
 		//Main Pain
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 536, 406);
+		setBounds(100, 100, 523, 392);
 		startMainPane = new JPanel();
 		startMainPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(startMainPane);
@@ -192,12 +192,18 @@ public class Start extends JFrame {
        lbl_welcome.setBounds(41, 45, 135, 14);
        pnl_options.add(lbl_welcome);
        
+      //Zurücksetzen Button
+  		JButton btn_cancel = new JButton("zur\u00FCck");
+  		btn_cancel.setBounds(112, 162, 89, 23);
+  		pnl_options.add(btn_cancel);
+  		
      //Startbutton
      		JButton btn_start = new JButton("Start");
      		btn_start.setForeground(new Color(0, 128, 0));
      		btn_start.setBounds(10, 228, 89, 23);
      		pnl_options.add(btn_start);
      		btn_start.setEnabled(false); 
+     		
      		
      		//Start button öffnet main Gui
      		//Erzeugt Würfel
@@ -207,13 +213,14 @@ public class Start extends JFrame {
     	       		//Spieler werden in Listen eingetragen und sotiert mit comparable in Spielerklasse
     	       		int spieleranzahl = Integer.parseInt((String)cb_playernumber.getSelectedItem());
     	       		for (int j = 0; j<spieleranzahl; j++){
-    	       			if(players[j].getText().isEmpty()){
+    	       			if(players[j].getText().hashCode()==-782626816){
     	           			JOptionPane.showMessageDialog(null, "Name von Spieler "+( j+1) + " fehlt!");
-    	           			for (int i = 0; i < 8; i++){
-    	         				players[i].setEnabled(true);}
+    	           			btn_cancel.doClick();
+
+    	           		
     	           		}else{
     	           			KniffelSpiel.spielerHinzufügen(players[j].getText(),j+1,0);	          			
-    	           		}
+    	           		
     	       			
     	       		//Jetzt Spieler ausgeben
     		       		Iterator<Spieler> spielerIterator = KniffelSpiel.spielerListe.iterator();//Iterator ´nach collections!!! Sonst putt.			
@@ -221,13 +228,13 @@ public class Start extends JFrame {
     		       			Spieler selectedSpieler = spielerIterator.next();
     		       			System.out.println(selectedSpieler.getSpielerID()+","+ selectedSpieler.getName() );
     		       		}//Ende While
-    	       		}//Schleifenende
+    	       		//Schleifenende
     	       		
      				//öffnen von main Gui
      				MainGui wnd = new MainGui();
      				wnd.setVisible(true);
      				dispose();
-     			}
+     			}}}
      		});
      		
 
@@ -242,16 +249,15 @@ public class Start extends JFrame {
        		players[i].setEnabled(!players[i].isEnabled());
        		btn_ready.setEnabled(false);
        		btn_start.setEnabled(true);
+       		cb_playernumber.setEnabled(false);
+       		
 	       		}
        	
        }// Ende Action Listener
 
      });//ende Action Listener
        
-     //Zurücksetzen Button
-		JButton btn_cancel = new JButton("zur\u00FCck");
-		btn_cancel.setBounds(112, 162, 89, 23);
-		pnl_options.add(btn_cancel);
+//Zurück AcionListener 
 		btn_cancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				btn_start.setEnabled(false);
@@ -261,6 +267,7 @@ public class Start extends JFrame {
 						 players[i].setText("");
 						 players[i].setEnabled(true);
 						 labels[i].setVisible(true);
+						 cb_playernumber.setEnabled(true);
 					 }
 				btn_ready.setEnabled(true);
 			}

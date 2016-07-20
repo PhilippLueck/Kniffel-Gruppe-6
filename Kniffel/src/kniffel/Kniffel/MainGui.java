@@ -119,7 +119,7 @@ public class MainGui extends JFrame {
 		setResizable(false);
 				
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 992, 633);
+		setBounds(100, 100, 977, 622);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -293,6 +293,7 @@ public class MainGui extends JFrame {
 		lblWelcheWrfelSollen.setForeground(Color.WHITE);
 		lblWelcheWrfelSollen.setBounds(80, 479, 273, 14);
 		pnl_rechts.add(lblWelcheWrfelSollen);
+		lblWelcheWrfelSollen.setVisible(false);
 		
 		JLabel label_1 = new JLabel("Kniffel");
 		label_1.setForeground(Color.WHITE);
@@ -312,26 +313,31 @@ public class MainGui extends JFrame {
 		rdbtn_w1.setBackground(SystemColor.controlShadow);
 		rdbtn_w1.setBounds(80, 505, 21, 23);
 		pnl_rechts.add(rdbtn_w1);
+		rdbtn_w1.setVisible(false);
 		
 		JRadioButton rdbtn_w2 = new JRadioButton("");
 		rdbtn_w2.setBackground(SystemColor.controlShadow);
 		rdbtn_w2.setBounds(140, 505, 21, 23);
 		pnl_rechts.add(rdbtn_w2);
+		rdbtn_w2.setVisible(false);
 		
 		JRadioButton rdbtn_w3 = new JRadioButton("");
 		rdbtn_w3.setBackground(SystemColor.controlShadow);
 		rdbtn_w3.setBounds(200, 505, 21, 23);
 		pnl_rechts.add(rdbtn_w3);
+		rdbtn_w3.setVisible(false);
 		
 		JRadioButton rdbtn_w4 = new JRadioButton("");
 		rdbtn_w4.setBackground(SystemColor.controlShadow);
 		rdbtn_w4.setBounds(260, 505, 21, 23);
 		pnl_rechts.add(rdbtn_w4);
+		rdbtn_w4.setVisible(false);
 		
 		JRadioButton rdbtn_w5 = new JRadioButton("");
 		rdbtn_w5.setBackground(SystemColor.controlShadow);
 		rdbtn_w5.setBounds(320, 505, 21, 23);
 		pnl_rechts.add(rdbtn_w5);
+		rdbtn_w5.setVisible(false);
 		
 			//hintergrund 
 			JLabel lbl_rechts = new JLabel("New label");
@@ -360,10 +366,11 @@ public class MainGui extends JFrame {
 		//würfelknopf (ruft würfelmethode aus würfelklasse auf)
 		btnWrfeln.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent arg0) {
-				
+							rdbtn_w2.setEnabled(true);
 				if(wurfCounter==3|| zugEnde == true){
 					JOptionPane.showMessageDialog(null, "Würfeln nicht mehr möglich.");
 					btnWrfeln.setEnabled(false);
+					
 				}else{
 				/*	//Sound
 					playSound("C:/Users/IBM_ADMIN/git/New folder (5)/Kniffel-Gruppe-6/Kniffel/src/kniffel/Kniffel/Sound/Shake And Roll Dice-SoundBible.com-591494296.wav");	
@@ -494,6 +501,7 @@ public class MainGui extends JFrame {
 					
 					for(int i=1;i<=5;i++){
 						würfellabel[i].setVisible(false);
+					
 					}
 					
 					btnWrfeln.setEnabled(true);
@@ -664,6 +672,9 @@ public class MainGui extends JFrame {
 									System.out.println("blockiert: "+ "Zeile: " +row);
 									zugEnde = true;
 									btn_nextZug.setEnabled(true);
+						
+								
+									
 									
 								}
 							}else{
