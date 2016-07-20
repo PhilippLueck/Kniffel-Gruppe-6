@@ -264,6 +264,30 @@ public class MainGui extends JFrame {
 		pnl_links.add(lblNewLabel_2);
 		lblNewLabel_2.setIcon(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/floor-1256804_1280.jpg")));repaint();
 		
+		JLabel lbl_points = new JLabel("");
+		lbl_points.setForeground(Color.WHITE);
+		lbl_points.setFont(new Font("Old English Text MT", Font.PLAIN, 30));
+		lbl_points.setBounds(207, 157, 185, 38);
+		pnl_rechts.add(lbl_points);
+		
+		JLabel lblPunkte = new JLabel("Punkte:");
+		lblPunkte.setForeground(Color.WHITE);
+		lblPunkte.setFont(new Font("Old English Text MT", Font.PLAIN, 30));
+		lblPunkte.setBounds(35, 157, 220, 38);
+		pnl_rechts.add(lblPunkte);
+		
+		JLabel lbl_frontName = new JLabel("");
+		lbl_frontName.setForeground(Color.WHITE);
+		lbl_frontName.setFont(new Font("Old English Text MT", Font.PLAIN, 30));
+		lbl_frontName.setBounds(207, 108, 185, 38);
+		pnl_rechts.add(lbl_frontName);
+		
+		JLabel lbl_fuehrung = new JLabel("In F\u00FChrung:");
+		lbl_fuehrung.setForeground(Color.WHITE);
+		lbl_fuehrung.setFont(new Font("Old English Text MT", Font.PLAIN, 30));
+		lbl_fuehrung.setBounds(35, 108, 220, 38);
+		pnl_rechts.add(lbl_fuehrung);
+		
 		JLabel lblWelcheWrfelSollen = new JLabel("Welche W\u00FCrfel sollen stehen bleiben:");
 		lblWelcheWrfelSollen.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblWelcheWrfelSollen.setForeground(Color.WHITE);
@@ -317,7 +341,7 @@ public class MainGui extends JFrame {
 		
 		
 		//Button placed on panel 2 + Actionlistener
-		btn_nextZug = new JButton("N\u00E4chster Zug");
+		btn_nextZug = new JButton("N\u00E4chster Spieler");
 		btn_nextZug.setEnabled(false);
 		btn_nextZug.setBounds(221, 11, 120, 23);
 		pnl_buttons.add(btn_nextZug);
@@ -543,6 +567,7 @@ public class MainGui extends JFrame {
 					
 					//SpielerListe aktualisieren
 					KniffelSpiel.spielerHinzufügen(KniffelSpiel.ermittleSpieler(actPlayer).getName(),actPlayer, upPoints[actPlayer]+bottomPoints[actPlayer]+kniffelBonus);
+					
 					//Spieler aktualisieren
 					if(actPlayer==KniffelSpiel.spielerCount()){
 						actPlayer = KniffelSpiel.ermittleSpieler(1).getSpielerID();
@@ -550,7 +575,11 @@ public class MainGui extends JFrame {
 						actPlayer++;
 					}
 					
+					//Führung anzeigen
+					lbl_frontName.setText(KniffelSpiel.punkteListe.last().getName());
+					lbl_points.setText(Integer.toString(KniffelSpiel.punkteListe.last().getPunkte()));
 					
+					//Nächsten Zug anzeigen
 					JOptionPane.showMessageDialog(null, KniffelSpiel.ermittleSpieler(actPlayer).getName() +"ist dran!");
 					tbl_KniffelBlock.changeSelection(0,actPlayer, false, false);
 					wurfCounter =0;
