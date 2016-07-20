@@ -8,16 +8,18 @@ import javax.swing.JOptionPane;
 
 public class KniffelSpiel {
 
-//ArrayList Spielerliste
+//Treeset Spielerliste
 public static TreeSet <Spieler> spielerListe = new TreeSet<Spieler>() ;
 //treeset Würfelliste
 public static TreeSet<Würfel> würfelListe = new TreeSet<Würfel>() ;
+//Treeset Punkte
+public static TreeSet<Punkte> punkteListe = new TreeSet<Punkte>() ;
 
 
 
 
 /* Methoden für die Spielerliste*/
-//Spieler hinzufügenmethode, wird wahrscheinlich verlagert
+//Spieler hinzufügenmethode
 public static boolean spielerHinzufügen(String name, int spielerID, int punkte){
 		
 		try {
@@ -47,26 +49,24 @@ public static int spielerCount(){
 }
 
 
-
+//E nach Spieler ID suchen im TreeSet
 public static Spieler ermittleSpieler( int spielernummer){
 	Spieler tmp = new Spieler("__", spielernummer, 0);
-	
 	if (spielerListe.contains(tmp))
 		tmp = spielerListe.floor(tmp);
 	else
 		tmp = null;
-	
 	return tmp;
-
 }// Ende ermittle Spieler
 
 
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /*Jetzt die Methoden für die Würfelliste*/
 
 public static boolean  würfelHinzufügen(Würfel würfel){
 	try {
-		if(würfel.getWürfelnummer()==0||würfel.getAugenzahl()<0||würfel.getAugenzahl()>6||würfel.getWurf()<0){
+		if(würfel.getWürfelnummer()==0||würfel.getAugenzahl()<0||würfel.getAugenzahl()>6){
 			JOptionPane.showMessageDialog(null, "Würfel konnte wegen falscher Parameter nicht erstellt werden");
 			return false;
 		}else{
@@ -83,10 +83,10 @@ public static boolean  würfelHinzufügen(Würfel würfel){
 }
 
 
-
+//Würfeln ermitteln
 public static Würfel ermittleWürfel( int würfelnummer){
 	
-	Würfel tmp = new Würfel(würfelnummer,0, 0, false);
+	Würfel tmp = new Würfel(würfelnummer,0, false);
 	
 	if (würfelListe.contains(tmp))
 		tmp = würfelListe.floor(tmp);
@@ -98,7 +98,7 @@ public static Würfel ermittleWürfel( int würfelnummer){
 }// Ende ermittle Würfel 
 
 
-
+//Würfel TreeSet Ausgeben
 public static void würfelListeAusgeben() {
 	Iterator<Würfel> iter = würfelListe.iterator();
 	while(iter.hasNext()) {
@@ -107,6 +107,28 @@ public static void würfelListeAusgeben() {
 	}
 }// Ende würfellistausgeben
 
+/*--------------------------------------------------------------------------------------------------------------------------------------------------------*/
+/*Jetzt die Methoden für die punkteListe*/
 
-
+//Punkte in Treeset hinzufügen
+public static boolean punkteHinzufuegen(int points,String name){
+	try {
+		//Checkt ob name leer, bzw ID nicht da
+		if(points<0){
+			JOptionPane.showMessageDialog(null,"Punkte fehlen!");
+			return false;
+		}else{
+			//Spieler in Liste hinzufügen
+			System.out.println("Punkte hinzugefügt");
+			return punkteListe.add(new Punkte(points,name));
+			
+		}// if Anweisung Ende
+		
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		JOptionPane.showMessageDialog(null, "Spieler konnte nicht hinzugefügt werden");
+		return false;
+	}
+}
 }

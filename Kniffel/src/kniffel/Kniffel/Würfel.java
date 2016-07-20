@@ -13,10 +13,9 @@ public class Würfel extends KniffelSpiel implements Comparable<Würfel> {
 
 
 	//Würfel Konstruktor
-	public Würfel (int würfelnummer, int augenzahl, int wurf, boolean blocked) {
+	public Würfel (int würfelnummer, int augenzahl, boolean blocked) {
 		setWürfelnummer (würfelnummer);
 		setAugenzahl (augenzahl);
-		setWurf(wurf);
 		
 	}
 
@@ -27,6 +26,9 @@ public class Würfel extends KniffelSpiel implements Comparable<Würfel> {
 
 
 	public void setWürfelnummer(int würfelnummer) {
+		if(würfelnummer<1||würfelnummer>5){
+			JOptionPane.showMessageDialog(null, "Nur ein bis fünf Würfel");
+		}
 		this.würfelnummer = würfelnummer;
 	}
 
@@ -37,6 +39,9 @@ public class Würfel extends KniffelSpiel implements Comparable<Würfel> {
 
 
 	public void setAugenzahl(int augenzahl) {
+		if(augenzahl<0||augenzahl>6){
+			JOptionPane.showMessageDialog(null, "Augenzahl zwischen 1 und 6, außer bei Initialisierung");
+		}
 		this.augenzahl = augenzahl;
 	}
 	
@@ -50,14 +55,7 @@ public class Würfel extends KniffelSpiel implements Comparable<Würfel> {
 	}
 
 
-	public int getWurf() {
-		return wurf;
-	}
-
-
-	public void setWurf(int wurf) {
-		this.wurf = wurf;
-	}
+	
 
 	// Würfel methode
 	public void würfeln (Würfel würfel) {

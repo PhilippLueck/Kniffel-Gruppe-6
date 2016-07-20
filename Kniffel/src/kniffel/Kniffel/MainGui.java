@@ -72,6 +72,7 @@ public class MainGui extends JFrame {
 	private int actPlayer = KniffelSpiel.ermittleSpieler(1).getSpielerID();
 	private int[] upPoints= new int[KniffelSpiel.spielerCount()+1];
 	private int[] bottomPoints =new int[KniffelSpiel.spielerCount()+1];
+	private int[] pointList = new int[KniffelSpiel.spielerCount()+1];
 	private int entryCount =0;
 	private int bottomRuleCount=0;
 	private int kniffelBonus=0;
@@ -115,19 +116,23 @@ public class MainGui extends JFrame {
 			
 	// Main frame
 	public MainGui() {
+		setResizable(false);
+				
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 992, 633);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+	
+
 		
 		// Würfel erstellen
-		Würfel würfel1 = new Würfel(1,0, 0, false);
-		Würfel würfel2 = new Würfel(2,0, 0, false);
-		Würfel würfel3 = new Würfel(3,0, 0, false);
-		Würfel würfel4 = new Würfel(4,0, 0, false);
-		Würfel würfel5 = new Würfel(5,0, 0, false);
+		Würfel würfel1 = new Würfel(1,0, false);
+		Würfel würfel2 = new Würfel(2,0, false);
+		Würfel würfel3 = new Würfel(3,0, false);
+		Würfel würfel4 = new Würfel(4,0, false);
+		Würfel würfel5 = new Würfel(5,0, false);
 		
 		KniffelSpiel.würfelHinzufügen(würfel1);
 		KniffelSpiel.würfelHinzufügen(würfel2);
@@ -454,9 +459,11 @@ public class MainGui extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(spielEnde==true){
-					JOptionPane.showMessageDialog(null, "Spielende");
 					btn_nextZug.setEnabled(false);
 					btnWrfeln.setEnabled(false);
+					Highscore wnd2 = new Highscore();
+     				wnd2.setVisible(true);
+     				dispose();
 				}else{
 					//für Sonderregeln zurückgesetzt
 					bottomRuleCount=0;
@@ -498,14 +505,14 @@ public class MainGui extends JFrame {
 					for(int k =0; k<6;k++){
 						
 						if(tableBlock[actPlayer-1][k]== false){
-							tbl_KniffelBlock.setValueAt(0, k+1, actPlayer);
+							tbl_KniffelBlock.setValueAt("", k+1, actPlayer);
 						}
 						
 					}
 						//Unteren Block prüfen
 						for(int k =6; k<=12;k++){
 							if(tableBlock[actPlayer-1][k]== false){
-								tbl_KniffelBlock.setValueAt(0, k+4, actPlayer);	
+								tbl_KniffelBlock.setValueAt("", k+4, actPlayer);	
 								bottomRuleCount++; //für Sonderregeln hochzählen, um zu sehen, ob unterer Block voll
 							}
 						
@@ -527,14 +534,23 @@ public class MainGui extends JFrame {
 					}
 					
 					//Gesamtpunkte (oben+unten)
+					int gesamtPunkte =upPoints[actPlayer]+bottomPoints[actPlayer]+kniffelBonus;
+					System.out.println("Gesamtpunkte:"+gesamtPunkte);
 					tbl_KniffelBlock.setValueAt(upPoints[actPlayer]+bottomPoints[actPlayer]+kniffelBonus,18,actPlayer);
 					
+					//Punkte in PunkeListe hinzufügen
+					KniffelSpiel.punkteHinzufuegen(gesamtPunkte,KniffelSpiel.ermittleSpieler(actPlayer).getName());
+					
+					//SpielerListe aktualisieren
+					KniffelSpiel.spielerHinzufügen(KniffelSpiel.ermittleSpieler(actPlayer).getName(),actPlayer, upPoints[actPlayer]+bottomPoints[actPlayer]+kniffelBonus);
 					//Spieler aktualisieren
 					if(actPlayer==KniffelSpiel.spielerCount()){
 						actPlayer = KniffelSpiel.ermittleSpieler(1).getSpielerID();
 					}else{
 						actPlayer++;
 					}
+					
+					
 					JOptionPane.showMessageDialog(null, KniffelSpiel.ermittleSpieler(actPlayer).getName() +"ist dran!");
 					tbl_KniffelBlock.changeSelection(0,actPlayer, false, false);
 					wurfCounter =0;
@@ -605,7 +621,9 @@ public class MainGui extends JFrame {
 					if(gewürfelt == false){
 						JOptionPane.showMessageDialog(null, "Bitte erst Würfeln");
 					}else{
-						// TODO Auto-generated method stub
+						int dialogResult = JOptionPane.showConfirmDialog(null, "Wert eintragen?", "Achtung", JOptionPane.OK_CANCEL_OPTION);
+						if(dialogResult==JOptionPane.OK_OPTION){
+						
 						//Wert blockieren, wenn nicht schon blockiert!
 						
 							if(row>0&&row<=6){
@@ -635,7 +653,7 @@ public class MainGui extends JFrame {
 								}
 						}
 					}
-					
+				}
 					//Abbruchbedingung für Spielende, hier wird geschaut, ob jeder Eintrag im boolean-Array auf true, dann ende
 					entryCount=0;
 					for (int x =0; x<tableBlock.length;x++){

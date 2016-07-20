@@ -54,6 +54,7 @@ public class Start extends JFrame {
 	
 	
 	public Start() {
+		setResizable(false);
 		//Main Pain
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 536, 406);
