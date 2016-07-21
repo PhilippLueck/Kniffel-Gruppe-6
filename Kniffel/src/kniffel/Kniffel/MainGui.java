@@ -231,6 +231,15 @@ public class MainGui extends JFrame {
 		tbl_KniffelBlock.setBounds(10, 108, 565, 456);
 		pnl_links.add(tbl_KniffelBlock);
 		
+		//Öffnet Hilfe Button
+	       btnHilfe.addActionListener(new ActionListener() {
+	          	public void actionPerformed(ActionEvent e) {
+	          		 JOptionPane.showMessageDialog(null,"Informationen zur Nutzung des Programms erhältst du in der beiliegenden Anleitung");
+	          		
+	          	}
+	         
+	          });
+		
 		//tabelle erstmals befüllen
 		
 		for(int i=1;i<=KniffelSpiel.spielerCount();i++){

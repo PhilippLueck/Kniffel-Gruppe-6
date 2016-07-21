@@ -285,6 +285,7 @@ public class Start extends JFrame {
        btn_help.setBounds(64, 262, 89, 23);
        pnl_options.add(btn_help);
        
+       
        JLabel lblNewLabel_1 = new JLabel("New label");
        lblNewLabel_1.setIcon(new ImageIcon(Start.class.getResource("/kniffel/Kniffel/Images/w\u00FCrfelbilderangepasstverschwommen.png")));
        lblNewLabel_1.setBounds(0, 0, 211, 292);
@@ -316,8 +317,14 @@ public class Start extends JFrame {
        btn_instruction.setBounds(311, 17, 198, 46);
        pnl_head.add(btn_instruction);
        
-     
-       
+     //Öffnet Hilfe Button
+       btn_help.addActionListener(new ActionListener() {
+          	public void actionPerformed(ActionEvent e) {
+          		 JOptionPane.showMessageDialog(null,"Informationen zur Nutzung des Programms erhältst du in der beiliegenden Anleitung");
+          		
+          	}
+         
+          });
        
        
        //Öffnet Anleitung
