@@ -80,26 +80,6 @@ public class MainGui extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	
-	
-	//Sounds Allgemein
-	 public void playSound(String soundName)
-     {
-       try 
-       {
-        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
-        Clip clip = AudioSystem.getClip();
-        clip.open(audioInputStream);
-        clip.start();
-       }
-       catch(Exception ex)
-       {
-         System.out.println("Error with playing sound.");
-         ex.printStackTrace( );
-       }
-     }
-	
-	//Sounds Allgemein Ende
 			public void run() {
 				try {
 					MainGui frame = new MainGui();
@@ -125,7 +105,7 @@ public class MainGui extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 	
-
+		/*Zunnächst wird das Spiel vorbereitet mit den nötigen Initialisierungen/Deklarierungen*/
 		
 		// Würfel erstellen
 		Würfel würfel1 = new Würfel(1,0, false);
@@ -134,6 +114,7 @@ public class MainGui extends JFrame {
 		Würfel würfel4 = new Würfel(4,0, false);
 		Würfel würfel5 = new Würfel(5,0, false);
 		
+		//Würfel in WürfelTreeSet
 		KniffelSpiel.würfelHinzufügen(würfel1);
 		KniffelSpiel.würfelHinzufügen(würfel2);
 		KniffelSpiel.würfelHinzufügen(würfel3);
@@ -141,7 +122,7 @@ public class MainGui extends JFrame {
 		KniffelSpiel.würfelHinzufügen(würfel5);
 		
 		
-		//Kniffelblock Array befüllen, was Jtable Zellen simuliert
+		/*Kniffelblock Array befüllen, was Jtable Zellen simuliert um später die Kontrolle über blockierte Felder zu haben*/
 		for (int x =0; x<tableBlock.length;x++){
 			for (int y=0; y< 13;y++){
 				tableBlock[x][y]= false;
@@ -153,7 +134,7 @@ public class MainGui extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		//Panel 1 placed on "main Panel"
+		//Panel links platziert auf "main Panel"
 		JPanel pnl_links = new JPanel();
 		pnl_links.setBorder(null);
 		pnl_links.setBackground(new Color(139, 69, 19));
@@ -161,15 +142,14 @@ public class MainGui extends JFrame {
 		panel.add(pnl_links);
 		pnl_links.setLayout(null);
 		
-		//Panel 3 placed on panel1
+		//Panel rechts platziert auf panel1
 		pnl_rechts = new JPanel();
 		pnl_rechts.setBackground(new Color(255, 255, 240));
 		pnl_rechts.setBorder(new LineBorder(new Color(0, 0, 0)));
 		pnl_rechts.setBounds(574, 0, 402, 548);
 		panel.add(pnl_rechts);
 		pnl_rechts.setLayout(null);
-		
-		//Panel 2 
+		 
 		pnl_buttons = new JPanel();
 		pnl_buttons.setBounds(574, 548, 402, 47);
 		panel.add(pnl_buttons);
@@ -224,7 +204,7 @@ public class MainGui extends JFrame {
 		tbl_KniffelBlock.getColumnModel().getColumn(5).setResizable(false);
 		tbl_KniffelBlock.getColumnModel().getColumn(6).setResizable(false);
 		
-		//Hilfebutton placed on panel2
+		//Hilfebutton platziert auf panel2
 		btnHilfe = new JButton("Hilfe");
 		btnHilfe.setBounds(21, 44, 71, 23);
 		pnl_links.add(btnHilfe);
@@ -241,7 +221,6 @@ public class MainGui extends JFrame {
 	          });
 		
 		//tabelle erstmals befüllen
-		
 		for(int i=1;i<=KniffelSpiel.spielerCount();i++){
 			for(int y=1; y<=19;y++){
 			tbl_KniffelBlock.setValueAt(0, y, i);
@@ -316,7 +295,7 @@ public class MainGui extends JFrame {
 		
 /*-----------------------------------------Buttons-----------------------------------------------------------------------------------------------------*/		
 		
-		//5 Radiobuttons
+		//5 Radiobuttons, die später zum Blockieren der Würfel dienen
 		JRadioButton rdbtn_w1 = new JRadioButton("");
 		rdbtn_w1.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		rdbtn_w1.setBackground(SystemColor.controlShadow);
@@ -348,7 +327,7 @@ public class MainGui extends JFrame {
 		pnl_rechts.add(rdbtn_w5);
 		rdbtn_w5.setVisible(false);
 		
-			//hintergrund 
+			//Hintergrund 
 			JLabel lbl_rechts = new JLabel("New label");
 			lbl_rechts.setBounds(0, 0, 402, 548);
 			pnl_rechts.add(lbl_rechts);
@@ -372,7 +351,7 @@ public class MainGui extends JFrame {
 		
 		/*----------------------------------Functions-------------------------------------------------------------------------------------------------*/
 		
-		//würfelknopf (ruft würfelmethode aus würfelklasse auf)
+		/*würfelknopf (ruft würfelmethode aus würfelklasse auf) und lässt verfügbare Punkte in Tabelle eintragen, auch Sonderregelungen werden geprüft*/
 		btnWrfeln.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent arg0) {
 							rdbtn_w2.setEnabled(true);
@@ -381,10 +360,6 @@ public class MainGui extends JFrame {
 					btnWrfeln.setEnabled(false);
 					
 				}else{
-				/*	//Sound
-					playSound("C:/Users/IBM_ADMIN/git/New folder (5)/Kniffel-Gruppe-6/Kniffel/src/kniffel/Kniffel/Sound/Shake And Roll Dice-SoundBible.com-591494296.wav");	
-					//Ende Sound */
-					
 					//Werte vom vorherigen Würfeln zurücksetzen (für Sonderregeln)
 					boolean fullPoints = false;
 					boolean streichen = false;
@@ -494,7 +469,10 @@ public class MainGui extends JFrame {
 		}});// ENDE WÜRFEL BUTTON
 		
 		
-		//Action Listener Next Zug
+		/*Action Listener für nächsten Zug, hier werden alle wichtigen Komponenten zurückgesetzt und die Punkte zusammenaddiert.
+		 * Punkte werden in eine Punkteliste eingetragen und der aktuelle Spieler wird aktualisiert
+		 * Des Weiteren wird bei Erreichen des Spielendes die Siegerehrung in einem neuen Fenster gestartet*/
+		 
 		btn_nextZug.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -512,9 +490,8 @@ public class MainGui extends JFrame {
 						würfellabel[i].setVisible(false);
 					
 					}
-					
+					//Buttons zurücksetzen
 					btnWrfeln.setEnabled(true);
-					
 					lblWelcheWrfelSollen.setVisible(false);
 	
 					rdbtn_w1.setSelected(false);
@@ -537,12 +514,14 @@ public class MainGui extends JFrame {
 					rdbtn_w5.setEnabled(true);
 					rdbtn_w5.setVisible(false);
 					
+					//Würfel deblockiert
 					würfel1.block(würfel1,false);
 					würfel2.block(würfel2,false);
 					würfel3.block(würfel3,false);
 					würfel4.block(würfel4,false);
 					würfel5.block(würfel5,false);
 					
+					//Nicht eingetragene Werte zurückgesetzt
 					for(int k =0; k<6;k++){
 						
 						if(tableBlock[actPlayer-1][k]== false){
@@ -574,7 +553,7 @@ public class MainGui extends JFrame {
 						tbl_KniffelBlock.setValueAt(35, 8, actPlayer);
 					}
 					
-					//Gesamtpunkte (oben+unten)
+					//Gesamtpunkte (oben+unten)+ Eventueller Kniffelbonus
 					int gesamtPunkte =upPoints[actPlayer]+bottomPoints[actPlayer]+kniffelBonus;
 					System.out.println("Gesamtpunkte:"+gesamtPunkte);
 					tbl_KniffelBlock.setValueAt(upPoints[actPlayer]+bottomPoints[actPlayer]+kniffelBonus,18,actPlayer);
@@ -608,13 +587,12 @@ public class MainGui extends JFrame {
 			}
 		});
 		
-		//Spieler in Tabelle eintragen
+				//Spieler in Tabelle eintragen
 				for(int i = 1; i<=KniffelSpiel.spielerCount();i++){
 					tbl_KniffelBlock.setValueAt(KniffelSpiel.ermittleSpieler(i).getName(),0, i);
 				}
 		
 		// Radiobuttonsfunktionen
-		
 		//eins
 		rdbtn_w1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -656,7 +634,7 @@ public class MainGui extends JFrame {
 		
 		
 		
-		
+		/* Funktion die Werte in die Tabelle einträgt, prüft ob Spielende erreicht*/
 		tbl_KniffelBlock.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			
 			@Override
@@ -680,11 +658,7 @@ public class MainGui extends JFrame {
 									tableBlock[actPlayer-1][row-1]= true;
 									System.out.println("blockiert: "+ "Zeile: " +row);
 									zugEnde = true;
-									btn_nextZug.setEnabled(true);
-						
-								
-									
-									
+									btn_nextZug.setEnabled(true);	
 								}
 							}else{
 								if(row>9 && row<17){
@@ -703,7 +677,7 @@ public class MainGui extends JFrame {
 						}
 					}
 				}
-					//Abbruchbedingung für Spielende, hier wird geschaut, ob jeder Eintrag im boolean-Array auf true, dann ende
+					//Abbruchbedingung für Spielende, hier wird geschaut, ob jeder Eintrag im boolean-Array auf true, dann Spielende 
 					entryCount=0;
 					for (int x =0; x<tableBlock.length;x++){
 						for (int y=0; y< 13;y++){

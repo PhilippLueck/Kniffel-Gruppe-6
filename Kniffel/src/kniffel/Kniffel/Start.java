@@ -48,10 +48,6 @@ public class Start extends JFrame {
 	private String[] player_names;
 	private int spieleranzahl=0;
 	private boolean ready = false;
-
-	
-	
-	
 	
 	public Start() {
 		setResizable(false);
@@ -80,7 +76,7 @@ public class Start extends JFrame {
 		 this.player_names = new String[8];
 		 
 		 
-		 //Schleife, für jeden Player ein neues Textfeld
+		 /*Schleife die für jeden Spieler ein Textfield erstellt, setzt sie aber ersteinmal disabled/not visible*/
 		 for(int i = 0; i < players.length; i++){
 			 try {
 					players[i] = new JFormattedTextField(new MaskFormatter("????????"));
@@ -101,7 +97,6 @@ public class Start extends JFrame {
 		 }
 		 
 		 //Spieler 1 aber schon visible setzen
-		 
 		 players[0].setVisible(true);
 		 labels[0].setVisible(true);
 		 
@@ -147,7 +142,7 @@ public class Start extends JFrame {
 			}
 		});
 		
-		//Combobox mit Daten aus Comboliste von oben
+		/*Combobox liest Spieleranzahl aus und setzt dementsprechend Textfelder visible/enabled*/
 		JComboBox cb_playernumber = new JComboBox(comboBoxListe);
 		cb_playernumber.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				
@@ -191,15 +186,14 @@ public class Start extends JFrame {
   		pnl_options.add(btn_cancel);
   		
      //Startbutton
-     		JButton btn_start = new JButton("Start");
-     		btn_start.setForeground(new Color(0, 128, 0));
-     		btn_start.setBounds(10, 228, 89, 23);
-     		pnl_options.add(btn_start);
-     		btn_start.setEnabled(false); 
+     	JButton btn_start = new JButton("Start");
+     	btn_start.setForeground(new Color(0, 128, 0));
+   		btn_start.setBounds(10, 228, 89, 23);
+   		pnl_options.add(btn_start);
+   		btn_start.setEnabled(false); 
      		
      		
-     		//Start button öffnet main Gui
-     		//Erzeugt Würfel
+     		/*Startbutton fügt Spieler in Spieler Treeset hinzu und öffnet die Main GUI*/
      		btn_start.addActionListener(new ActionListener() {
      			public void actionPerformed(ActionEvent e) {
      				//Jetzt Spieler erstellen
@@ -209,7 +203,7 @@ public class Start extends JFrame {
     	           			KniffelSpiel.spielerHinzufügen(players[j].getText(),j+1,0);	  
     	       		}
     	       			
-    	       		//Jetzt Spieler ausgeben
+    	       		//Jetzt Spieler aus Spielerliste ausgeben (Zur Kontrolle)
     		       		Iterator<Spieler> spielerIterator = KniffelSpiel.spielerListe.iterator();//Iterator ´nach collections!!! Sonst putt.			
     		       		while(spielerIterator.hasNext()){
     		       			Spieler selectedSpieler = spielerIterator.next();
@@ -226,11 +220,11 @@ public class Start extends JFrame {
      		
 
        
-       //ready button
+       /*Bei klick auf Bereit, Startbutton wird enabled und die Eingabe kann nochmal kontrolliert werden*/
        JButton btn_ready = new JButton("Bereit");
        btn_ready.setBounds(10, 162, 89, 23);
        pnl_options.add(btn_ready);
-       btn_ready.addActionListener(new ActionListener() { //disabled die Namen der Spieler und enabled den Start button
+       btn_ready.addActionListener(new ActionListener() { 
        	public void actionPerformed(ActionEvent e) {
        		for (int i = 0; i < 8; i++) {	
        		players[i].setEnabled(!players[i].isEnabled());
@@ -244,7 +238,7 @@ public class Start extends JFrame {
 
      });//ende Action Listener
        
-//Zurück AcionListener 
+       /*Zurück AcionListener. Bei falscher Eingabe werden Textfelder zurückgesetzt und eine neue Spielereingabe kann erfolgen*/
 		btn_cancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				btn_start.setEnabled(false);
@@ -262,12 +256,6 @@ public class Start extends JFrame {
 			}
 		});
      
-       
-       //progress bar
-       JProgressBar progressBar = new JProgressBar();
-       progressBar.setBounds(10, 203, 191, 14);
-       pnl_options.add(progressBar);
-
        
        //help button
        JButton btn_help = new JButton("Hilfe");

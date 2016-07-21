@@ -8,6 +8,7 @@ public  class Regelwerk extends KniffelSpiel {
 private  int zahlenCount;
 private  int punkte;
 
+/*Hier alle Regelprüfungen (Kniffel-Sonderregeln besitzen "Abkürzungen" für die entsprechenden Punktzahlen )*/
 
 /*---------------------------------------------------------------------------------------------------------------------------------------*/
 //1er
