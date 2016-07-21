@@ -32,7 +32,7 @@ public class Anleitung extends JFrame {
     	f.pack();
     	f.setVisible(true);
     	f.setResizable(false);
-    	f.setDefaultCloseOperation(EXIT_ON_CLOSE);
+    	f.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     	
 	}
 
