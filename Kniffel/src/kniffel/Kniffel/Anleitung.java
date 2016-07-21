@@ -23,35 +23,16 @@ public class Anleitung extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-    	
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Anleitung frame = new Anleitung();
-					frame.setVisible(false);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 * @throws IOException 
-	 * @throws HeadlessException 
-	 * @throws URISyntaxException 
-	 */
+	
 	public Anleitung() throws HeadlessException, IOException, URISyntaxException {
 		//Erstellt das Anleitungsfenster, mit der Anleitung als png Datei
+		
 		JFrame f = new JFrame();
     	f.setContentPane(new JLabel(new ImageIcon(MainGui.class.getResource("/kniffel/Kniffel/Images/Kniffel Anleitung.png"))));
     	f.pack();
     	f.setVisible(true);
+    	f.setResizable(false);
+    	f.setDefaultCloseOperation(EXIT_ON_CLOSE);
     	
 	}
 
