@@ -354,7 +354,6 @@ public class MainGui extends JFrame {
 		/*würfelknopf (ruft würfelmethode aus würfelklasse auf) und lässt verfügbare Punkte in Tabelle eintragen, auch Sonderregelungen werden geprüft*/
 		btnWrfeln.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent arg0) {
-							rdbtn_w2.setEnabled(true);
 				if(wurfCounter==3|| zugEnde == true){
 					JOptionPane.showMessageDialog(null, "Würfeln nicht mehr möglich.");
 					btnWrfeln.setEnabled(false);
@@ -371,7 +370,6 @@ public class MainGui extends JFrame {
 					rdbtn_w3.setVisible(true);
 					rdbtn_w4.setVisible(true);
 					rdbtn_w5.setVisible(true);
-					
 					
 					//Würfeln
 					würfel1.würfeln(würfel1);

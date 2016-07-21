@@ -196,14 +196,21 @@ public class Start extends JFrame {
      		/*Startbutton fügt Spieler in Spieler Treeset hinzu und öffnet die Main GUI*/
      		btn_start.addActionListener(new ActionListener() {
      			public void actionPerformed(ActionEvent e) {
+     				//ready wird true, wenn Spielernamen da
+     				boolean ready = false;
      				//Jetzt Spieler erstellen
     	       		//Spieler werden in Listen eingetragen und sotiert mit comparable in Spielerklasse
     	       		int spieleranzahl = Integer.parseInt((String)cb_playernumber.getSelectedItem());
     	       		for (int j = 0; j<spieleranzahl; j++){
-    	           			KniffelSpiel.spielerHinzufügen(players[j].getText(),j+1,0);	  
+    	       				if(players[j].getText().equals("        ")){// Muss leider so gemacht werden wegen MaskFormatter
+    	       					JOptionPane.showMessageDialog(null, "Bitte Namen eingeben für Spieler "+ j+1);
+    	       				}else{
+    	       					KniffelSpiel.spielerHinzufügen(players[j].getText(),j+1,0);	  
+    	       					ready = true;
+    	       				}
     	       		}
     	       			
-    	       		//Jetzt Spieler aus Spielerliste ausgeben (Zur Kontrolle)
+    	       			//Jetzt Spieler aus Spielerliste ausgeben (Zur Kontrolle)
     		       		Iterator<Spieler> spielerIterator = KniffelSpiel.spielerListe.iterator();//Iterator ´nach collections!!! Sonst putt.			
     		       		while(spielerIterator.hasNext()){
     		       			Spieler selectedSpieler = spielerIterator.next();
@@ -211,10 +218,12 @@ public class Start extends JFrame {
     		       		}//Ende While
     	       		//Schleifenende
     	       		
-     				//öffnen von main Gui
-     				MainGui wnd = new MainGui();
-     				wnd.setVisible(true);
-     				dispose();
+     				//öffnen von main Gui wenn ready true
+    		       	if(ready==true)	{
+	     				MainGui wnd = new MainGui();
+	     				wnd.setVisible(true);
+	     				dispose();
+    		       	}else{}
      			}
      		});
      		
