@@ -39,7 +39,7 @@ public class Spieler extends KniffelSpiel implements Comparable<Spieler>{
 	}
 
 	public void setName(String name) {
-		if(!(name.isEmpty())){
+		if(!(name=="")){
 		this.name = name;
 		}
 		else{

@@ -79,13 +79,6 @@ public class Start extends JFrame {
 		 this.labels = new JLabel[8];
 		 this.player_names = new String[8];
 		 
-		 //Maskformatter für Textfelder
-		 try {
-			MaskFormatter formatter = new MaskFormatter("????????????????????");
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
 		 
 		 //Schleife, für jeden Player ein neues Textfeld
 		 for(int i = 0; i < players.length; i++){
@@ -213,14 +206,8 @@ public class Start extends JFrame {
     	       		//Spieler werden in Listen eingetragen und sotiert mit comparable in Spielerklasse
     	       		int spieleranzahl = Integer.parseInt((String)cb_playernumber.getSelectedItem());
     	       		for (int j = 0; j<spieleranzahl; j++){
-    	       			if(players[j].getText().hashCode()==-782626816){
-    	           			JOptionPane.showMessageDialog(null, "Name von Spieler "+( j+1) + " fehlt!");
-    	           			btn_cancel.doClick();
-
-    	           		
-    	           		}else{
-    	           			KniffelSpiel.spielerHinzufügen(players[j].getText(),j+1,0);	          			
-    	           		
+    	           			KniffelSpiel.spielerHinzufügen(players[j].getText(),j+1,0);	  
+    	       		}
     	       			
     	       		//Jetzt Spieler ausgeben
     		       		Iterator<Spieler> spielerIterator = KniffelSpiel.spielerListe.iterator();//Iterator ´nach collections!!! Sonst putt.			
@@ -234,7 +221,7 @@ public class Start extends JFrame {
      				MainGui wnd = new MainGui();
      				wnd.setVisible(true);
      				dispose();
-     			}}}
+     			}
      		});
      		
 
@@ -261,14 +248,16 @@ public class Start extends JFrame {
 		btn_cancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				btn_start.setEnabled(false);
-				for (int i = 0; i <= spieleranzahl; i++) {
-					
+				for (int i = 0; i < spieleranzahl; i++) {
 						 players[i].setVisible(true);
 						 players[i].setText("");
 						 players[i].setEnabled(true);
 						 labels[i].setVisible(true);
 						 cb_playernumber.setEnabled(true);
 					 }
+				for (int i = spieleranzahl;i<8;i++){
+					players[i].setEnabled(true);
+				}
 				btn_ready.setEnabled(true);
 			}
 		});
