@@ -203,7 +203,8 @@ public class Start extends JFrame {
     	       		int spieleranzahl = Integer.parseInt((String)cb_playernumber.getSelectedItem());
     	       		for (int j = 0; j<spieleranzahl; j++){
     	       				if(players[j].getText().equals("        ")){// Muss leider so gemacht werden wegen MaskFormatter
-    	       					JOptionPane.showMessageDialog(null, "Bitte Namen eingeben für Spieler "+ j+1);
+    	       					JOptionPane.showMessageDialog(null, "Bitte Namen eingeben für Spieler "+ (j+1));
+    	       					ready = false;
     	       				}else{
     	       					KniffelSpiel.spielerHinzufügen(players[j].getText(),j+1,0);	  
     	       					ready = true;
