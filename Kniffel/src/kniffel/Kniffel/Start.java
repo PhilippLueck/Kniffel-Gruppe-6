@@ -46,7 +46,7 @@ public class Start extends JFrame {
 	private JFormattedTextField[] players;
 	private JLabel[] labels;
 	private String[] player_names;
-	private int spieleranzahl=0;
+	private int spieleranzahl=1;
 	private boolean ready = false;
 	
 	public Start() {
@@ -196,27 +196,19 @@ public class Start extends JFrame {
      		/*Startbutton fügt Spieler in Spieler Treeset hinzu und öffnet die Main GUI*/
      		btn_start.addActionListener(new ActionListener() {
      			public void actionPerformed(ActionEvent e) {
-     				//ready wird true, wenn Spielernamen da
-     				boolean ready = false;
      				//Jetzt Spieler erstellen
     	       		//Spieler werden in Listen eingetragen und sotiert mit comparable in Spielerklasse
     	       		int spieleranzahl = Integer.parseInt((String)cb_playernumber.getSelectedItem());
     	       		for (int j = 0; j<spieleranzahl; j++){
-    	       				if(players[j].getText().equals("        ")){// Muss leider so gemacht werden wegen MaskFormatter
-    	       					JOptionPane.showMessageDialog(null, "Bitte Namen eingeben für Spieler "+ (j+1));
-    	       					ready = false;
-    	       				}else{
-    	       					KniffelSpiel.spielerHinzufügen(players[j].getText(),j+1,0);	  
-    	       					ready = true;
-    	       				}
+    	       		KniffelSpiel.spielerHinzufügen(players[j].getText(),j+1,0);	  		
     	       		}
     	       			
-    	       			//Jetzt Spieler aus Spielerliste ausgeben (Zur Kontrolle)
-    		       		Iterator<Spieler> spielerIterator = KniffelSpiel.spielerListe.iterator();//Iterator ´nach collections!!! Sonst putt.			
-    		       		while(spielerIterator.hasNext()){
-    		       			Spieler selectedSpieler = spielerIterator.next();
-    		       			System.out.println(selectedSpieler.getSpielerID()+","+ selectedSpieler.getName() );
-    		       		}//Ende While
+    	       		//Jetzt Spieler aus Spielerliste ausgeben (Zur Kontrolle)
+    		       	Iterator<Spieler> spielerIterator = KniffelSpiel.spielerListe.iterator();//Iterator ´nach collections!!! Sonst putt.			
+    		       	while(spielerIterator.hasNext()){
+    		       		Spieler selectedSpieler = spielerIterator.next();
+    		       		System.out.println(selectedSpieler.getSpielerID()+","+ selectedSpieler.getName() );
+    		       	}//Ende While
     	       		//Schleifenende
     	       		
      				//öffnen von main Gui wenn ready true
@@ -225,25 +217,34 @@ public class Start extends JFrame {
 	     				wnd.setVisible(true);
 	     				dispose();
     		       	}else{}
-     			}
+     		}
      		});
      		
 
        
-       /*Bei klick auf Bereit, Startbutton wird enabled und die Eingabe kann nochmal kontrolliert werden*/
+       /*Bei klick auf Bereit, Startbutton wird enabled wenn Spielernamen nicht leer und die Eingabe kann nochmal kontrolliert werden*/
        JButton btn_ready = new JButton("Bereit");
        btn_ready.setBounds(10, 162, 89, 23);
        pnl_options.add(btn_ready);
        btn_ready.addActionListener(new ActionListener() { 
        	public void actionPerformed(ActionEvent e) {
+            ready=true;
        		for (int i = 0; i < 8; i++) {	
-       		players[i].setEnabled(!players[i].isEnabled());
-       		btn_ready.setEnabled(false);
-       		btn_start.setEnabled(true);
-       		cb_playernumber.setEnabled(false);
+	       		players[i].setEnabled(!players[i].isEnabled());
+	       		btn_ready.setEnabled(false);
+	       		cb_playernumber.setEnabled(false);
+       		}
        		
-	       		}
-       	
+       		for(int j =0;j<spieleranzahl;j++){
+       			if(players[j].getText().equals("        ")||players[j].getText().isEmpty()){// Muss leider so gemacht werden wegen MaskFormatter
+   				ready = false;
+       			}
+       		}
+       		if(ready==true){
+       			btn_start.setEnabled(true);
+       		}else{
+       			JOptionPane.showMessageDialog(null, "Spielernamen fehlen!");
+       		}
        }// Ende Action Listener
 
      });//ende Action Listener
@@ -252,12 +253,12 @@ public class Start extends JFrame {
 		btn_cancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				btn_start.setEnabled(false);
+				cb_playernumber.setEnabled(true);
 				for (int i = 0; i < spieleranzahl; i++) {
 						 players[i].setVisible(true);
 						 players[i].setText("");
 						 players[i].setEnabled(true);
 						 labels[i].setVisible(true);
-						 cb_playernumber.setEnabled(true);
 					 }
 				for (int i = spieleranzahl;i<8;i++){
 					players[i].setEnabled(true);
