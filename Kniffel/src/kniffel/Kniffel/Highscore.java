@@ -61,7 +61,7 @@ public class Highscore extends JFrame {
 		btnGo1.setBounds(400, 505, 89, 23);
 		panel.add(btnGo1);
 		
-		JLabel lblGlckwnsch = new JLabel("Gl\u00FCckw\u00FCnsch");
+		JLabel lblGlckwnsch = new JLabel("Gl\u00FCckwunsch");
 		lblGlckwnsch.setFont(new Font("Old English Text MT", Font.BOLD | Font.ITALIC, 49));
 		lblGlckwnsch.setBounds(116, 319, 322, 146);
 		panel.add(lblGlckwnsch);
