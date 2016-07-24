@@ -10,7 +10,7 @@ private String name;
 
 
 
-
+//Punkte Konstruktor für Punkte und dazugehörigem Namen
 public Punkte(int points,String name){
 setPunkte(points);
 setName(name);
@@ -24,7 +24,7 @@ public int getPunkte() {
 }
 
 
-
+//Punkte zwischen 0 und 525 möglich (Mit viel Kniffelglück)
 public void setPunkte(int punkte) {
 	if(punkte<0||punkte>525){
 		JOptionPane.showMessageDialog(null,"Punktzahl unmöglich!");
@@ -36,7 +36,7 @@ public String getName() {
 	return name;
 }
 
-
+//Name darf nicht leer sein
 
 public void setName(String name) {
 	if(name.isEmpty()){
@@ -47,7 +47,7 @@ public void setName(String name) {
 }
 
 
-
+//CompareTo methode sotiert nach Punktzahl
 @Override
 public int compareTo(Punkte temp) {
 	// TODO Auto-generated method stub

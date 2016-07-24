@@ -24,7 +24,7 @@ public class Würfel extends KniffelSpiel implements Comparable<Würfel> {
 		return würfelnummer;
 	}
 
-
+	//Würfelnummer zwischen 1 und 5 möglich.
 	public void setWürfelnummer(int würfelnummer) {
 		if(würfelnummer<1||würfelnummer>5){
 			JOptionPane.showMessageDialog(null, "Nur ein bis fünf Würfel");
@@ -37,7 +37,7 @@ public class Würfel extends KniffelSpiel implements Comparable<Würfel> {
 		return augenzahl;
 	}
 
-
+	//Augenzahlen zwischen 1 und 6
 	public void setAugenzahl(int augenzahl) {
 		if(augenzahl<0||augenzahl>6){
 			JOptionPane.showMessageDialog(null, "Augenzahl zwischen 1 und 6, außer bei Initialisierung");
@@ -60,7 +60,7 @@ public class Würfel extends KniffelSpiel implements Comparable<Würfel> {
 	// Würfel methode
 	public void würfeln (Würfel würfel) {
 		
-		if (würfel.isBlocked()==true){}
+		if (würfel.isBlocked()==true){}//Würfel blockiert?
 		else{
 			Random zahl = new Random ();		
 			würfel.setAugenzahl( 1 + zahl.nextInt(6));
@@ -69,7 +69,7 @@ public class Würfel extends KniffelSpiel implements Comparable<Würfel> {
 			};
 }
 
-	
+	/*block Methode blockiert oder deblockiert, je nach Übergabe*/
 	public void block(Würfel würfel, boolean blocking){
 		if (blocking==false){
 			würfel.setBlocked(false);
@@ -83,7 +83,7 @@ public class Würfel extends KniffelSpiel implements Comparable<Würfel> {
 	}
 	
 	
-	// nach größe sotiert
+	// nach Würfelnummer sotiert
 	@Override
 	public int compareTo(Würfel tmp) {
 		// TODO Auto-generated method stub

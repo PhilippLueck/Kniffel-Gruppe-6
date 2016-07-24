@@ -23,12 +23,12 @@ public class Spieler extends KniffelSpiel implements Comparable<Spieler>{
 		return punkte;
 	
 	}
-	
+	//Punkte dürfen nicht kleiner als 0 sein und nicht größer als 525 (mit viel Kniffelglück)
 	public void setPunkte(int punkte) {
-		if(!(punkte<0)){
+		if(!(punkte<0)|| punkte>525){
 			this.punkte = punkte;	
 		}else{
-			JOptionPane.showMessageDialog(null, "Minuspunkte unmöglich");
+			JOptionPane.showMessageDialog(null, "Diese Punktzahl ist unmöglich");
 		}
 	
 		
@@ -37,7 +37,8 @@ public class Spieler extends KniffelSpiel implements Comparable<Spieler>{
 	public String getName() {
 		return name;
 	}
-
+	
+	//Name darf nicht leer sein
 	public void setName(String name) {
 		if(!(name.isEmpty())){
 		this.name = name;
@@ -50,7 +51,7 @@ public class Spieler extends KniffelSpiel implements Comparable<Spieler>{
 	public int getSpielerID() {
 		return spielerID;
 	}
-
+	//SpielerID darf nicht kleiner 0 sein
 	public void setSpielerID(int spielerID) {
 		if(!(spielerID<0)){
 		this.spielerID = spielerID;
@@ -62,7 +63,7 @@ public class Spieler extends KniffelSpiel implements Comparable<Spieler>{
 	public int getSpielgewonnen() {
 		return spielgewonnen;
 	}
-
+	//Spielgewonnen nicht kleiner 0 (so schlecht kann man nicht sein)
 	public void setSpielgewonnen(int spielgewonnen) {
 		if (!(spielgewonnen<0)){
 			this.spielgewonnen = spielgewonnen;	
@@ -72,6 +73,7 @@ public class Spieler extends KniffelSpiel implements Comparable<Spieler>{
 	}
 
 	@Override
+	//sotiert nach SpielerID
 	public int compareTo(Spieler temp) {
 		// TODO Auto-generated method stub
 		return this.spielerID-temp.getSpielerID();

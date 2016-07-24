@@ -19,7 +19,9 @@ public class Highscore extends JFrame {
 
 	private JPanel contentPane;
 
-	/* Diese GUI dient zur Siegerehrung und zum Neustarten des Spiels*/
+	/* Diese GUI dient zur Siegerehrung und zum Neustarten des Spiels
+	 * Zunnächst die GUI Elemente, unten dann kleine Funktionen bei Aufruf der Klasse um neues Spiel zu beginnen*/
+	
 	public Highscore() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 558, 753);
